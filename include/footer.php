@@ -1,19 +1,28 @@
 <footer class="footer-distributed">
 
-    <div class="footer-left">
-        <h3>Sagar<span>Developer</span></h3>
 
-        <p class="footer-links">
-            <a href="#">Home</a>
-            |
-            <a href="#">About</a>
-            |
-            <a href="#">Contact</a>
-            |
-            <a href="#">Blog</a>
+
+    <div class="footer-left">
+
+        <nav class="breadcrumb">
+            <h4>You are here:</h4>
+
+            <?php echo '<a href="#">Home</a> > <a href="#">About</a> > <a href="#">Contact</a> > <a href="#">Blog</a>' ?>
+
+        </nav>
+
+
+        <h3>GW<span>SC</span></h3>
+
+        <p class="footer-company-name"><strong>Copyright ©</strong>
+            <?php
+            $year = date("Y");
+            echo $year
+            ?>
+            All rights reserved
         </p>
 
-        <p class="footer-company-name">Copyright © 2021 <strong>SagarDeveloper</strong> All rights reserved</p>
+
     </div>
 
     <div class="footer-center">
@@ -32,20 +41,19 @@
             <p><a href="mailto:sagar00001.co@gmail.com">xyz@gmail.com</a></p>
         </div>
     </div>
+
     <div class="footer-right">
         <p class="footer-company-about">
-            <span>About the company</span>
-            <strong>Sagar Developer</strong> is a Youtube channel where you can find more creative CSS Animations
-            and
-            Effects along with
-            HTML, JavaScript and Projects using C/C++.
+            <span>About GWSC</span>
+            <strong>Global Wild Swimming and Camping (GWSC)</strong> is a company that specializes in providing adventurous outdoor experiences to nature enthusiasts. We offer a variety of wild swimming and camping packages in stunning natural locations around the world.
         </p>
         <div class="footer-icons">
-            <a href="#"><i class="fab fa-facebook"></i></a>
-            <a href="#"><i class="fab fa-instagram"></i></a>
-            <a href="#"><i class="fab fa-linkedin"></i></a>
-            <a href="#"><i class="fab fa-twitter"></i></a>
-            <a href="#"><i class="fab fa-youtube"></i></a>
+            <a target="_blank" href="https://facebook.com"><i class="fab fa-facebook"></i></a>
+            <a target="_blank" href="https://instagram.com"><i class="fab fa-instagram"></i></a>
+            <a target="_blank" href="https://linkedin.com"><i class="fab fa-linkedin"></i></a>
+            <a target="_blank" href="https://twitter.com"><i class="fab fa-twitter"></i></a>
+            <a target="_blank" href="https://youtube.com"><i class="fab fa-youtube"></i></a>
         </div>
     </div>
+
 </footer>

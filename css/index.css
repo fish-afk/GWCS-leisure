@@ -1,5 +1,56 @@
+@font-face {
+    font-family: 'Satoshi-light';
+    src: url("../assets/fonts/Satoshi-Light.ttf") format("truetype")
+}
+
+@font-face {
+    font-family: 'Satoshi-dark';
+    src: url("../assets/fonts/Satoshi-Black.ttf") format("truetype")
+}
+
+@font-face {
+    font-family: 'Satoshi-bold';
+    src: url("../assets/fonts/Satoshi-Bold.ttf") format("truetype")
+}
+
+@font-face {
+    font-family: 'Satoshi-medium';
+    src: url("../assets/fonts/Satoshi-Medium.ttf") format("truetype")
+}
+
 *{
     margin: 0;
     padding:0;
     box-sizing: border-box;
+    font-family: 'Satoshi-Medium'
+}
+
+
+.box{
+    width: 100%;
+    display: flex;
+    justify-content: center;
+}
+
+.intro{
+    padding-right: 24%;
+    padding-left: 24%;
+    text-align: center;
+    padding-top: 3%;
+    padding-bottom: 5%;
+}
+
+.intro div h1{
+    font-size: 3.3rem;
+    font-family: Satoshi-dark;
+}
+
+
+.search-container{
+    display: flex;
+    justify-content: center;
+    background-color: black;
+    border-radius: 10px;
+    height: 10px;
+    width: 200px;
 }

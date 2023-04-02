@@ -1,9 +1,28 @@
+@font-face {
+    font-family: 'Satoshi-light';
+    src: url("../assets/fonts/Satoshi-Light.ttf") format("truetype")
+}
+
+@font-face {
+    font-family: 'Satoshi-dark';
+    src: url("../assets/fonts/Satoshi-Black.ttf") format("truetype")
+}
+
+@font-face {
+    font-family: 'Satoshi-bold';
+    src: url("../assets/fonts/Satoshi-Bold.ttf") format("truetype")
+}
+
+@font-face {
+    font-family: 'Satoshi-medium';
+    src: url("../assets/fonts/Satoshi-Medium.ttf") format("truetype")
+}
 
 
 .header-area {
-     font-size: 18px;
-    font-family: 'Roboto', sans-serif;
-    background: #142440;
+     font-size: 15px;
+    font-family: 'Satoshi-medium';
+    background-color: #1b191f;
     width: 100%;
     padding: 12px 30px;
     z-index: 999;
@@ -51,7 +70,7 @@
 }
 .primary-menu a:hover,
 .primary-menu .active {
-    color:#ff4a04;   
+    color:#f06c37;   
 }
 .primary-menu li a:after {
     content: "";
@@ -100,7 +119,7 @@ section#hero-section {
     .site-nav-menu {
         float: none;
         position: absolute;
-        background: #142440;
+        background: #1b191f;
         width: 100%;
         left: 0;
         top: 85px;
@@ -123,4 +142,8 @@ section#hero-section {
     .primary-menu li a:after{
         display: none;
     }
+}
+
+.acc{
+    color: white;
 }
