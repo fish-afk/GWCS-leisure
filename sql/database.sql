@@ -1,4 +1,4 @@
-CREATE TABLE `SwimmingSessions`(
+CREATE TABLE IF NOT EXISTS `SwimmingSessions`(
     `id` BIGINT UNSIGNED NOT NULL PRIMARY KEY AUTO_INCREMENT,
     `site_id` BIGINT NOT NULL,
     `Start` TIME NOT NULL,
@@ -6,7 +6,7 @@ CREATE TABLE `SwimmingSessions`(
     `price` DOUBLE NOT NULL
 );
 
-CREATE TABLE `Reviews`(
+CREATE TABLE IF NOT EXISTS `Reviews`(
     `id` BIGINT UNSIGNED NOT NULL PRIMARY KEY AUTO_INCREMENT,
     `site_id` BIGINT NOT NULL,
     `username` VARCHAR(255) NOT NULL,
@@ -14,7 +14,7 @@ CREATE TABLE `Reviews`(
     `rating` BIGINT NOT NULL
 );
 
-CREATE TABLE `Users`(
+CREATE TABLE IF NOT EXISTS `Users`(
     `username` VARCHAR(255) NOT NULL,
     `password` VARCHAR(255) NOT NULL,
     `email` VARCHAR(255) NOT NULL,
@@ -23,7 +23,7 @@ CREATE TABLE `Users`(
     `DOB` DATE NOT NULL
 );
 
-CREATE TABLE `LocalAttractions`(
+CREATE TABLE IF NOT EXISTS `LocalAttractions`(
     `id` BIGINT UNSIGNED NOT NULL PRIMARY KEY AUTO_INCREMENT,
     `attraction_name` VARCHAR(255) NOT NULL,
     `description` VARCHAR(255) NOT NULL,
@@ -32,7 +32,7 @@ CREATE TABLE `LocalAttractions`(
     `image_url` VARCHAR(255) NOT NULL
 );
 
-CREATE TABLE `PitchBookings`(
+CREATE TABLE IF NOT EXISTS `PitchBookings`(
     `id` BIGINT UNSIGNED NOT NULL PRIMARY KEY AUTO_INCREMENT,
     `Pitch_id` BIGINT NOT NULL,
     `username` VARCHAR(255) NOT NULL,
@@ -41,14 +41,14 @@ CREATE TABLE `PitchBookings`(
     `bookingDate` DATE NOT NULL
 );
 
-CREATE TABLE `SwimmingBookings`(
+CREATE TABLE IF NOT EXISTS `SwimmingBookings`(
     `id` BIGINT UNSIGNED NOT NULL PRIMARY KEY AUTO_INCREMENT,
     `swimming_session_id` BIGINT NOT NULL,
     `username` VARCHAR(255) NOT NULL,
     `bookingDate` DATE NOT NULL
 );
 
-CREATE TABLE `CampingSites`(
+CREATE TABLE IF NOT EXISTS `CampingSites`(
     `id` BIGINT UNSIGNED NOT NULL PRIMARY KEY AUTO_INCREMENT,
     `name` VARCHAR(255) NOT NULL,
     `location` VARCHAR(255) NOT NULL,
@@ -56,7 +56,7 @@ CREATE TABLE `CampingSites`(
     `image_url` VARCHAR(255) NOT NULL
 );
 
-CREATE TABLE `Pitches`(
+CREATE TABLE IF NOT EXISTS `Pitches`(
     `id` BIGINT UNSIGNED NOT NULL PRIMARY KEY AUTO_INCREMENT,
     `site_id` BIGINT NOT NULL,
     `Pitch_Type` VARCHAR(255) NOT NULL,
@@ -84,7 +84,7 @@ ALTER TABLE
 
 
 
-/* This is a set of SQL statements that create tables and establish foreign key constraints among them.
+/* This is a set of SQL statements that create table IF NOT EXISTSs and establish foreign key constraints among them.
 
 The first table, SwimmingSessions, has columns for session ID, site ID, start and end times, and price.
 

@@ -11,7 +11,6 @@ VALUES (1, 'Tent pitch', 20.00),
        (3, 'Mountain view pitch', 40.00),
        (3, 'Forest pitch', 35.00);
 
-
 INSERT INTO `SwimmingSessions` (`site_id`, `Start`, `End`, `price`)
 VALUES (2, '09:00:00', '10:00:00', 5.00),
        (2, '14:00:00', '15:00:00', 5.00),
