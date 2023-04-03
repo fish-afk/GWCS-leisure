@@ -88,6 +88,22 @@
     font-size: 1.5.rem;
 }
 
+.intro-img{
+    border-radius: 10px;
+    width: 40%;
+    margin: 2%;
+    transition: all 300ms ease-in-out;
+}
+
+
+.intro-img:hover{
+    transform: translateY(-10px)
+}
+
+.intro-img img{
+    border-radius: 10px;
+}
+
 
 
 /* CONTACT US PAGE */

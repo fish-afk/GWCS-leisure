@@ -1,5 +1,3 @@
-
-
 <header class="header-area">
     <script type="text/javascript" src="../js/jquery.js"></script>
 
@@ -16,7 +14,8 @@
                 <li><a href="/" class="links">Home</a></li>
                 <li><a href="/contact.php" class="links">Contact Us</a></li>
                 <li><a href="#" class="links">Information</a></li>
-                <li><a href="#" class="links"><i class="fa fa-user"></i></a></li>
+                <li><a href="#" class="links">Updates</a></li>
+                <li><a href="#" class="links"><i class="fa fa-user"></i> Account</a></li>
 
             </ul>
         </div>

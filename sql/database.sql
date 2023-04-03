@@ -81,3 +81,27 @@ ALTER TABLE
     `SwimmingSessions` ADD CONSTRAINT `swimmingsessions_site_id_foreign` FOREIGN KEY(`site_id`) REFERENCES `CampingSites`(`id`);
 ALTER TABLE
     `LocalAttractions` ADD CONSTRAINT `localattractions_site_id_foreign` FOREIGN KEY(`site_id`) REFERENCES `CampingSites`(`id`);
+
+
+
+/* This is a set of SQL statements that create tables and establish foreign key constraints among them.
+
+The first table, SwimmingSessions, has columns for session ID, site ID, start and end times, and price.
+
+The second table, Reviews, has columns for review ID, site ID, username, review text, and rating.
+
+The third table, Users, has columns for username, password, email, first name, surname, and date of birth.
+
+The fourth table, LocalAttractions, has columns for attraction ID, attraction name, description, distance from site, site ID, and image URL.
+
+The fifth table, PitchBookings, has columns for booking ID, pitch ID, username, check-in and check-out times, and booking date.
+
+The sixth table, SwimmingBookings, has columns for booking ID, swimming session ID, username, and booking date.
+
+The seventh table, CampingSites, has columns for site ID, name, location, description, and image URL.
+
+The eighth table, Pitches, has columns for pitch ID, site ID, pitch type, and price.
+
+The last section of SQL statements adds foreign key constraints to these tables, linking the appropriate columns to their corresponding primary key columns in other tables. */
+
+

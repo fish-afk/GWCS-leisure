@@ -1,7 +1,11 @@
-<?php include_once "./include/header.php" ?>
-<?php include_once "./include/navbar.php" ?>
+<?php include_once "./includes/header.php" ?>
+<?php include_once "./includes/navbar.php" ?>
 
 <body>
+
+    <script src="https://www.google.com/recaptcha/api.js" async defer></script>
+
+    <div id='recaptcha' class="g-recaptcha" data-sitekey="6LeUa7QfAAAAAA3yNTLw0b2G5c2NFQHIDjvKbqhM" data-callback="onSubmit" data-size="invisible"></div>
 
 
     <section id="section-wrapper">
@@ -57,4 +61,4 @@
 
 </body>
 
-<?php include_once "./include/footer.php" ?>
+<?php include_once "./includes/footer.php" ?>
