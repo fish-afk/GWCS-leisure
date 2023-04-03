@@ -95,6 +95,11 @@ footer {
 	width: 35%;
 }
 
+.footer-center ul li{
+	color: white;
+	padding-bottom: 0.5rem;
+}
+
 .footer-distributed .footer-center i {
 	background-color: #33383b;
 	color: #ffffff;

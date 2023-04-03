@@ -1,6 +1,12 @@
 <?php include_once "./include/header.php" ?>
 <?php include_once "./include/navbar.php" ?>
 
+<?php
+
+
+
+?>
+
 
 <body>
 
@@ -11,13 +17,30 @@
         </div>
     </div>
 
-    <div class="box search">
+    <div class="box">
         <div class="search-container">
-            <form c>
-
+            <form action="/" method="POST">
+                <input placeholder="Search Destinations" type="text" id='speechToText'>
+                <i class="fa fa-microphone"></i>
+                <button type="submit">Search</button>
             </form>
         </div>
     </div>
+
+
+    <script>
+        function record() {
+            var recognition = new webkitSpeechRecognition();
+            recognition.lang = "en-GB";
+
+            recognition.onresult = function(event) {
+                // console.log(event);
+                document.getElementById('speechToText').value = event.results[0][0].transcript;
+            }
+            recognition.start();
+
+        }
+    </script>
 
 
 </body>

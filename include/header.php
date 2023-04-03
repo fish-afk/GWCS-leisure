@@ -9,9 +9,9 @@
     <script type="text/javascript" src="../js/jquery.js"></script>
     <link rel='stylesheet' href="../css/navbar.css" />
     <link rel='stylesheet' href="../css/footer.css" />
-    <link rel='stylesheet' href="../css/index.css"/>
+    <link rel='stylesheet' href="../css/index.css" />
     <link rel='stylesheet' href="../vendor/fontawesome/css/all.css" />
 
-    <title>Global Wild Swimming And Camping</title>
+    <title>Global Wild Camping and Swimming</title>
 
 </head>
