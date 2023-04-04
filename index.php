@@ -1,5 +1,6 @@
 <?php include_once "./includes/header.php" ?>
 <?php include_once "./includes/navbar.php" ?>
+<?php include_once "./includes/db_connect.php" ?>
 
 <?php
 
@@ -24,11 +25,8 @@
                 <input placeholder="Search Destinations" type="text" id='speechToText'>
                 <i class="fa fa-microphone"></i>
                 <button type="submit">Search</button>
-
             </form>
         </div>
-
-
     </div>
 
     <div class="box">
