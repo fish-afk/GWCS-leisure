@@ -1,359 +1,354 @@
 @font-face {
-    font-family: 'Satoshi-light';
-    src: url("../assets/fonts/Satoshi-Light.ttf") format("truetype")
+	font-family: "Satoshi-light";
+	src: url("../assets/fonts/Satoshi-Light.ttf") format("truetype");
 }
 
 @font-face {
-    font-family: 'Satoshi-dark';
-    src: url("../assets/fonts/Satoshi-Black.ttf") format("truetype")
+	font-family: "Satoshi-dark";
+	src: url("../assets/fonts/Satoshi-Black.ttf") format("truetype");
 }
 
 @font-face {
-    font-family: 'Satoshi-bold';
-    src: url("../assets/fonts/Satoshi-Bold.ttf") format("truetype")
+	font-family: "Satoshi-bold";
+	src: url("../assets/fonts/Satoshi-Bold.ttf") format("truetype");
 }
 
 @font-face {
-    font-family: 'Satoshi-medium';
-    src: url("../assets/fonts/Satoshi-Medium.ttf") format("truetype")
+	font-family: "Satoshi-medium";
+	src: url("../assets/fonts/Satoshi-Medium.ttf") format("truetype");
 }
 
-*{
-    margin: 0;
-    padding:0;
-    box-sizing: border-box;
-    font-family: 'Satoshi-Medium'
+* {
+	margin: 0;
+	padding: 0;
+	box-sizing: border-box;
+	font-family: "Satoshi-Medium";
 }
 
 /* GENERAL STYLES */
 
-
-.box{
-    width: 100%;
-    display: flex;
-    justify-content: center;
+.box {
+	width: 100%;
+	display: flex;
+	justify-content: center;
 }
 
-
-.gradient{
-    background: linear-gradient(90deg, rgba(27,25,31,1) 0%, rgba(28,28,28,1) 35%, rgba(10,74,87,1) 86%, rgba(7,45,60,1) 100%);
+.gradient {
+	background: linear-gradient(
+		90deg,
+		rgba(27, 25, 31, 1) 0%,
+		rgba(28, 28, 28, 1) 35%,
+		rgba(10, 74, 87, 1) 86%,
+		rgba(7, 45, 60, 1) 100%
+	);
 }
 
 /* INDEX PAGE */
 
-.intro{
-    padding-right: 24%;
-    padding-left: 24%;
-    text-align: center;
-    padding-top: 3%;
-    padding-bottom: 5%;
+.intro {
+	padding-right: 24%;
+	padding-left: 24%;
+	text-align: center;
+	padding-top: 3%;
+	padding-bottom: 5%;
 }
 
-.intro div h1{
-    font-size: 3.3rem;
-    font-family: Satoshi-dark;
+.intro div h1 {
+	font-size: 3.3rem;
+	font-family: Satoshi-dark;
 }
 
-
-.search-container{
-    background-color: #1b191f;
-    border-radius: 10px;
-    height: 100%;
-    width: 60%;
+.search-container {
+	background-color: #d9ffe4;
+	border-radius: 10px;
+	height: 100%;
+	width: 60%;
 }
 
-
-.search-container form{
-    width: 100%;
-    justify-content: center;
-    display: flex;
+.search-container form {
+	width: 100%;
+	justify-content: center;
+	display: flex;
 }
 
-.search-container form input{
-    width: 70%;
-    margin: 2%;
-    height: 40px;
-    font-family: Satoshi-dark;
-    font-size: 1.2rem;
-    padding: 2rem;
-    border-radius: 10px;
-    border-width: 0;
+.search-container form input {
+	width: 70%;
+	margin: 2%;
+	height: 40px;
+	font-family: Satoshi-dark;
+	font-size: 1.2rem;
+	padding: 2rem;
+	border-radius: 10px;
+	border-width: 0;
 }
 
-.search-container form button{
-    height: 50px;
-    padding: 2rem;
-    margin: 2%;
-    border-radius: 10px;
-    border-width: 0;
-    justify-content: center;
-    display: flex;
-    align-items: center;
-    font-family: Satoshi-dark;
-    font-size: 1.5.rem;
+.search-container form button {
+	height: 50px;
+	padding: 2rem;
+	margin: 2%;
+	border-radius: 10px;
+	border-width: 0;
+	justify-content: center;
+	display: flex;
+	align-items: center;
+	font-family: Satoshi-dark;
+	font-size: 1.5.rem;
 }
 
-.intro-img{
-    border-radius: 10px;
-    width: 40%;
-    margin: 2%;
-    transition: all 300ms ease-in-out;
+.intro-img {
+	border-radius: 10px;
+	width: 40%;
+	margin: 2%;
+	transition: all 300ms ease-in-out;
 }
 
-
-.intro-img:hover{
-    transform: translateY(-10px)
+.intro-img:hover {
+	transform: translateY(-10px);
 }
 
-.intro-img img{
-    border-radius: 10px;
+.intro-img img {
+	border-radius: 10px;
 }
-
-
 
 /* CONTACT US PAGE */
 
-
-#section-wrapper{
-    width: 100%;
-    padding: 10px;
-    font-family: Satoshi-dark !important;
+#section-wrapper {
+	width: 100%;
+	padding: 10px;
+	font-family: Satoshi-dark !important;
 }
-.box-wrapper{
-    position: relative;
-    display: table;
-    width:1100px;
-    margin:auto;
-    margin-top:35px;
-    border-radius: 30px;
+.box-wrapper {
+	position: relative;
+	display: table;
+	width: 1100px;
+	margin: auto;
+	margin-top: 35px;
+	border-radius: 30px;
 }
-.info-wrap{
-    width:35%;
-    height: 551px;
-    padding: 40px;
-    float: left;
-    display: block;
-    border-radius: 30px 0px 0px 30px;
-    background: linear-gradient(144deg, rgba(126,39,156,1) 0%, rgba(49,39,157,1) 49%);
-    color: #fff;
+.info-wrap {
+	width: 35%;
+	height: 551px;
+	padding: 40px;
+	float: left;
+	display: block;
+	border-radius: 30px 0px 0px 30px;
+	background: linear-gradient(
+		144deg,
+		rgba(126, 39, 156, 1) 0%,
+		rgba(49, 39, 157, 1) 49%
+	);
+	color: #fff;
 }
-.info-title{
-    text-align: left;
-    font-size: 28px;
-    letter-spacing: 0.5px;
+.info-title {
+	text-align: left;
+	font-size: 28px;
+	letter-spacing: 0.5px;
 }
-.info-sub-title{
-    font-size: 18px;
-    font-weight: 300;
-    margin-top: 17px;
-    letter-spacing: 0.5px;
-    line-height: 26px;
+.info-sub-title {
+	font-size: 18px;
+	font-weight: 300;
+	margin-top: 17px;
+	letter-spacing: 0.5px;
+	line-height: 26px;
 }
 .info-details {
-    list-style: none;
-    margin: 60px 0px;
+	list-style: none;
+	margin: 60px 0px;
 }
 .info-details li {
-    margin-top: 25px;
-    font-size: 18px;
-    color: #fff;
+	margin-top: 25px;
+	font-size: 18px;
+	color: #fff;
 }
 .info-details li i {
-    background: #F44770;
-    padding: 12px;
-    border-radius: 50%;
-    margin-right: 5px;
+	background: #f44770;
+	padding: 12px;
+	border-radius: 50%;
+	margin-right: 5px;
 }
 .info-details li a {
-    color: #fff;
-    text-decoration: none;
+	color: #fff;
+	text-decoration: none;
 }
 .info-details li a:hover {
-    color: #F44770;
+	color: #f44770;
 }
 .social-icons {
-    list-style: none;
-    text-align: center;
-    margin: 20px 0px;
+	list-style: none;
+	text-align: center;
+	margin: 20px 0px;
 }
 .social-icons li {
-    display: inline-block;
+	display: inline-block;
 }
 .social-icons li i {
-    background: #F44770;
-    color: #fff;
-    padding: 15px;
-    font-size: 20px;
-    border-radius: 22%;
-    margin: 0px 5px;
-    cursor: pointer;
-    transition: all .5s;
+	background: #f44770;
+	color: #fff;
+	padding: 15px;
+	font-size: 20px;
+	border-radius: 22%;
+	margin: 0px 5px;
+	cursor: pointer;
+	transition: all 0.5s;
 }
 .social-icons li i:hover {
-    background: #fff;
-    color: #000000;
+	background: #fff;
+	color: #000000;
 }
-.form-wrap{
-    width:65%;
-    float: right;
-    padding:40px 25px 35px 25px;
-    border-radius: 0px 30px 30px 0px;
-    background: #ecf0f3;
+.form-wrap {
+	width: 65%;
+	float: right;
+	padding: 40px 25px 35px 25px;
+	border-radius: 0px 30px 30px 0px;
+	background: #ecf0f3;
 }
-.form-title{
-    text-align: left;
-    margin-left: 23px;
-    font-size: 28px;
-    letter-spacing: 0.5px;
+.form-title {
+	text-align: left;
+	margin-left: 23px;
+	font-size: 28px;
+	letter-spacing: 0.5px;
 }
-.form-fields{
-    display: table;
-    width: 100%;
-    padding: 15px 5px 5px 5px;
+.form-fields {
+	display: table;
+	width: 100%;
+	padding: 15px 5px 5px 5px;
 }
 .form-fields input,
-.form-fields textarea{
-    border: none;
-    outline:none;
-    background: none;
-    font-size: 18px;
-    color:#555;
-    padding: 20px 10px 20px 5px;
-    width:100%
+.form-fields textarea {
+	border: none;
+	outline: none;
+	background: none;
+	font-size: 18px;
+	color: #555;
+	padding: 20px 10px 20px 5px;
+	width: 100%;
 }
-.form-fields textarea{
-    height: 150px;
-    resize: none;
+.form-fields textarea {
+	height: 150px;
+	resize: none;
 }
-.form-group{
-    width: 46%;
-    float: left;
-    padding: 0px 30px;
-    margin: 14px 12px;
-    border-radius: 25px;
-    box-shadow: inset 8px 8px 8px #cbced1, inset -8px -8px 8px #ffffff;
+.form-group {
+	width: 46%;
+	float: left;
+	padding: 0px 30px;
+	margin: 14px 12px;
+	border-radius: 25px;
+	box-shadow: inset 8px 8px 8px #cbced1, inset -8px -8px 8px #ffffff;
 }
 .form-fields .form-group:last-child {
-    width: 96%;
+	width: 96%;
 }
-.submit-button{
-    width: 96%;
-    height: 60px;
-    margin: 0px 12px;
-    border-radius: 30px;
-    font-size: 20px;;
-    font-weight: 700;
-    outline: none;
-    border:none;
-    cursor: pointer;
-    color:#fff;
-    text-align: center;
-    background: #F44770;
-    box-shadow: 3px 3px 8px #b1b1b1, -3px -3px 8px #ffffff;
-    transition: .5s;
+.submit-button {
+	width: 96%;
+	height: 60px;
+	margin: 0px 12px;
+	border-radius: 30px;
+	font-size: 20px;
+	font-weight: 700;
+	outline: none;
+	border: none;
+	cursor: pointer;
+	color: #fff;
+	text-align: center;
+	background: #f44770;
+	box-shadow: 3px 3px 8px #b1b1b1, -3px -3px 8px #ffffff;
+	transition: 0.5s;
 }
-.submit-button:hover{
-    background: #31279d;
+.submit-button:hover {
+	background: #31279d;
 }
 /* Responsive css */
 @media only screen and (max-width: 767px) {
-    .box-wrapper{
-        width: 100%;
-    }
-    .info-wrap,
-    .form-wrap{
-        width: 100%;
-        height: inherit;
-        float: none;  
-    }
-    .info-wrap{
-        border-radius: 30px 30px 0px 0px;
-    }
-    .form-wrap{
-        border-radius: 0px 0px 30px 30px;
-    }
-    .form-group{
-        width: 100%;
-        float: none;
-        margin: 25px 0px;
-    }
-    .form-fields .form-group:last-child, 
-    .submit-button{
-        width: 100%;
-    }
-    .submit-button{
-        margin: 10px 0px;
-    }
-   
+	.box-wrapper {
+		width: 100%;
+	}
+	.info-wrap,
+	.form-wrap {
+		width: 100%;
+		height: inherit;
+		float: none;
+	}
+	.info-wrap {
+		border-radius: 30px 30px 0px 0px;
+	}
+	.form-wrap {
+		border-radius: 0px 0px 30px 30px;
+	}
+	.form-group {
+		width: 100%;
+		float: none;
+		margin: 25px 0px;
+	}
+	.form-fields .form-group:last-child,
+	.submit-button {
+		width: 100%;
+	}
+	.submit-button {
+		margin: 10px 0px;
+	}
 }
-
 
 /* Account page */
 
-
-.full-space{
-    padding-top: 10%;
-    padding-bottom: 10%;
+.full-space {
+	padding-top: 10%;
+	padding-bottom: 10%;
 }
 
-
-.auth-btns{
-    padding-right: 2rem;
-    padding-left: 2rem;
-    padding-top: 1rem;
-    margin-top: 1.3rem;
-    padding-bottom: 1rem;
-    border-radius: 10px;
-    border-width: 0;
-    background-color: #1b191f;
-    color: white;
-    margin-right: 2rem;
-    font-family: Satoshi-medium;
-    font-size: 1.5rem;
-    transition: all 300ms ease-in-out;
+.auth-btns {
+	padding-right: 2rem;
+	padding-left: 2rem;
+	padding-top: 1rem;
+	margin-top: 1.3rem;
+	padding-bottom: 1rem;
+	border-radius: 10px;
+	border-width: 0;
+	background-color: #1b191f;
+	color: white;
+	margin-right: 2rem;
+	font-family: Satoshi-medium;
+	font-size: 1.5rem;
+	transition: all 300ms ease-in-out;
 }
 
-.auth-btns:hover{
-    transform: translateY(-5px);
+.auth-btns:hover {
+	transform: translateY(-5px);
 }
-
-
 
 /* Log in page */
 
-
 /* Login Card */
 
-.login-card-container{
-    padding: 10rem;
+.login-card-container {
+	padding: 10rem;
 }
 
 .login-card {
-    width: 450px;
-    background: rgba(255, 255, 255, .5);
-    padding: 4rem;
-    border-radius: 10px;
-    position: relative;
+	width: 450px;
+	background: rgba(255, 255, 255, 0.5);
+	padding: 4rem;
+	border-radius: 10px;
+	position: relative;
 }
 
 .login-card::before {
-    content: '';
-    position: absolute;
-    inset: 0;
-    background: rgba(255, 255, 255, .15);
-    transform: rotate(-6deg);
-    border-radius: 10px;
-    z-index: -1;
+	content: "";
+	position: absolute;
+	inset: 0;
+	background: rgba(255, 255, 255, 0.15);
+	transform: rotate(-6deg);
+	border-radius: 10px;
+	z-index: -1;
 }
 /* ---------- */
 
 /* Login Card Logo */
 .login-card-logo {
-    margin-bottom: 2rem;
+	margin-bottom: 2rem;
 }
 
 .login-card-logo img {
-    width: 60px;
+	width: 60px;
 }
 /* ---------- */
 
@@ -361,74 +356,74 @@
 .login-card-logo,
 .login-card-header,
 .login-card-footer {
-    text-align: center;
+	text-align: center;
 }
 
 .login-card a {
-    text-decoration: none;
-    color: #35339a;
+	text-decoration: none;
+	color: #35339a;
 }
 
 .login-card a:hover {
-    text-decoration: underline;
+	text-decoration: underline;
 }
 /* ---------- */
 
 /* Login Card Header */
 .login-card-header {
-    margin-bottom: 2rem;
+	margin-bottom: 2rem;
 }
 
 .login-card-header h1 {
-    font-size: 2rem;
-    font-weight: 600;
-    margin-bottom: .5rem;
+	font-size: 2rem;
+	font-weight: 600;
+	margin-bottom: 0.5rem;
 }
 
-.login-card-header h1+div {
-    font-size: calc(1rem * .8);
-    opacity: .8;
+.login-card-header h1 + div {
+	font-size: calc(1rem * 0.8);
+	opacity: 0.8;
 }
 /* ---------- */
 
 /* Login Card Form */
 .login-card-form {
-    display: flex;
-    flex-direction: column;
-    gap: 1.5rem;
+	display: flex;
+	flex-direction: column;
+	gap: 1.5rem;
 }
 
 .login-card-form .form-item {
-    position: relative;
+	position: relative;
 }
 
 .login-card-form .form-item .form-item-icon {
-    position: absolute;
-    top: .82rem;
-    left: 1.4rem;
-    font-size: 1.3rem;
-    opacity: .4;
+	position: absolute;
+	top: 0.82rem;
+	left: 1.4rem;
+	font-size: 1.3rem;
+	opacity: 0.4;
 }
 
 .login-card-form .checkbox {
-    display: flex;
-    align-items: center;
-    gap: 7px;
+	display: flex;
+	align-items: center;
+	gap: 7px;
 }
 
 .login-card-form .form-item-other {
-    display: flex;
-    align-items: center;
-    justify-content: space-between;
-    font-size: calc(1rem * .8);
-    margin-bottom: .5rem;
+	display: flex;
+	align-items: center;
+	justify-content: space-between;
+	font-size: calc(1rem * 0.8);
+	margin-bottom: 0.5rem;
 }
 /* ---------- */
 
 /* Login Card Footer */
 .login-card-footer {
-    margin-top: 1.5rem;
-    font-size: calc(1rem * .8);
+	margin-top: 1.5rem;
+	font-size: calc(1rem * 0.8);
 }
 /* ---------- */
 
@@ -436,95 +431,88 @@
 .login-card input[type="text"],
 .login-card input[type="password"],
 .login-card input[type="email"] {
-    border: none;
-    outline: none;
-    background: rgba(255, 255, 255, .3);
-    padding: 1rem 1.5rem;
-    padding-left: calc(1rem * 3.5);
-    border-radius: 100px;
-    width: 100%;
-    transition: background .5s;
+	border: none;
+	outline: none;
+	background: rgba(255, 255, 255, 0.3);
+	padding: 1rem 1.5rem;
+	padding-left: calc(1rem * 3.5);
+	border-radius: 100px;
+	width: 100%;
+	transition: background 0.5s;
 }
 
 .login-card input:focus {
-    background: white;
+	background: white;
 }
 
 .login-card input[type="checkbox"] {
-    width: 16px;
-    height: 16px;
-    accent-color: black;
+	width: 16px;
+	height: 16px;
+	accent-color: black;
 }
 
 .login-card button {
-    background: black;
-    color: white;
-    padding: 1rem;
-    border-radius: 100px;
-    text-align: center;
-    text-transform: uppercase;
-    letter-spacing: 2px;
-    transition: background .5s;
+	background: black;
+	color: white;
+	padding: 1rem;
+	border-radius: 100px;
+	text-align: center;
+	text-transform: uppercase;
+	letter-spacing: 2px;
+	transition: background 0.5s;
 }
 
 .login-card button:hover {
-    background-color: rgba(0, 0, 0, 0.85);
-    cursor: pointer;
+	background-color: rgba(0, 0, 0, 0.85);
+	cursor: pointer;
 }
 /* ---------- */
 
 /* Login Card Social Buttons */
 .login-card-social {
-    display: flex;
-    flex-direction: column;
-    gap: 1.5rem;
-    text-align: center;
-    margin-top: 3rem;
+	display: flex;
+	flex-direction: column;
+	gap: 1.5rem;
+	text-align: center;
+	margin-top: 3rem;
 }
 
-.login-card-social>div {
-    opacity: .8;
-    text-transform: uppercase;
-    letter-spacing: 1px;
-    font-size: calc(1rem * .8);
+.login-card-social > div {
+	opacity: 0.8;
+	text-transform: uppercase;
+	letter-spacing: 1px;
+	font-size: calc(1rem * 0.8);
 }
 
 .login-card-social-btns {
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    gap: 1rem;
+	display: flex;
+	align-items: center;
+	justify-content: center;
+	gap: 1rem;
 }
 
 .login-card-social-btns a {
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    color: black;
-    width: 50px;
-    height: 50px;
-    background-color: rgba(255, 255, 255, .6);
-    border-radius: 100px;
-    transition: all .5s;
+	display: flex;
+	align-items: center;
+	justify-content: center;
+	color: black;
+	width: 50px;
+	height: 50px;
+	background-color: rgba(255, 255, 255, 0.6);
+	border-radius: 100px;
+	transition: all 0.5s;
 }
 
 .login-card-social-btns a:hover {
-    background-color: white;
-    transform: scale(1.1);
+	background-color: white;
+	transform: scale(1.1);
 }
 /* ---------- */
 
-
 /* Responsive */
 @media (max-width: 768px) {
-
-    body {
-        padding: 2rem 0;
-    }
-
-    .login-card {
-        width: 280px;
-        padding: 2rem;
-    }
-
+	.login-card {
+		width: 280px;
+		padding: 2rem;
+	}
 }

@@ -9,7 +9,23 @@
     $attempt = 0;
 
     function login($username, $password){
-        return true;
+        global $conn;
+        // Query the database for the user with the matching username and password
+        $sql = "SELECT * FROM users WHERE username='$username' AND password='$password'";
+        $result = mysqli_query($conn, $sql);
+
+        // Check if the query returned a row
+        if (mysqli_num_rows($result) === 1) {
+            // Set the session variable
+            $_SESSION['username'] = $username;
+
+            // Redirect to the account page
+            header('Location: account.php');
+            exit();
+        } else {
+            // Display an error message if the login failed
+            header('Location: index.php');
+        }
     }
 
     if(isset($_POST['username']) && isset($_POST['password'])){
@@ -25,23 +41,23 @@
             <div class="login-card">
 
                 <div class="login-card-header">
-                    <h1>Sign In</h1>
+                    <h1>Log In</h1>
                     <div>Please login to use the platform</div>
                 </div>
-                <form class="login-card-form">
+                <form class="login-card-form" action="/login.php" method="POST">
                     <div class="form-item">
-                        <span class="form-item-icon material-symbols-rounded">mail</span>
-                        <input type="text" placeholder="Enter Email" id="emailForm" autofocus required>
+                        <span class="form-item-icon material-symbols-rounded">person</span>
+                        <input type="text" placeholder="Enter Username" name="username" id="emailForm" autofocus required>
                     </div>
                     <div class="form-item">
                         <span class="form-item-icon material-symbols-rounded">lock</span>
-                        <input type="password" placeholder="Enter Password" id="passwordForm" required>
+                        <input type="password" placeholder="Enter Password" name="password" id="passwordForm" required>
                     </div>
 
                     <button type="submit">Sign In</button>
                 </form>
                 <div class="login-card-footer">
-                    Don't have an account? <a href="#">Create a free account.</a>
+                    Don't have an account? <a href="/register.php">Register.</a>
                 </div>
             </div>
 

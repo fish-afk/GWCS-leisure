@@ -1,24 +1,32 @@
-<header class="header-area">
-    <script type="text/javascript" src="../js/jquery.js"></script>
-
-    <div class="header-container">
-        <div class="site-logo">
-            <a href="/">GW<span>CS</span></a>
-        </div>
-        <div class="mobile-nav">
-            <i class="fas fa-bars"></i>
-        </div>
-        <div class="site-nav-menu">
-            <ul class="primary-menu">
-                <li><a href="/" class="links">Home</a></li>
-                <li><a href="/contact.php" class="links">Contact Us</a></li>
-                <li><a href="#" class="links">Information</a></li>
-                <li><a href="#" class="links">Updates</a></li>
-                <li><a href="/account.php" class="links"><i class="fa fa-user"></i> Account</a></li>
-
-            </ul>
-        </div>
+<header>
+    <div class="logo">
+        <h3>GW<span>CS</span></h3>
     </div>
+    <input type="checkbox" id="nav_check" hidden>
+    <nav>
+        <ul>
+            <li>
+                <a class="links" href="/index.php">Home</a>
+            </li>
+            <li>
+                <a class="links" href="/contact.php">Contact</a>
+            </li>
+            <li>
+                <a class="links" href="/information.php">information</a>
+            </li>
+            <li>
+                <a class="links" href="/updates.php">Updates</a>
+            </li>
+            <li>
+                <a class="links" href="/account.php">Account</a>
+            </li>
+        </ul>
+    </nav>
+    <label for="nav_check" class="hamburger">
+        <div></div>
+        <div></div>
+        <div></div>
+    </label>
 
     <script>
         const links = document.querySelectorAll('.links');

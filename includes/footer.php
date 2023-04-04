@@ -59,8 +59,11 @@ function breadcrumbs($separator = ' &raquo; ', $home = 'Home')
 
     <div class="footer-center">
         <ul>
-            <li>Terms & Conditions</li>
-            <li>Privacy Policy</li>
+            <li>• Terms & Conditions</li>
+            <li>• Privacy Policy</li>
+            <li>• Contact Us</li>
+            <li>• Information</li>
+            <li>• Updates</li>
         </ul>
     </div>
 

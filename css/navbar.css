@@ -1,149 +1,85 @@
-@font-face {
-    font-family: 'Satoshi-light';
-    src: url("../assets/fonts/Satoshi-Light.ttf") format("truetype")
+header {
+	background-color: #d9ffe4;
+	width: 100%;
+	height: 70px;
+	display: flex;
+	align-items: center;
+	justify-content: space-between;
+	padding: 0 50px;
+}
+header .logo {
+	font-size: 30px;
+	text-transform: uppercase;
 }
 
-@font-face {
-    font-family: 'Satoshi-dark';
-    src: url("../assets/fonts/Satoshi-Black.ttf") format("truetype")
+header .logo h3 {
+	color: #000;
+	font: normal 36px "Satoshi-dark";
+	margin: 0;
 }
 
-@font-face {
-    font-family: 'Satoshi-bold';
-    src: url("../assets/fonts/Satoshi-Bold.ttf") format("truetype")
+header .logo h3 span {
+	color: #ff4a04;
 }
 
-@font-face {
-    font-family: 'Satoshi-medium';
-    src: url("../assets/fonts/Satoshi-Medium.ttf") format("truetype")
+header nav ul {
+	display: flex;
 }
 
-
-.header-area {
-     font-size: 15px;
-    font-family: 'Satoshi-medium';
-    background-color: #1b191f;
-    width: 100%;
-    padding: 12px 30px;
-    z-index: 999;
-    border-bottom: 2px solid #909090ad;
-    box-shadow: 0px 0px 7px 3px red;
+nav ul li {
+	text-decoration: none;
+	list-style: none;
 }
-.header-container {
-    display: table;
-    width: 100%;
-    margin: auto;
+header nav ul li a {
+	text-decoration: none;
+	display: inline-block;
+	color: #000;
+	padding: 5px 0;
+	margin: 0 10px;
+	border: 3px solid transparent;
+	text-transform: uppercase;
+	transition: 0.2s;
 }
-.site-logo {
-    float: left;
-    padding: 17px 0px;
+header nav ul li a:hover,
+header nav ul li a.active {
+	border-bottom-color: dodgerblue;
 }
-.site-logo a {
-    color: #fff;
-    text-decoration: none;
-    font-size: 24px;
-    font-weight: 600;
-    padding: 15px;
+.hamburger {
+	cursor: pointer;
+	display: none;
 }
-.site-logo span {
-    color: #ff4a04;
+.hamburger div {
+	width: 30px;
+	height: 3px;
+	margin: 5px 0;
+	background: #000;
 }
-.site-nav-menu {
-    float: right;
-}
-.primary-menu{
-    list-style: none;
-}
-.primary-menu li {
-    display: inline-block;
-    margin: 21px 5px;
-}
-.primary-menu a {
-    color: #fff;
-    position: relative;
-    text-decoration: none;
-    text-transform: uppercase;
-    font-weight: 500;
-    letter-spacing: 1px;
-    padding: 15px 10px;
-    transition: .5s;
-}
-.primary-menu a:hover,
-.primary-menu .active {
-    color:#f06c37;   
-}
-.primary-menu li a:after {
-    content: "";
-    position: absolute;
-    width: 0%;
-    height: 2px;
-    background: #ff4a04;
-    bottom: 0px;
-    left: 0;
-    transition: all .5s;
-}
-.primary-menu li a:hover:after {
-    width: 100%;
-}
-.primary-menu li .active:after{
-    width: 100%;
-}
-
-
-.mobile-nav{
-    display: none;
-}
-.mobile-nav i{
-    float: right;
-    margin: 10px;
-    padding: 10px;
-    font-size: 24px;
-    color: #fff;
-    outline: none;
-    cursor: pointer;
-}
-
-
-section#hero-section {
-    width: 100%;
-    height: 100vh;
-    background: url(../img/ny_nu1it.jpg);
-    background-repeat: no-repeat;
-    background-size: cover;
-    background-position: center center;
-}
-
-/* Responsive css */
-
 @media only screen and (max-width: 900px) {
-    .site-nav-menu {
-        float: none;
-        position: absolute;
-        background: #1b191f;
-        width: 100%;
-        left: 0;
-        top: 85px;
-        padding: 30px 0px 150px 0px;
-        border-top: 1px solid #4a4848;
-        clip-path: circle(0% at 100% 0%);
-        transition: all .8s;
-    }
-    .primary-menu li {
-        display: block;
-        text-align: center;
-        margin: 25px 5px;
-    }
-    .mobile-nav{
-        display: block;
-    }
-    .mobile-menu {
-        clip-path: circle(112% at 100% 0%);
-    }
-    .primary-menu li a:after{
-        display: none;
-    }
+	header {
+		padding: 0 30px;
+	}
 }
-
-.acc{
-    color: white;
+@media only screen and (max-width: 700px) {
+	.hamburger {
+		display: block;
+	}
+	header nav {
+		position: absolute;
+		width: 100%;
+		left: -100%;
+		top: 70px;
+		width: 100%;
+		background: #fff;
+		padding: 30px;
+		transition: 0.3s;
+	}
+	header #nav_check:checked ~ nav {
+		left: 0;
+	}
+	header nav ul {
+		display: block;
+	}
+	header nav ul li a {
+		margin: 5px 0;
+	}
 }

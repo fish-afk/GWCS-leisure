@@ -17,10 +17,9 @@
     $sql = "CREATE DATABASE IF NOT EXISTS $dbname";
 
     //Outcome to whether the database has been setup
-    if (mysqli_query($conn, $sql)) {
-        echo "Database $dbname Created Successfully";
-    } else {
+    if ($conn->connect_error) {
         echo "Error Creating $dbname Database: " . $conn->connect_error;
+        die();
     }
 
 
