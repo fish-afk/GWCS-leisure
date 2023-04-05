@@ -338,7 +338,6 @@
 	background: rgba(255, 255, 255, 0.15);
 	transform: rotate(-6deg);
 	border-radius: 10px;
-	z-index: -1;
 }
 /* ---------- */
 

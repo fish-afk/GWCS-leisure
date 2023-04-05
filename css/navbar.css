@@ -72,6 +72,7 @@ header nav ul li a.active {
 		background: #fff;
 		padding: 30px;
 		transition: 0.3s;
+		z-index: 1;
 	}
 	header #nav_check:checked ~ nav {
 		left: 0;
