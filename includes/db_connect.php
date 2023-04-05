@@ -24,6 +24,11 @@
 
     $conn = new mysqli($server, $username, $password, $dbname);
 
+    $dsn = 'mysql:host='. $server . ';dbname=' . $dbname;
+
+    $pdo = new PDO($dsn, $username, $password);
+
+    // persistent check table to see if tables are already created.
     $DB_CREATED = "CREATE TABLE IF NOT EXISTS `Done` (
         `isdone` BIGINT NOT NULL DEFAULT 0
     )";
@@ -225,6 +230,7 @@
             echo "<h3>error initiating database properly</h3>";
             die();
         }
+
 
 
 

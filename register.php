@@ -1,28 +1,137 @@
-<?php include_once "./includes/header.php" ?>
-<?php include_once "./includes/navbar.php" ?>
-<?php include_once "./includes/db_connect.php" ?>
+<?php include_once './includes/header.php' ?>
+<?php include_once './includes/navbar.php' ?>
+<?php include_once './includes/db_connect.php' ?>
+<?php include './includes/phpalerts.php' ?>
 
-<body>
-    <h2>Register</h2>
-    <form method="post" action="register_handler.php">
-        <label>Username:</label>
-        <input type="text" name="username" required><br>
-        <label>Password:</label>
-        <input type="password" name="password" required><br>
-        <label>Email:</label>
-        <input type="email" name="email" required><br>
-        <label>First name:</label>
-        <input type="text" name="firstname" required><br>
-        <label>Surname:</label>
-        <input type="text" name="surname" required><br>
-        <label>Date of Birth:</label>
-        <input type="date" name="dob" required><br>
-        <input type="submit" value="Register">
-    </form>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Material+Symbols+Rounded:opsz,wght,FILL,GRAD@48,600,0,0" />
+
+<?php
+
+
+$alert = new PHPAlert();
+
+function register($username, $password, $email, $firstname, $surname, $dob)
+{
+
+    global $conn;
+    global $alert;
+    global $pdo;
+
+    // Prepare the SQL query to check if the username already exists in the database
+    // Prepare the SQL statement
+    $sql = 'SELECT * FROM users WHERE username = :username';
+    $stmt = $pdo->prepare($sql);
+
+    // Bind the parameter
+    $stmt->bindParam(':username', $username);
+
+    // Execute the statement
+    $stmt->execute();
+
+    // Check if any rows are returned
+    if ($stmt->rowCount() > 0) {
+
+        // Username already taken
+        $alert->info("This username already exists");
+    } else {
+        // Hash the password using password_hash()
+        $hashed_password = password_hash($password, PASSWORD_DEFAULT);
+
+        // Prepare the SQL query to insert the new user into the database
+        $insert_sql = "INSERT INTO Users (username, password, email, firstname, surname, DOB) VALUES (?, ?, ?, ?, ?, ?)";
+        $insert_stmt = mysqli_prepare($conn, $insert_sql);
+
+        // Bind the input parameters to the prepared statement using mysqli_stmt_bind_param()
+        mysqli_stmt_bind_param($insert_stmt, "ssssss", $username, $hashed_password, $email, $firstname, $surname, $dob);
+
+        // Execute the prepared statement using mysqli_stmt_execute()
+        mysqli_stmt_execute($insert_stmt);
+
+        $alert->success("Registered successfully. Log in now");
+        mysqli_stmt_close($insert_stmt);
+    }
+
+    // Close the statements and the connection using mysqli_stmt_close() and mysqli_close()
+
+    mysqli_close($conn);
+}
+
+if (
+    isset($_POST['username']) && isset($_POST['password']) &&
+    isset($_POST['firstname']) && isset($_POST['lastname']) &&
+    isset($_POST['email']) && isset($_POST['dob'])
+) {
+
+    register(
+        $_POST['username'],
+        $_POST['password'],
+        $_POST['email'],
+        $_POST['firstname'],
+        $_POST['lastname'],
+        $_POST['dob']
+    );
+}
+?>
+
+<body style="background-color: black;">
+    <script src="https://www.google.com/recaptcha/api.js" async defer></script>
+
+    <div id='recaptcha' class="g-recaptcha" data-sitekey="6LeUa7QfAAAAAA3yNTLw0b2G5c2NFQHIDjvKbqhM" data-callback="onSubmit" data-size="invisible"></div>
+
+    <div class="box gradient">
+
+        <div class="register-card-container">
+            <div class="register-card">
+
+                <div class="register-card-header">
+                    <h1>Register</h1>
+                    <div>Signup for an account.</div>
+                </div>
+                <form class="register-card-form" action="/register.php" method="POST">
+                    <div class="form-item">
+                        <span class="form-item-icon material-symbols-rounded">person</span>
+                        <input type="text" placeholder="First Name" name="firstname" id="emailForm" autofocus required>
+                    </div>
+
+
+                    <div class="form-item">
+                        <span class="form-item-icon material-symbols-rounded">person</span>
+                        <input type="text" placeholder="Last Name" name="lastname" id="emailForm" autofocus required>
+                    </div>
+
+                    <div class="form-item">
+                        <span class="form-item-icon material-symbols-rounded">person</span>
+                        <input type="text" placeholder="Username" name="username" id="emailForm" autofocus required>
+                    </div>
+
+                    <div class="form-item">
+                        <span class="form-item-icon material-symbols-rounded">date_range</span>
+                        <input type="text" onfocus="(this.type='date')" onblur="(this.type='text')" placeholder="Date of birth" name="dob" id="passwordForm" autofocus required>
+                    </div>
+
+                    <div class="form-item">
+                        <span class="form-item-icon material-symbols-rounded">mail</span>
+                        <input type="email" placeholder="Email" name="email" id="passwordForm" autofocus required>
+                    </div>
+                    <div class="form-item">
+                        <span class="form-item-icon material-symbols-rounded">lock</span>
+                        <input type="password" placeholder="Password" name="password" id="emailForm" autofocus required>
+                    </div>
+
+
+                    <button type="submit">Register</button>
+                </form>
+                <div class="register-card-footer">
+                    Already have and account? <a href="/login.php">Log In.</a>
+                </div>
+            </div>
+
+        </div>
+    </div>
+
 </body>
 
-
-<?php include_once "./includes/footer.php" ?>
+<?php include_once './includes/footer.php' ?>
 
 
 </html>

@@ -32,6 +32,10 @@ footer {
 	}
 }
 
+.footer-center span{
+	margin-bottom: 4rem;
+}
+
 .footer-distributed {
 	background-color: #d9ffe4;
 	box-sizing: border-box;
@@ -149,6 +153,14 @@ footer {
 	margin: 0;
 }
 
+#quick-links{
+	display: block;
+	color: #000;
+	font-size: 18px;
+	font-weight: bold;
+	margin-bottom: 20px;
+}
+
 .footer-distributed .footer-company-about span {
 	display: block;
 	color: #000;
@@ -206,3 +218,9 @@ footer {
 .breadcrumb h4 {
 	font-family: Satoshi-light !important;
 }
+
+
+
+/* Login Card */
+
+

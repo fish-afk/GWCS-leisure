@@ -58,8 +58,9 @@ function breadcrumbs($separator = ' &raquo; ', $home = 'Home')
     </div>
 
     <div class="footer-center">
+        <p class="footer-company-about">
+            <span id="quick-links">Quick Links</span></p>
         <ul>
-            <li>• Terms & Conditions</li>
             <li>• Privacy Policy</li>
             <li>• Contact Us</li>
             <li>• Information</li>
