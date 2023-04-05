@@ -3,7 +3,7 @@ CREATE DATABASE IF NOT EXISTS `GWCS_Shihab_Mirza`;
 USE `GWCS_Shihab_Mirza`;
 
 CREATE TABLE IF NOT EXISTS `SwimmingSessions`(
-    `id` BIGINT UNSIGNED NOT NULL PRIMARY KEY AUTO_INCREMENT,
+    `id` BIGINT NOT NULL PRIMARY KEY AUTO_INCREMENT,
     `site_id` BIGINT NOT NULL,
     `Start` TIME NOT NULL,
     `End` TIME NOT NULL,
@@ -11,7 +11,7 @@ CREATE TABLE IF NOT EXISTS `SwimmingSessions`(
 );
 
 CREATE TABLE IF NOT EXISTS `Reviews`(
-    `id` BIGINT UNSIGNED NOT NULL PRIMARY KEY AUTO_INCREMENT,
+    `id` BIGINT NOT NULL PRIMARY KEY AUTO_INCREMENT,
     `site_id` BIGINT NOT NULL,
     `username` VARCHAR(255) NOT NULL,
     `reviewText` TEXT NOT NULL,
@@ -19,16 +19,17 @@ CREATE TABLE IF NOT EXISTS `Reviews`(
 );
 
 CREATE TABLE IF NOT EXISTS `Users`(
-    `username` VARCHAR(255) NOT NULL,
+    `username` VARCHAR(255) NOT NULL PRIMARY KEY,
     `password` VARCHAR(255) NOT NULL,
     `email` VARCHAR(255) NOT NULL,
     `firstname` VARCHAR(255) NOT NULL,
     `surname` VARCHAR(255) NOT NULL,
-    `DOB` DATE NOT NULL
+    `DOB` DATE NOT NULL,
+    `usertype` VARCHAR(255) NOT NULL DEFAULT "user";
 );
 
 CREATE TABLE IF NOT EXISTS `LocalAttractions`(
-    `id` BIGINT UNSIGNED NOT NULL PRIMARY KEY AUTO_INCREMENT,
+    `id` BIGINT NOT NULL PRIMARY KEY AUTO_INCREMENT,
     `attraction_name` VARCHAR(255) NOT NULL,
     `description` VARCHAR(255) NOT NULL,
     `milesFromSite` DOUBLE NOT NULL,
@@ -37,7 +38,7 @@ CREATE TABLE IF NOT EXISTS `LocalAttractions`(
 );
 
 CREATE TABLE IF NOT EXISTS `PitchBookings`(
-    `id` BIGINT UNSIGNED NOT NULL PRIMARY KEY AUTO_INCREMENT,
+    `id` BIGINT NOT NULL PRIMARY KEY AUTO_INCREMENT,
     `Pitch_id` BIGINT NOT NULL,
     `username` VARCHAR(255) NOT NULL,
     `checkIn` DATETIME NOT NULL,
@@ -46,14 +47,14 @@ CREATE TABLE IF NOT EXISTS `PitchBookings`(
 );
 
 CREATE TABLE IF NOT EXISTS `SwimmingBookings`(
-    `id` BIGINT UNSIGNED NOT NULL PRIMARY KEY AUTO_INCREMENT,
+    `id` BIGINT NOT NULL PRIMARY KEY AUTO_INCREMENT,
     `swimming_session_id` BIGINT NOT NULL,
     `username` VARCHAR(255) NOT NULL,
     `bookingDate` DATE NOT NULL
 );
 
 CREATE TABLE IF NOT EXISTS `CampingSites`(
-    `id` BIGINT UNSIGNED NOT NULL PRIMARY KEY AUTO_INCREMENT,
+    `id` BIGINT NOT NULL PRIMARY KEY AUTO_INCREMENT,
     `name` VARCHAR(255) NOT NULL,
     `location` VARCHAR(255) NOT NULL,
     `description` BIGINT NOT NULL,
@@ -61,11 +62,24 @@ CREATE TABLE IF NOT EXISTS `CampingSites`(
 );
 
 CREATE TABLE IF NOT EXISTS `Pitches`(
-    `id` BIGINT UNSIGNED NOT NULL PRIMARY KEY AUTO_INCREMENT,
+    `id` BIGINT NOT NULL PRIMARY KEY AUTO_INCREMENT,
     `site_id` BIGINT NOT NULL,
     `Pitch_Type` VARCHAR(255) NOT NULL,
     `price` DOUBLE NOT NULL
 );
+
+CREATE TABLE IF NOT EXISTS `Messages`(
+    `id` BIGINT NOT NULL PRIMARY KEY AUTO_INCREMENT,
+    `username` VARCHAR(255) NOT NULL,
+    `Message` TEXT NOT NULL,
+);
+
+CREATE TABLE IF NOT EXISTS `LogInAttempts`(
+    `id` BIGINT NOT NULL AUTO_INCREMENT PRIMARY KEY,
+    `ip_address` VARCHAR(255) NOT NULL,
+    `time_count` BIGINT NOT NULL,
+);
+
 
 ALTER TABLE
     `SwimmingBookings` ADD CONSTRAINT `swimmingbookings_username_foreign` FOREIGN KEY(`username`) REFERENCES `Users`(`username`);
@@ -85,8 +99,8 @@ ALTER TABLE
     `SwimmingSessions` ADD CONSTRAINT `swimmingsessions_site_id_foreign` FOREIGN KEY(`site_id`) REFERENCES `CampingSites`(`id`);
 ALTER TABLE
     `LocalAttractions` ADD CONSTRAINT `localattractions_site_id_foreign` FOREIGN KEY(`site_id`) REFERENCES `CampingSites`(`id`);
-
-
+ALTER TABLE
+     `Messages` ADD CONSTRAINT `username_foreign` FOREIGN KEY(`username`) REFERENCES `Users`(`username`);
 
 /* This is a set of SQL statements that create table IF NOT EXISTSs and establish foreign key constraints among them.
 
