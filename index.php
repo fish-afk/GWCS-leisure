@@ -14,7 +14,7 @@
 
 <body>
 
-    <div class="box-normal index-top">
+    <div class="index-top">
         <div class='intro'>
             <h1>Explore the outdoors.</h1><br>
             <h2>Discover and reserve camping sites and swimming areas at stunning natural locations around the world.</h2>
@@ -61,15 +61,6 @@
 
     </div>
 
-
-    <div class="box-normal index-top">
-        <div class='intro'>
-            <h1>Pitch Types Available</h1><br>
-            <h2>Discover and reserve camping sites and swimming areas at stunning natural locations around the world.</h2>
-        </div>
-
-
-    </div>
 
 
 

@@ -68,8 +68,8 @@
             <div>
                 <h1>You need to be logged in to send a message.</h1>
 
-                <div><a type="button" href="/login.php" class=""><button class="auth-btns">Log in</button></a>
-                   
+                <div>
+                    <a type="button" href="/login.php" class=""><button class="auth-btns">Log in</button></a>
                 </div>
 
             </div>

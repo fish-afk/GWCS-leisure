@@ -16,9 +16,13 @@
 
             <?php } else { ?>
 
-                <h1>You are not logged in</h1>
-                <a type="button" href="/login.php" class=""><button class="auth-btns">Log in</button></a>
-                <a type="button" href="/register.php" class=""><button class="auth-btns">Register</button></a>
+
+                <div class="notauthed">
+                    <h1>You are not logged in</h1>
+                    <a type="button" href="/login.php" class=""><button class="auth-btns">Log in</button></a>
+                    <a type="button" href="/register.php" class=""><button class="auth-btns">Register</button></a>
+                </div>
+
 
 
             <?php } ?>

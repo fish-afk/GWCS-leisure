@@ -21,9 +21,9 @@
 /* The footer is fixed to the bottom of the page */
 
 footer {
-	position: fixed;
 	bottom: 0;
 	font-family: Satoshi-medium;
+	border-top: 1px solid rgb(119, 119, 119);
 }
 
 @media (max-height: 800px) {
