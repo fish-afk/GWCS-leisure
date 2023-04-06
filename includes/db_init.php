@@ -1,4 +1,9 @@
 <?php
+
+// this script will initialize database tables //
+
+
+
 include_once 'db_connect.php';
 // persistent check table to see if tables are already created.
 $DB_CREATED = "CREATE TABLE IF NOT EXISTS `Done` (
@@ -202,8 +207,6 @@ if ($num_records == 0) {
         echo "<h3>error initiating database properly</h3>";
         die();
     }
-
-
 
 
     $sql = "INSERT INTO Done (isdone) VALUES (1)";

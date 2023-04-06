@@ -55,14 +55,14 @@ footer {
 }
 
 .footer-distributed h3 {
-color: rgb(170, 252, 117);
+color: #fff;
 	opacity: 0.8;
 	font: normal 36px "Satoshi-dark";
 	margin: 0;
 }
 
 .footer-distributed h3 span {
-	color: #ff4a04;
+	color:  rgb(170, 252, 117);
 }
 
 /* Footer links */
@@ -93,7 +93,7 @@ opacity: 0.8;
 
 #quick-links{
 	display: block;
-	color: #fff;
+	color: rgb(170, 252, 117);
 	font-size: 18px;
 	font-weight: bold;
 	margin-bottom: 20px;
@@ -168,7 +168,7 @@ opacity: 0.8;
 
 .footer-distributed .footer-company-about span {
 	display: block;
-	color: #fff;
+	color: rgb(170, 252, 117);
 	font-size: 18px;
 	font-weight: bold;
 	margin-bottom: 20px;
@@ -196,7 +196,8 @@ opacity: 0.8;
 }
 
 .footer-distributed .footer-icons a:hover {
-	background-color: #3f71ea;
+	background-color: rgb(170, 252, 117);
+	color: black;
 }
 
 .footer-links a:hover {
@@ -225,4 +226,8 @@ opacity: 0.8;
 
 .breadcrumb h4 {
 	font-family: Satoshi-light !important;
+}
+
+.breadcrumb p a {
+	color: aqua;
 }

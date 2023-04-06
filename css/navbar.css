@@ -12,15 +12,19 @@ header .logo {
 	text-transform: uppercase;
 }
 
+.logo:hover{
+	cursor: pointer;
+}
+
 header .logo h3 {
-	color: rgb(170, 252, 117);
+	color: #fff;
 	opacity: 0.8;
 	font: normal 36px "Satoshi-dark";
 	margin: 0;
 }
 
 header .logo h3 span {
-	color: #ff4a04;
+	color: rgb(170, 252, 117);
 }
 
 header nav ul {
@@ -39,11 +43,12 @@ header nav ul li a {
 	margin: 0 10px;
 	border: 3px solid transparent;
 	text-transform: uppercase;
-	transition: 0.2s;
+	transition: all 300ms ease-in-out;
+
 }
 header nav ul li a:hover,
 header nav ul li a.active {
-	border-bottom-color: dodgerblue;
+	border-bottom-color: rgb(170, 252, 117);
 }
 .hamburger {
 	cursor: pointer;
@@ -53,7 +58,7 @@ header nav ul li a.active {
 	width: 30px;
 	height: 3px;
 	margin: 5px 0;
-	background: #000;
+	background: #fff6f6;
 }
 @media only screen and (max-width: 900px) {
 	header {
@@ -70,7 +75,7 @@ header nav ul li a.active {
 		left: -100%;
 		top: 70px;
 		width: 100%;
-		background: #fff;
+		background: #021b20;
 		padding: 30px;
 		transition: 0.3s;
 		z-index: 1;

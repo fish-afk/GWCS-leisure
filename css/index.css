@@ -25,15 +25,10 @@
 	font-family: "Satoshi-Medium";
 }
 
-
 /* GENERAL STYLES */
 
-
-
-
-body{
-
-	background: linear-gradient(90deg, rgba(21,68,55,1) 0%, rgba(0,17,20,1) 76%, rgba(0,14,10,1) 100%, rgba(10,74,87,1) 100%);
+body {
+	background: linear-gradient(0deg, rgba(21,68,55,1) 0%, rgba(2,27,32,1) 100%, rgba(0,14,10,1) 100%, rgba(10,74,87,1) 100%);
 }
 
 .box {
@@ -42,52 +37,61 @@ body{
 	justify-content: center;
 }
 
+.box-normal {
+	width: 100%;
+	display: flex;
+}
+
 .gradient {
-	background: linear-gradient(90deg, rgba(21,68,55,1) 0%, rgba(0,17,20,1) 76%, rgba(0,14,10,1) 100%, rgba(10,74,87,1) 100%);
+	background: linear-gradient(0deg, rgba(21,68,55,1) 0%, rgba(2,27,32,1) 100%, rgba(0,14,10,1) 100%, rgba(10,74,87,1) 100%);
 }
 
 .cursor {
-  width: 50px;
-  height: 50px;
-  border-radius: 100%;
-  opacity: 0.5;
-  background: linear-gradient(90deg, rgba(21,68,55,1) 0%, rgba(0,17,20,1) 76%, rgba(0,14,10,1) 100%, rgba(10,74,87,1) 100%);
-  transition: all 200ms ease-out;
-  position: fixed;
-  pointer-events: none;
-  left: 0;
-  top: 0;
-  transform: translate(calc(-50% + 15px), -50%);
+	width: 50px;
+	height: 50px;
+	border-radius: 100%;
+	opacity: 0.6;
+	filter: blur(1.5rem);
+	background: rgb(170, 252, 117);
+	transition: all 200ms ease-out;
+	position: fixed;
+	pointer-events: none;
+	left: 0;
+	top: 0;
+	transform: translate(calc(-50% + 15px), -50%);
 }
 
-
 .hover {
-  cursor: pointer;
-  width: 0;
-  height: 0;
+	cursor: pointer;
+	width: 0;
+	height: 0;
 }
 
 .cursorinnerhover {
-  width: 50px;
-  height: 50px;
-  opacity: .5;
+	width: 50px;
+	height: 50px;
+	opacity: 0.5;
 }
-
 
 /* INDEX PAGE */
 
+.index-top{
+	margin-top: 3rem;
+	padding: 3rem;
+}
+
 .intro {
-	padding-right: 24%;
-	padding-left: 24%;
-	text-align: center;
-	padding-top: 3%;
-	padding-bottom: 5%;
+	width: 50%;
+	padding: 3%;	
+	padding-right: 6%;
+	padding-top: 0;
 	color: #fff;
 	opacity: 0.7;
 }
 
-.intro div h1 {
+.intro h1 {
 	font-size: 3.3rem;
+	color: rgb(170, 252, 117);
 	font-family: Satoshi-dark;
 }
 
@@ -96,6 +100,11 @@ body{
 	border-radius: 10px;
 	height: 100%;
 	width: 60%;
+}
+
+.intro-container{
+	width: 50%;
+
 }
 
 .search-container form {
@@ -143,6 +152,99 @@ body{
 	border-radius: 10px;
 }
 
+
+.img-slider{
+  position: relative;
+  width: 700px;
+  height: 90%;
+  margin: 10px;
+  background: #1D212B;
+}
+
+.img-slider .slide{
+  z-index: 1;
+  position: absolute;
+  width: 100%;
+  clip-path: circle(0% at 0 50%);
+}
+
+.img-slider .slide.active{
+  clip-path: circle(150% at 0 50%);
+  transition: 2s;
+  transition-property: clip-path;
+}
+
+.img-slider .slide img{
+  z-index: 1;
+  width: 100%;
+  border-radius: 5px;
+}
+
+.img-slider .slide .info{
+  position: absolute;
+  top: 0;
+   background: rgba(0, 0, 0, 0.4);
+  padding: 15px 30px;
+}
+
+.img-slider .slide .info h2{
+  color: #fff;
+ 
+  font-size: 45px;
+  text-transform: uppercase;
+  font-weight: 800;
+  letter-spacing: 2px;
+}
+
+.img-slider .slide .info p{
+  color: #fff;
+  font-size: 16px;
+  width: 60%;
+  padding: 10px;
+  border-radius: 4px;
+}
+
+.img-slider .navigation{
+  z-index: 2;
+  position: absolute;
+  display: flex;
+  left: 50%;
+  transform: translateX(-50%);
+}
+
+.img-slider .navigation .btn{
+  background: rgba(255, 255, 255, 0.5);
+  width: 12px;
+  height: 12px;
+  margin: 10px;
+  border-radius: 50%;
+  cursor: pointer;
+}
+
+.img-slider .navigation .btn.active{
+  background: #2696E9;
+  box-shadow: 0 0 2px rgba(0, 0, 0, 0.5);
+}
+
+
+
+@media only screen and (max-width: 1000px){
+	.index-top{
+		display: block;
+	}
+
+	.img-slider{
+		width: 90%;
+		margin: 5%;
+	}
+
+	.intro{
+		width: 100%;
+		text-align: center;
+		justify-content: center;
+	}
+}   
+
 /* CONTACT US PAGE */
 
 #section-wrapper {
@@ -173,13 +275,13 @@ body{
 	color: #fff;
 }
 
-.contact-auth{
+.contact-auth {
 	padding: 4rem;
 	padding-top: 10%;
 	padding-bottom: 10%;
 }
 
-.contact-auth div div{
+.contact-auth div div {
 	display: flex;
 	justify-content: center;
 	width: 100%;
@@ -374,7 +476,6 @@ body{
 	padding: 4rem;
 	border-radius: 10px;
 	position: relative;
-	
 }
 
 .login-card::before {
@@ -485,7 +586,6 @@ body{
 	border-radius: 100px;
 	width: 100%;
 	transition: background 0.5s;
-
 }
 
 .login-card input:focus {
@@ -525,10 +625,7 @@ body{
 	}
 }
 
-
-
 /* REGISTER PAGE */
-
 
 .register-card-container {
 	padding: 3rem;
@@ -540,7 +637,6 @@ body{
 	padding: 2rem;
 	border-radius: 10px;
 	position: relative;
-	
 }
 
 .register-card::before {
@@ -652,7 +748,6 @@ body{
 	border-radius: 100px;
 	width: 100%;
 	transition: background 0.5s;
-
 }
 
 .register-card input:focus {
@@ -682,11 +777,10 @@ body{
 }
 /* ---------- */
 
-
 /* Responsive */
 @media (max-width: 768px) {
 	.register-card {
 		width: 280px;
 		padding: 2rem;
 	}
-}	
+}

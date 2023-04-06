@@ -46,6 +46,12 @@
             $(".mobile-nav i").click(function() {
                 $(".site-nav-menu").toggleClass("mobile-menu");
             });
+
+            $(".logo").click(() => {
+                window.location.href = '/';
+            })
         });
+
+
     </script>
 </header>
