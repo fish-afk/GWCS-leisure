@@ -12,6 +12,9 @@
     <link rel='stylesheet' href="../css/index.css" />
     <link rel='stylesheet' href="../vendor/fontawesome/css/all.css" />
 
+    <script src="../js/sweetalert2.all.min.js"></script>
+
     <title>Global Wild Camping and Swimming</title>
 
+    
 </head>

@@ -32,18 +32,13 @@ footer {
 	}
 }
 
-.footer-center span{
-	margin-bottom: 4rem;
-}
-
 .footer-distributed {
-	background-color: #d9ffe4;
+	background-color: #173D33;
 	box-sizing: border-box;
 	width: 100%;
 	text-align: left;
 	font: bold 16px sans-serif;
 	padding: 50px 50px 60px 50px;
-	margin-top: 80px;
 }
 
 .footer-distributed .footer-left,
@@ -60,7 +55,8 @@ footer {
 }
 
 .footer-distributed h3 {
-	color: #000;
+color: rgb(170, 252, 117);
+	opacity: 0.8;
 	font: normal 36px "Satoshi-dark";
 	margin: 0;
 }
@@ -72,8 +68,10 @@ footer {
 /* Footer links */
 
 .footer-distributed .footer-links {
-	color: #000;
+	color: #fff;
+	
 	margin: 20px 0 12px;
+	
 }
 
 .footer-distributed .footer-links a {
@@ -81,10 +79,11 @@ footer {
 	line-height: 1.8;
 	text-decoration: none;
 	color: inherit;
+opacity: 0.8;
 }
 
 .footer-distributed .footer-company-name {
-	color: #000;
+	color: #fff;
 	font-size: 14px;
 	font-weight: normal;
 	margin: 0;
@@ -92,19 +91,31 @@ footer {
 
 /* Footer Center */
 
+#quick-links{
+	display: block;
+	color: #fff;
+	font-size: 18px;
+	font-weight: bold;
+	margin-bottom: 20px;
+}
+
 .footer-distributed .footer-center {
 	width: 35%;
 }
 
 .footer-center ul li {
 	list-style: none;
-	color: black;
+	color: #fff;
+	opacity: 0.8;
 	padding-bottom: 0.5rem;
+	font-family: Satoshi-light;
+	text-transform: capitalize;
 }
 
 .footer-distributed .footer-center i {
 	background-color: #33383b;
-	color: #000;
+	color: #fff;
+	opacity: 0.8;
 	font-size: 25px;
 	width: 38px;
 	height: 38px;
@@ -122,7 +133,8 @@ footer {
 
 .footer-distributed .footer-center p {
 	display: inline-block;
-	color: #000;
+	color: #fff;
+	opacity: 0.8;
 	vertical-align: middle;
 	margin: 0;
 }
@@ -147,26 +159,20 @@ footer {
 
 .footer-distributed .footer-company-about {
 	line-height: 20px;
-	color: black;
-	font-size: 13px;
+	color: #fff;
+	font-size: 14px;
 	font-weight: normal;
+	opacity: 0.6;
 	margin: 0;
-}
-
-#quick-links{
-	display: block;
-	color: #000;
-	font-size: 18px;
-	font-weight: bold;
-	margin-bottom: 20px;
 }
 
 .footer-distributed .footer-company-about span {
 	display: block;
-	color: #000;
+	color: #fff;
 	font-size: 18px;
 	font-weight: bold;
 	margin-bottom: 20px;
+	opacity: 1 !important;
 }
 
 .footer-distributed .footer-icons {
@@ -186,6 +192,7 @@ footer {
 	line-height: 35px;
 	margin-right: 3px;
 	margin-bottom: 5px;
+	transition: all 200ms ease-in-out;
 }
 
 .footer-distributed .footer-icons a:hover {
@@ -212,15 +219,10 @@ footer {
 
 .breadcrumb {
 	margin-bottom: 50px;
-	color: black;
+	color: #fff;
+	opacity: 0.8;
 }
 
 .breadcrumb h4 {
 	font-family: Satoshi-light !important;
 }
-
-
-
-/* Login Card */
-
-

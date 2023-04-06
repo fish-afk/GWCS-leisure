@@ -1,20 +1,16 @@
 <?php include_once './includes/header.php' ?>
 <?php include_once './includes/navbar.php' ?>
 <?php include_once './includes/db_connect.php' ?>
-<?php include './includes/phpalerts.php' ?>
 
 <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Material+Symbols+Rounded:opsz,wght,FILL,GRAD@48,600,0,0" />
 
 <?php
 
 
-$alert = new PHPAlert();
-
 function register($username, $password, $email, $firstname, $surname, $dob)
 {
 
     global $conn;
-    global $alert;
     global $pdo;
 
     // Prepare the SQL query to check if the username already exists in the database
@@ -31,8 +27,16 @@ function register($username, $password, $email, $firstname, $surname, $dob)
     // Check if any rows are returned
     if ($stmt->rowCount() > 0) {
 
-        // Username already taken
-        $alert->info("This username already exists");
+?>
+        <script>
+            Swal.fire({
+                title: 'Error!',
+                text: 'Username already exists!',
+                icon: 'error',
+                confirmButtonText: 'Ok'
+            })
+        </script>
+    <?php
     } else {
         // Hash the password using password_hash()
         $hashed_password = password_hash($password, PASSWORD_DEFAULT);
@@ -46,8 +50,20 @@ function register($username, $password, $email, $firstname, $surname, $dob)
 
         // Execute the prepared statement using mysqli_stmt_execute()
         mysqli_stmt_execute($insert_stmt);
-
-        $alert->success("Registered successfully. Log in now");
+    ?>
+        <script>
+            Swal.fire({
+                title: 'Success',
+                text: 'Registered Successfully. You may now log in.',
+                icon: 'success',
+                confirmButtonText: 'Ok'
+            }).then((result) => {
+                if (result.isConfirmed) {
+                    window.location.href = "/login.php"
+                }
+            })
+        </script>
+<?php
         mysqli_stmt_close($insert_stmt);
     }
 
@@ -63,12 +79,12 @@ if (
 ) {
 
     register(
-        $_POST['username'],
-        $_POST['password'],
-        $_POST['email'],
-        $_POST['firstname'],
-        $_POST['lastname'],
-        $_POST['dob']
+        htmlspecialchars($_POST['username']),
+        htmlspecialchars($_POST['password']),
+        htmlspecialchars($_POST['email']),
+        htmlspecialchars($_POST['firstname']),
+        htmlspecialchars($_POST['lastname']),
+        htmlspecialchars($_POST['dob'])
     );
 }
 ?>

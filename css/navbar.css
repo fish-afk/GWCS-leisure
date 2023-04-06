@@ -1,5 +1,5 @@
 header {
-	background-color: #d9ffe4;
+background-color: #173D33;
 	width: 100%;
 	height: 70px;
 	display: flex;
@@ -13,7 +13,8 @@ header .logo {
 }
 
 header .logo h3 {
-	color: #000;
+	color: rgb(170, 252, 117);
+	opacity: 0.8;
 	font: normal 36px "Satoshi-dark";
 	margin: 0;
 }
@@ -33,7 +34,7 @@ nav ul li {
 header nav ul li a {
 	text-decoration: none;
 	display: inline-block;
-	color: #000;
+	color: #fff;
 	padding: 5px 0;
 	margin: 0 10px;
 	border: 3px solid transparent;

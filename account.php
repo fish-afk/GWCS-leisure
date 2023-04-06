@@ -12,6 +12,8 @@
 
                 <h1>Account</h1>
 
+                <a href='/logout.php'>Log Out</a>
+
             <?php } else { ?>
 
                 <h1>You are not logged in</h1>

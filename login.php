@@ -1,13 +1,9 @@
+<?php include_once './includes/db_connect.php' ?>
 <?php include_once './includes/header.php' ?>
 <?php include_once './includes/navbar.php' ?>
-<?php include_once './includes/db_connect.php' ?>
-<?php include './includes/phpalerts.php' ?>
-
-
 
 <?php
 
-$alert = new PHPAlert();
 
 function login($username, $password)
 {
@@ -34,23 +30,44 @@ function login($username, $password)
     if (is_array($row)) {
         if (password_verify($password, $row['password'])) {
             // Set the session variable for the logged-in user
+            session_start();
 
-            $alert->success("Logged in");
-            $_SESSION['username'] = $username;
+            $_SESSION['username'] = $row['username'];
+            $_SESSION['firstname'] = $row['firstname'];
+            $_SESSION['lastname'] = $row['surname'];
+            $_SESSION['dob'] = $row['DOB'];
+            $_SESSION['email'] = $row['email'];
 
             header("Location: account.php");
         } else {
-            $alert->error("Incorrect credentials");
-        }
-    } else {
-        $alert->error("Incorrect credentials");
-    }
+?>
+            <script>
+                Swal.fire({
+                    title: 'Error!',
+                    text: 'Incorrect Credentials',
+                    icon: 'error',
+                    confirmButtonText: 'Ok'
+                })
+            </script>
+        <?php }
+    } else { ?>
+        <script>
+            Swal.fire({
+                title: 'Error!',
+                text: 'Incorrect Credentials',
+                icon: 'error',
+                confirmButtonText: 'Ok'
+            })
+        </script>
+<?php }
 }
 
 if (isset($_POST['username']) && isset($_POST['password'])) {
-    login($_POST['username'], $_POST['password']);
+    login(addslashes($_POST['username']), addslashes($_POST['password']));
 }
 ?>
+
+
 
 <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Material+Symbols+Rounded:opsz,wght,FILL,GRAD@48,600,0,0" />
 
@@ -78,7 +95,7 @@ if (isset($_POST['username']) && isset($_POST['password'])) {
                         <input type="password" placeholder="Enter Password" name="password" id="passwordForm" required>
                     </div>
 
-                    <button type="submit">Sign In</button>
+                    <button type="submit">Log In</button>
                 </form>
                 <div class="login-card-footer">
                     Don't have an account? <a href="/register.php">Register.</a>
