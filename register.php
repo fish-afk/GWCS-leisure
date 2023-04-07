@@ -138,7 +138,7 @@ if (
                     <button type="submit">Register</button>
                 </form>
                 <div class="register-card-footer">
-                    Already have and account? <a href="/login.php">Log In.</a>
+                    Already have an account? <a href="/login.php">Log In.</a>
                 </div>
             </div>
 

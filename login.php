@@ -8,7 +8,6 @@
 function login($username, $password)
 {
 
-    global $alert;
     global $pdo;
 
     $query = 'SELECT * FROM Users WHERE (username = :name)';

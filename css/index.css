@@ -25,7 +25,7 @@
 	font-family: "Satoshi-Medium";
 }
 
-/* GENERAL STYLES */
+/* GENERAL STYLES --------------------------------------------------------------------------------------------------------------------*/
 
 body {
 	background: linear-gradient(0deg, rgba(21,68,55,1) 0%, rgba(2,27,32,1) 100%, rgba(0,14,10,1) 100%, rgba(10,74,87,1) 100%);
@@ -47,11 +47,11 @@ body {
 }
 
 .cursor {
-	width: 100px;
-	height: 100px;
+	width: 60px;
+	height: 60px;
 	border-radius: 100%;
 	opacity: 0.6;
-	filter: blur(1.5rem);
+	filter: blur(1.4rem);
 	background: rgb(170, 252, 117);
 	transition: all 200ms ease-out;
 	position: fixed;
@@ -73,182 +73,14 @@ body {
 	opacity: 0.5;
 }
 
-/* INDEX PAGE */
+/* INDEX PAGE -----------------------------------------------------------------------------------------------------------------------------------*/
 
 .index-top{
-	margin-top: 3rem;
-	padding: 3rem;
 	margin-bottom: 40rem;
 }
 
-.intro {
-	justify-content: start;
-	width: 100%;
-	padding-top: 0;
-	text-align: center;
-	color: #fff;
-	opacity: 0.7;
-}
 
-.intro h1 {
-	font-size: 3.3rem;
-	color: rgb(170, 252, 117);
-	font-family: Satoshi-dark;
-}
-
-
-
-.search-container {
-	background-color: #d9ffe4;
-	border-radius: 10px;
-	height: 100%;
-	width: 60%;
-}
-
-.intro-container{
-	width: 100%;
-}
-
-.search-container form {
-	width: 100%;
-	justify-content: center;
-	display: flex;
-}
-
-.search-container form input {
-	width: 70%;
-	margin: 2%;
-	height: 40px;
-	font-family: Satoshi-dark;
-	font-size: 1.2rem;
-	padding: 2rem;
-	border-radius: 10px;
-	border-width: 0;
-}
-
-.search-container form button {
-	height: 50px;
-	padding: 2rem;
-	margin: 2%;
-	border-radius: 10px;
-	border-width: 0;
-	justify-content: center;
-	display: flex;
-	align-items: center;
-	font-family: Satoshi-dark;
-	font-size: 1.5.rem;
-}
-
-.intro-img {
-	border-radius: 10px;
-	width: 40%;
-	margin: 2%;
-	transition: all 300ms ease-in-out;
-}
-
-.intro-img:hover {
-	transform: translateY(-10px);
-}
-
-.intro-img img {
-	border-radius: 10px;
-}
-
-
-.img-slider{
- justify-content: end;
-  position: relative;
-  width: 100%;
-  height: 700px;
-  margin: 10px;
-  background: #1D212B;
-}
-
-.img-slider .slide{
-  z-index: 1;
-  position: absolute;
-  width: 100%;
-  clip-path: circle(0% at 0 50%);
-}
-
-.img-slider .slide.active{
-  clip-path: circle(150% at 0 50%);
-  transition: 2s;
-  transition-property: clip-path;
-}
-
-.img-slider .slide img{
-  z-index: 1;
-  width: 100%;
-  border-radius: 5px;
-}
-
-.img-slider .slide .info{
-  position: absolute;
-  top: 0;
-   background: rgba(0, 0, 0, 0.4);
-  padding: 15px 30px;
-}
-
-.img-slider .slide .info h2{
-  color: #fff;
- 
-  font-size: 45px;
-  text-transform: uppercase;
-  font-weight: 800;
-  letter-spacing: 2px;
-}
-
-.img-slider .slide .info p{
-  color: #fff;
-  font-size: 16px;
-  width: 60%;
-  padding: 10px;
-  border-radius: 4px;
-}
-
-.img-slider .navigation{
-  z-index: 2;
-  position: absolute;
-  display: flex;
-  left: 50%;
-  transform: translateX(-50%);
-}
-
-.img-slider .navigation .btn{
-  background: rgba(255, 255, 255, 0.5);
-  width: 12px;
-  height: 12px;
-  margin: 10px;
-  border-radius: 50%;
-  cursor: pointer;
-}
-
-.img-slider .navigation .btn.active{
-  background: #2696E9;
-  box-shadow: 0 0 2px rgba(0, 0, 0, 0.5);
-}
-
-
-
-@media only screen and (max-width: 1000px){
-	.index-top{
-		display: block;
-	}
-
-	.img-slider{
-		width: 90%;
-		margin: 5%;
-	}
-
-	.intro{
-		width: 100%;
-		text-align: center;
-		justify-content: center;
-	}
-}   
-
-/* CONTACT US PAGE */
+/* CONTACT US PAGE ------------------------------------------------------------------------------------------------------------------------------*/
 
 #section-wrapper {
 	width: 100%;
@@ -443,7 +275,7 @@ body {
 	}
 }
 
-/* Account page */
+/* Account page ----------------------------------------------------------------------------------------------------------------------*/
 
 .full-space {
 	justify-content: center;
@@ -485,9 +317,8 @@ body {
 }
 
 
-/* Log in page */
+/* Log in page --------------------------------------------------------------------------------------------------------------------------*/
 
-/* Login Card */
 
 .login-card-container {
 	padding: 10rem;
@@ -649,7 +480,7 @@ body {
 	}
 }
 
-/* REGISTER PAGE */
+/* REGISTER PAGE -------------------------------------------------------------------------------------------------------------------------- */
 
 .register-card-container {
 	padding: 3rem;
