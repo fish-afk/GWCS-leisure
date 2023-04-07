@@ -1,8 +1,7 @@
 <?php include_once "./includes/header.php" ?>
 <?php include_once "./includes/navbar.php" ?>
 <?php include_once "./includes/db_connect.php" ?>
-<?php include_once './includes/db_init.php' // creating tables etc 
-?>
+<?php include_once './includes/db_setup.php' // database setup ?>
 
 <?php
 
@@ -15,8 +14,52 @@
 <body>
 
     <div class="index-top box">
-        
+        <div class='intro'>
+            <h1>Explore the outdoors.</h1><br>
+            <h2>Discover and reserve camping sites and swimming areas at stunning natural locations around the world.</h2>
+            <button class="intro-btn">BOOK NOW!</button>
+        </div>
+
+
+        <div class="img-slider">
+            <div class="slide active">
+                <img src="./assets/images/slideshow/slide1.jpg" alt="">
+                <div class="info">
+                    <h2>Malawi</h2>
+
+                </div>
+            </div>
+            <div class="slide">
+                <img src="./assets/images/slideshow/slide2.jpg" alt="">
+                <div class="info">
+                    <h2>Zambia</h2>
+                </div>
+            </div>
+            <div class="slide">
+                <img src="./assets/images/slideshow/slide3.jpg" alt="">
+                <div class="info">
+                    <h2>Iceland</h2>
+
+                </div>
+            </div>
+            <div class="slide">
+                <img src="./assets/images/slideshow/slide4.jpg" alt="">
+                <div class="info">
+                    <h2>Zambia</h2>
+
+                </div>
+            </div>
+
+            <div class="navigation">
+                <div class="btn active"></div>
+                <div class="btn"></div>
+                <div class="btn"></div>
+                <div class="btn"></div>
+            </div>
+        </div>
+
     </div>
+
 
     <div class="index-mid">
 
@@ -78,7 +121,60 @@
 
         }
 
-        
+
+        var slides = document.querySelectorAll('.slide');
+        var btns = document.querySelectorAll('.btn');
+        let currentSlide = 1;
+
+        // Javascript for image slider manual navigation
+        var manualNav = function(manual) {
+            slides.forEach((slide) => {
+                slide.classList.remove('active');
+
+                btns.forEach((btn) => {
+                    btn.classList.remove('active');
+                });
+            });
+
+            slides[manual].classList.add('active');
+            btns[manual].classList.add('active');
+        }
+
+        btns.forEach((btn, i) => {
+            btn.addEventListener("click", () => {
+                manualNav(i);
+                currentSlide = i;
+            });
+        });
+
+        // Javascript for image slider autoplay navigation
+        var repeat = function(activeClass) {
+            let active = document.getElementsByClassName('active');
+            let i = 1;
+
+            var repeater = () => {
+                setTimeout(function() {
+                    [...active].forEach((activeSlide) => {
+                        activeSlide.classList.remove('active');
+                    });
+
+                    slides[i].classList.add('active');
+                    btns[i].classList.add('active');
+                    i++;
+
+                    if (slides.length == i) {
+                        i = 0;
+                    }
+                    if (i >= slides.length) {
+                        return;
+                    }
+                    repeater();
+                }, 2500);
+            }
+            repeater();
+        }
+        repeat();
+
     </script>
 
 </body>

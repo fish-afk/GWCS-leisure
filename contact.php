@@ -2,6 +2,60 @@
 <?php include_once "./includes/navbar.php" ?>
 <?php include_once "./includes/db_connect.php" ?>
 
+
+<?php
+session_start();
+
+function saveMessage($message, $topic, $username, $pdo)
+{
+    // Use prepared statements to prevent SQL injection attacks
+    $stmt = $pdo->prepare("INSERT INTO Messages (username, Message, Topic) VALUES (:username, :message, :topic)");
+    $stmt->bindParam(":username", $username);
+    $stmt->bindParam(":message", $message);
+    $stmt->bindParam(":topic", $topic);
+
+    try {
+        $stmt->execute();
+    } catch (PDOException $e) {
+        // Handle any potential database errors here
+        echo "Error saving message: " . $e->getMessage();
+?>
+        <script>
+            Swal.fire({
+                title: 'Error!',
+                text: 'Error saving message, Try sending later.',
+                icon: 'error',
+                confirmButtonText: 'Ok'
+            })
+        </script>
+    <?php
+    }
+
+    // Return true on success
+    ?>
+    <script>
+        Swal.fire({
+            title: 'Success!',
+            text: 'Message recieved. We will get back as soon as possible',
+            icon: 'success',
+            confirmButtonText: 'Ok'
+        })
+    </script>
+    <?php
+}
+
+
+if (isset($_POST['message']) && isset($_POST['topic']) && isset($_SESSION['username'])) {
+    saveMessage(
+        htmlspecialchars($_POST['message']),
+        htmlspecialchars($_POST['topic']),
+        $_SESSION['username'],
+        $pdo
+    );
+}
+
+?>
+
 <body>
 
     <script src="https://www.google.com/recaptcha/api.js" async defer></script>
@@ -9,7 +63,7 @@
     <div id='recaptcha' class="g-recaptcha" data-sitekey="6LeUa7QfAAAAAA3yNTLw0b2G5c2NFQHIDjvKbqhM" data-callback="onSubmit" data-size="invisible"></div>
 
     <?php
-    session_start();
+    
     if (isset($_SESSION['username'])) {
     ?>
         <section id="section-wrapper">
@@ -24,37 +78,25 @@
                         </li>
                         <li>
                             <i class="fas fa-paper-plane"></i>
-                            <span>Email:</span> <a href="mailto:info@yoursite.com">info@yoursite.com</a>
+                            <span>Email:</span> <a href="mailto:info@yoursite.com">gwcs@gmail.com</a>
                         </li>
-                        <li>
-                            <i class="fas fa-globe"></i>
-                            <span>Website:</span> <a href="#">yoursite.com</a>
-                        </li>
+
                     </ul>
                     <ul class="social-icons">
-                        <li><a href="#"><i class="fab fa-facebook"></i></a></li>
-                        <li><a href="#"><i class="fab fa-twitter"></i></a></li>
-                        <li><a href="#"><i class="fab fa-linkedin-in"></i></a></li>
+                        <li><a target="_blank" href="https://facebook.com"><i class="fab fa-facebook"></i></a></li>
+                        <li><a target="_blank" href="https://twitter.com"><i class="fab fa-twitter"></i></a></li>
+                        <li><a target="_blank" href="https://linkedin.com"><i class="fab fa-linkedin-in"></i></a></li>
                     </ul>
                 </div>
                 <div class="form-wrap">
-                    <form action="#" method="POST">
+                    <form action="/contact.php" method="POST">
                         <h2 class="form-title">Send us a message</h2>
                         <div class="form-fields">
                             <div class="form-group">
-                                <input type="text" class="fname" placeholder="First Name">
+                                <input type="text" name="topic" class="topic" placeholder="Topic" required>
                             </div>
                             <div class="form-group">
-                                <input type="text" class="lname" placeholder="Last Name">
-                            </div>
-                            <div class="form-group">
-                                <input type="email" class="email" placeholder="Mail">
-                            </div>
-                            <div class="form-group">
-                                <input type="number" class="phone" placeholder="Phone">
-                            </div>
-                            <div class="form-group">
-                                <textarea name="message" id="" placeholder="Write your message"></textarea>
+                                <textarea name="message" placeholder="Write your message" required></textarea>
                             </div>
                         </div>
                         <input type="submit" value="Send Message" class="submit-button">

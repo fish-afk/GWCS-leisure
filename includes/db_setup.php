@@ -2,8 +2,6 @@
 
 // this script will initialize database tables //
 
-
-
 include_once 'db_connect.php';
 // persistent check table to see if tables are already created.
 $DB_CREATED = "CREATE TABLE IF NOT EXISTS `Done` (

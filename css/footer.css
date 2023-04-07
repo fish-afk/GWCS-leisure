@@ -110,6 +110,18 @@ opacity: 0.8;
 	padding-bottom: 0.5rem;
 	font-family: Satoshi-light;
 	text-transform: capitalize;
+
+}
+
+.footer-center ul li a{
+	text-decoration: none;
+	color: white;
+	transition: all 300ms ease-in-out;
+}
+
+.footer-center ul li a:hover{
+	cursor: pointer;
+	text-decoration: underline;	
 }
 
 .footer-distributed .footer-center i {

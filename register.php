@@ -6,7 +6,6 @@
 
 <?php
 
-
 function register($username, $password, $email, $firstname, $surname, $dob)
 {
 
@@ -79,7 +78,7 @@ if (
 ) {
 
     register(
-        htmlspecialchars($_POST['username']),
+        htmlspecialchars($_POST['username']),  // htmlspecialchars to prevent stored xss attacks. 
         htmlspecialchars($_POST['password']),
         htmlspecialchars($_POST['email']),
         htmlspecialchars($_POST['firstname']),

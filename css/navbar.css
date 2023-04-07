@@ -6,6 +6,7 @@ background-color: #173D33;
 	align-items: center;
 	justify-content: space-between;
 	padding: 0 50px;
+	z-index: 1;
 }
 header .logo {
 	font-size: 30px;
