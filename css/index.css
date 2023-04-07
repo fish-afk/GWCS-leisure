@@ -237,9 +237,10 @@ body {
 		justify-content: center;
 	}
 
-		.img-slider .slide .info {
-			padding: 7px 20px;
-		}
+	.img-slider .slide .info {
+		padding: 7px 20px;
+	}
+
 	.img-slider .slide .info h2 {
 		font-size: 13px;
 	}
@@ -263,9 +264,9 @@ body {
 		letter-spacing: 2px;
 	}
 
-		.img-slider .slide .info {
-			padding: 5px 10px;
-		}
+	.img-slider .slide .info {
+		padding: 5px 10px;
+	}
 
 	.img-slider .slide .info h2 {
 
@@ -314,10 +315,10 @@ body {
 	width: 100%;
 	text-align: center;
 	color: white;
-	
+
 }
 
-.contact-auth h1{
+.contact-auth h1 {
 	font-family: Satoshi-light;
 }
 
@@ -379,6 +380,15 @@ body {
 	display: inline-block;
 }
 
+
+.privacy-policy-link {
+
+	margin-top: 1rem;
+	font-family: Satoshi-light;
+	font-size: 2rem;
+	color: #00e1ff;
+}
+
 .social-icons li i {
 	background: rgb(33, 75, 5);
 	color: #fff;
@@ -427,13 +437,17 @@ body {
 	width: 100%;
 }
 
+.form-fields .form-group input {
+	width: 100%;
+}
+
 .form-fields textarea {
 	height: 235px;
 	resize: none;
 }
 
 .form-group {
-	width: 46%;
+	width: 100%;
 	float: left;
 	padding: 0px 30px;
 	margin: 14px 12px;
@@ -466,8 +480,28 @@ body {
 	background: rgb(170, 252, 117);
 }
 
-/* Responsive css */
+@media only screen and (max-width: 1200px) {
+
+	.info-title {
+		font-size: 20px;
+	}
+
+	.info-sub-title {
+		font-size: 13px;
+	}
+}
+
+
 @media only screen and (max-width: 1000px) {
+
+	.info-title {
+		font-size: 23px;
+	}
+
+	.info-sub-title {
+		font-size: 15px;
+	}
+
 	.box-wrapper {
 		width: 100%;
 	}

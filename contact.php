@@ -41,7 +41,7 @@ function saveMessage($message, $topic, $username, $pdo)
             confirmButtonText: 'Ok'
         })
     </script>
-    <?php
+<?php
 }
 
 
@@ -63,7 +63,7 @@ if (isset($_POST['message']) && isset($_POST['topic']) && isset($_SESSION['usern
     <div id='recaptcha' class="g-recaptcha" data-sitekey="6LeUa7QfAAAAAA3yNTLw0b2G5c2NFQHIDjvKbqhM" data-callback="onSubmit" data-size="invisible"></div>
 
     <?php
-    
+
     if (isset($_SESSION['username'])) {
     ?>
         <section id="section-wrapper">
@@ -87,6 +87,10 @@ if (isset($_POST['message']) && isset($_POST['topic']) && isset($_SESSION['usern
                         <li><a target="_blank" href="https://twitter.com"><i class="fab fa-twitter"></i></a></li>
                         <li><a target="_blank" href="https://linkedin.com"><i class="fab fa-linkedin-in"></i></a></li>
                     </ul>
+
+
+                    <div class="box"><a class="privacy-policy-link" href="/PrivacyPolicy.php">Privacy Policy</a></div>
+
                 </div>
                 <div class="form-wrap">
                     <form action="/contact.php" method="POST">
