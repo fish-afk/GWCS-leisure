@@ -65,7 +65,7 @@ function breadcrumbs($separator = ' &raquo; ', $home = 'Home')
             <li>• <a href="/PrivacyPolicy.php">Privacy Policy</a></li>
             <li>• <a href="/contact.php">Contact Us </a></li>
             <li>• <a href="/information.php">Information</a></li>
-            <li>• <a href="/updates.php">Updates</a></li>
+            <li>• <a href="/reviews.php">Reviews</a></li>
         </ul>
     </div>
 

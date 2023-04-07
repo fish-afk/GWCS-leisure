@@ -15,7 +15,7 @@
                 <a class="links" href="/information.php">information</a>
             </li>
             <li>
-                <a class="links" href="/updates.php">Updates</a>
+                <a class="links" href="/reviews.php">Reviews</a>
             </li>
             <li>
                 <a class="links" href="/account.php">Account</a>

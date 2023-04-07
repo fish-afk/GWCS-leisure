@@ -74,11 +74,11 @@ if (isset($_POST['message']) && isset($_POST['topic']) && isset($_SESSION['usern
                     <ul class="info-details">
                         <li>
                             <i class="fas fa-phone-alt"></i>
-                            <span>Phone:</span> <a href="tel:+ 1235 2355 98">+ 1235 2355 98</a>
+                            <span>Phone:</span> <a href="tel:+ 1234 5678 90">+ 1234 5678 90</a>
                         </li>
                         <li>
                             <i class="fas fa-paper-plane"></i>
-                            <span>Email:</span> <a href="mailto:info@yoursite.com">gwcs@gmail.com</a>
+                            <span>Email:</span> <a href="mailto:gwcs@gmail.com">gwcs@gmail.com</a>
                         </li>
 
                     </ul>

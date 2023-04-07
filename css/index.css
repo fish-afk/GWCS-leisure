@@ -477,7 +477,8 @@ body {
 }
 
 .submit-button:hover {
-	background: rgb(170, 252, 117);
+	background: #0b201b;
+	color: #ffffff;
 }
 
 @media only screen and (max-width: 1200px) {
