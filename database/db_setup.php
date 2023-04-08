@@ -1,8 +1,39 @@
 <?php
 
+
+// THIS SCRIPT DOES NOT NEED TO BE RUN MANUALLY | TABLES WILL BE AUTO CREATED ON ACCESSING THE HOME PAGE OF THE WEBSITE.
+
 // this script will initialize database tables //
 
-include_once 'db_connect.php';
+// Set your database connection information
+$server = "localhost";
+$username = "root";
+$password = "Shihab786..";
+$dbname = "GWCS_Shihab_Mirza";
+
+// Create a connection to the database
+$conn = mysqli_connect($server, $username, $password);
+
+// Check if the connection was successful
+if (!$conn) {
+    die("Connection failed to database");
+}
+
+$sql = "CREATE DATABASE IF NOT EXISTS $dbname";
+
+//Outcome to whether the database has been setup
+if (mysqli_query($conn, $sql) === false) {
+    echo "Error Creating $dbname Database: " . $conn->connect_error;
+}
+
+
+$conn = new mysqli($server, $username, $password, $dbname);
+
+$dsn = 'mysql:host=' . $server . ';dbname=' . $dbname;
+
+$pdo = new PDO($dsn, $username, $password);
+
+
 // persistent check table to see if tables are already created.
 $DB_CREATED = "CREATE TABLE IF NOT EXISTS `Done` (
         `isdone` BIGINT NOT NULL DEFAULT 0

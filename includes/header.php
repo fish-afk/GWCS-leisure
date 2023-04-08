@@ -18,5 +18,4 @@
 
     <title>Global Wild Camping and Swimming</title>
 
-    
 </head>

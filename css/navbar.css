@@ -36,6 +36,32 @@ nav ul li {
 	text-decoration: none;
 	list-style: none;
 }
+
+#search-bar {
+	display: flex;
+	justify-content: center;
+	align-items: center;margin: 0 10px;
+	align-content: center;
+}
+#search-bar input{
+	padding: 0.3rem;
+	border-radius: 5px;
+	font-family: Satoshi-dark;
+	border-width: 0;
+	background-color: #021b20;
+	color: #fff6f6;
+}
+
+#search-bar button{
+	margin-left: 0.4rem;
+	border-radius: 5px;
+	background-color: #021b20;
+	color: white;
+	border-width: 0;
+	padding: 0.3rem;
+	padding-right: 1rem;
+	padding-left: 1rem;
+}
 header nav ul li a {
 	text-decoration: none;
 	display: inline-block;

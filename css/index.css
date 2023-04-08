@@ -21,6 +21,7 @@
 * {
 	margin: 0;
 	padding: 0;
+	max-width: 1920px;
 	box-sizing: border-box;
 	font-family: "Satoshi-Medium";
 }
@@ -33,12 +34,14 @@ body {
 
 .box {
 	width: 100%;
+	max-width: 1920px;
 	display: flex;
 	justify-content: center;
 }
 
 .box-normal {
 	width: 100%;
+	max-width: 1920px;
 	display: flex;
 }
 
@@ -107,6 +110,25 @@ body {
 	font-family: Satoshi-light;
 }
 
+.intro .intro-btn{
+	padding: 1rem;
+	border-width: 1px;
+	border-color: rgb(170, 252, 117);
+	background-color: #031410;
+	border-radius: 10px;
+	padding-right: 2rem;
+	padding-left: 2rem;
+	font-family: Satoshi-light;
+	font-size: 2rem;
+	color: white;
+	margin-top: 3rem;
+	transition: all 300ms ease-in-out;
+}
+
+.intro .intro-btn:hover{
+	background-color: rgb(170, 252, 117);
+	color: black;
+}
 
 .img-slider {
 	justify-content: end;
@@ -145,7 +167,6 @@ body {
 
 .img-slider .slide .info h2 {
 	color: #fff;
-
 	font-size: 18px;
 	text-transform: uppercase;
 	font-weight: 800;
@@ -182,9 +203,12 @@ body {
 }
 
 @media only screen and (max-width: 1700px) {
-
 	.intro h1 {
 		font-size: 4rem;
+	}
+
+	.intro-btn{
+		font-size: 1rem;
 	}
 
 	.intro h2 {
@@ -202,8 +226,15 @@ body {
 	}
 
 	.intro h2 {
-		margin-top: 2rem;
-		font-size: 1.8rem;
+		margin-top: 1rem;
+		font-size: 1rem;
+		padding-right: 0;
+	}
+
+	.intro .intro-btn{
+		font-size: 1.5rem;
+		padding:1.5rem;
+
 	}
 }
 
@@ -220,7 +251,7 @@ body {
 	}
 
 	.intro h1 {
-		font-size: 2.7rem;
+		font-size: 3rem;
 	}
 
 	.intro h2 {
@@ -246,15 +277,25 @@ body {
 	}
 }
 
-@media only screen and (max-width: 500px) {
-
+@media only screen and (max-width: 550px) {
 
 	.intro h1 {
-		font-size: 2rem;
+		font-size: 1.5rem;
+	}
+
+	.intro .intro-btn{
+		padding: 1rem;
+		font-size: 1rem;
+		margin: 1rem;
 	}
 
 	.img-slider .navigation {
 		display: none;
+	}
+
+	.img-slider{
+		width: 96%;
+		margin: 4%;
 	}
 
 	.intro h2 {
@@ -270,7 +311,7 @@ body {
 
 	.img-slider .slide .info h2 {
 
-
+		
 		font-size: 10px;
 
 	}

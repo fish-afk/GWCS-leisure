@@ -17,7 +17,7 @@
         <div class='intro'>
             <h1>Explore the outdoors.</h1><br>
             <h2>Discover and reserve camping sites and swimming areas at stunning natural locations around the world.</h2>
-            <button class="intro-btn">BOOK NOW!</button>
+            <button class="intro-btn">BOOK NOW!<i class="arrow-right"></i></button>
         </div>
 
 
@@ -61,10 +61,10 @@
     </div>
 
 
-    <div class="index-mid">
+    <div class="index-mid box">
 
         <div class="pitch-types-heading">
-
+            
         </div>
 
     </div>

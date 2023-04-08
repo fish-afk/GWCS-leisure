@@ -61,10 +61,17 @@ CREATE TABLE IF NOT EXISTS `CampingSites`(
     `image_url` VARCHAR(255) NOT NULL
 );
 
+CREATE TABLE IF NOT EXISTS `PitchTypes`(
+    `id` BIGINT NOT NULL PRIMARY KEY AUTO_INCREMENT,
+    `type_name` VARCHAR(255) NOT NULL,
+    `description` TEXT NOT NULL,        
+    `image` TEXT NOT NULL
+)
+
 CREATE TABLE IF NOT EXISTS `Pitches`(
     `id` BIGINT NOT NULL PRIMARY KEY AUTO_INCREMENT,
     `site_id` BIGINT NOT NULL,
-    `Pitch_Type` VARCHAR(255) NOT NULL,
+    `Pitch_Type` BIGINT NOT NULL,
     `price` DOUBLE NOT NULL
 );
 
@@ -102,6 +109,8 @@ ALTER TABLE
     `LocalAttractions` ADD CONSTRAINT `localattractions_site_id_foreign` FOREIGN KEY(`site_id`) REFERENCES `CampingSites`(`id`);
 ALTER TABLE
      `Messages` ADD CONSTRAINT `username_foreign` FOREIGN KEY(`username`) REFERENCES `Users`(`username`);
+ALTER TABLE
+     `Pitches` ADD CONSTRAINT `pitch_type_foreign` FOREIGN KEY(`Pitch_Type`) REFERENCES `PitchTypes`(`id`);
 
 /* This is a set of SQL statements that create table IF NOT EXISTSs and establish foreign key constraints among them.
 

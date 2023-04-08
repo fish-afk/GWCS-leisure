@@ -5,6 +5,9 @@
     <input type="checkbox" id="nav_check" hidden>
     <nav>
         <ul>
+            <li id='search-bar'>
+                <input type="text" placeholder="Search.."><button><i class="fa fa-search"></i></button>
+            </li>
             <li>
                 <a class="links" href="/index.php">Home</a>
             </li>
@@ -51,7 +54,5 @@
                 window.location.href = '/';
             })
         });
-
-
     </script>
 </header>

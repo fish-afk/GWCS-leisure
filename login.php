@@ -147,9 +147,9 @@ function LoginAttemptsTrigger($pdo)
 }
 
 
-if (isset($_POST['username']) && isset($_POST['password'])) {
-    login(addslashes($_POST['username']), addslashes($_POST['password'])); // addslashes to prevent sql injection
-}
+    if (isset($_POST['username']) && isset($_POST['password'])) {
+        login(addslashes($_POST['username']), addslashes($_POST['password'])); // addslashes to prevent sql injection
+    }
 
 
 ?>
