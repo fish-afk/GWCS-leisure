@@ -81,8 +81,35 @@ body {
 .index-top {
 	margin-top: 3rem;
 	padding: 3rem;
-	margin-bottom: 40rem;
+	margin-bottom: 5rem;
 	transition: all 309ms ease-in-out;
+}
+
+.index-mid{
+	padding: 3rem;
+}
+
+.index-mid h2{
+	text-align: center;
+	font-family: Satoshi-light;
+	font-size: 4rem;
+	font-weight: lighter;
+	color: rgb(170, 252, 117);
+	opacity: 0.8;
+}
+
+.index-mid .pitch-types{
+	margin-top: 5rem;
+}
+.index-mid .pitch-types .pitch h3{
+	font-family: Satoshi-dark;
+	color: white;
+	text-align: center;
+}
+
+.index-mid .pitch-types .pitch img{
+	border-radius: 50px;
+	padding: 2rem;
 }
 
 .intro {
@@ -243,6 +270,15 @@ body {
 	.index-top {
 		display: block;
 		margin-top: 0;
+		margin-bottom: 30rem;
+	}
+
+	.index-mid .pitch-types{
+		display: block;
+	}
+
+	.index-mid h2{
+		font-size: 3rem;
 	}
 
 	.img-slider {
@@ -277,9 +313,22 @@ body {
 	}
 }
 
+@media screen and (max-width:800px) {
+	.index-top{
+		margin-bottom: 20rem;
+	}
+}
+
 @media only screen and (max-width: 550px) {
 
+	.index-top{
+		margin-bottom: 12rem;
+	}
 	.intro h1 {
+		font-size: 1.5rem;
+	}
+
+	.index-mid h2 {
 		font-size: 1.5rem;
 	}
 
@@ -536,6 +585,9 @@ body {
 
 @media only screen and (max-width: 1000px) {
 
+	#section-wrapper{
+		padding: 1rem;
+	}
 	.info-title {
 		font-size: 23px;
 	}

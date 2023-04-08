@@ -23,7 +23,7 @@ function login($username, $password)
 
     $row = $res->fetch(PDO::FETCH_ASSOC);
 
-    if (LoginAttemptsCheckIsLocked($_SERVER['REMOTE_ADDR'], $pdo) === true) {
+    if (CheckIsLocked($_SERVER['REMOTE_ADDR'], $pdo) === true) {
 ?> <script>
             Swal.fire({
                 title: 'Warning!',
@@ -56,7 +56,7 @@ function login($username, $password)
     }
 }
 
-function LoginAttemptsCheckIsLocked($ip, $pdo)
+function CheckIsLocked($ip, $pdo)
 {
 
     // Get the number of failed login attempts for this IP address

@@ -1,11 +1,10 @@
 <?php include_once "./includes/header.php" ?>
 <?php include_once "./includes/navbar.php" ?>
 <?php include_once "./includes/db_connect.php" ?>
-<?php include_once './includes/db_setup.php' // database setup ?>
-
-<?php
-
+<?php include_once './includes/db_setup.php' // database setup 
 ?>
+
+
 
 <script src="https://www.google.com/recaptcha/api.js" async defer></script>
 
@@ -23,29 +22,29 @@
 
         <div class="img-slider">
             <div class="slide active">
-                <img src="./assets/images/slideshow/slide1.jpg" alt="">
+                <img src="./assets/images/slideshow/slide1.jpg" alt="slide1">
                 <div class="info">
                     <h2>Malawi</h2>
 
                 </div>
             </div>
             <div class="slide">
-                <img src="./assets/images/slideshow/slide2.jpg" alt="">
+                <img src="./assets/images/slideshow/slide2.jpg" alt="slide2">
                 <div class="info">
                     <h2>Zambia</h2>
                 </div>
             </div>
             <div class="slide">
-                <img src="./assets/images/slideshow/slide3.jpg" alt="">
+                <img src="./assets/images/slideshow/slide3.jpg" alt="slide3">
                 <div class="info">
                     <h2>Iceland</h2>
 
                 </div>
             </div>
             <div class="slide">
-                <img src="./assets/images/slideshow/slide4.jpg" alt="">
+                <img src="./assets/images/slideshow/slide4.jpg" alt="slide4">
                 <div class="info">
-                    <h2>Zambia</h2>
+                    <h2>South Africa</h2>
 
                 </div>
             </div>
@@ -61,10 +60,27 @@
     </div>
 
 
-    <div class="index-mid box">
+    <div class="index-mid">
+        <h2>Pitch Types We Offer</h2>
+        <div class="pitch-types box">
 
-        <div class="pitch-types-heading">
-            
+            <?php
+            $query = "SELECT * FROM PitchTypes";
+
+            $result = $conn->query($query);
+
+            while ($row = $result->fetch_assoc()) {
+            ?>
+                <div class="pitch">
+                    <h3>
+                        <?php
+                        echo $row["type_name"];
+                        ?>
+                    </h3>
+                    <img src="./assets/images/pitch_types/<?php echo $row['image'] ?>" width="100%" />
+                </div>
+            <?php } ?>
+
         </div>
 
     </div>
@@ -174,7 +190,6 @@
             repeater();
         }
         repeat();
-
     </script>
 
 </body>
