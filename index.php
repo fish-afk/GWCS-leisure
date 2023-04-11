@@ -85,6 +85,32 @@
 
     </div>
 
+    <div class="index-final">
+
+        <?php
+        $query = "SELECT * FROM CampingSites WHERE Featured = 1";
+
+        $result = $conn->query($query);
+
+        if ($result->num_rows > 0) { ?>
+            <h2>Featured camping sites</h2>
+            <div class="gallery box">
+                <?php
+                while ($row = $result->fetch_assoc()) { ?>
+
+
+                    <div class="site">
+
+                        <img src="./assets/images/campsites/<?php echo $row['image_url'] ?>" width="100%" />
+                    </div>
+
+            <?php
+                }
+            } ?>
+            </div>
+
+    </div>
+
     <div class="cursor"></div>
 
     <script>

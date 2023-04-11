@@ -54,11 +54,12 @@ CREATE TABLE IF NOT EXISTS `SwimmingBookings`(
 );
 
 CREATE TABLE IF NOT EXISTS `CampingSites`(
-    `id` BIGINT NOT NULL PRIMARY KEY AUTO_INCREMENT,
-    `name` VARCHAR(255) NOT NULL,
-    `location` VARCHAR(255) NOT NULL,
-    `description` BIGINT NOT NULL,
-    `image_url` VARCHAR(255) NOT NULL
+                    `id` BIGINT NOT NULL PRIMARY KEY AUTO_INCREMENT,
+                    `name` VARCHAR(255) NOT NULL,
+                    `location` VARCHAR(255) NOT NULL,
+                    `description` TEXT NOT NULL,
+                    `image_url` VARCHAR(255) NOT NULL,
+                    `Featured` TINYINT DEFAULT 0
 );
 
 CREATE TABLE IF NOT EXISTS `PitchTypes`(

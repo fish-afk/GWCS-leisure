@@ -112,6 +112,41 @@ body {
 	padding: 2rem;
 }
 
+.index-final{
+	padding: 3rem;
+}
+
+.index-final h2{
+	text-align: center;
+	font-family: Satoshi-light;
+	font-size: 4rem;
+	font-weight: lighter;
+	color: rgb(170, 252, 117);
+	opacity: 0.8;
+}
+
+
+.index-final .gallery {
+	display: flex;
+
+	flex-wrap: wrap;
+	justify-content: space-between;
+}
+
+.index-final .gallery .site {
+	width: 48%;
+	background-color: #000000;
+	/* max 2 images per row */
+	margin-bottom: 20px;
+}
+
+@media screen and (max-width: 1000px) {
+  .index-final .gallery .site {
+		width: 100%;
+	}
+}
+
+
 .intro {
 	justify-content: center;
 	align-items: center;
