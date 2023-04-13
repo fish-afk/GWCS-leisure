@@ -8,6 +8,11 @@
 function login($username, $password)
 {
     global $pdo;
+    global $conn;
+
+    // to prevent sql injection
+    $username = mysqli_real_escape_string($conn, $_POST['username']);
+    $password = mysqli_real_escape_string($conn, $_POST['password']);
 
     $query = 'SELECT * FROM Users WHERE (username = :name)';
     $values = [':name' => $username];
@@ -148,7 +153,7 @@ function LoginAttemptsTrigger($pdo)
 
 
     if (isset($_POST['username']) && isset($_POST['password'])) {
-        login(addslashes($_POST['username']), addslashes($_POST['password'])); // addslashes to prevent sql injection
+        login($_POST['username'], $_POST['password']); 
     }
 
 

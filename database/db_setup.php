@@ -345,7 +345,6 @@ function INSERT_INITIAL_DATA($conn)
 
 
 
-
 // calling the functions for first time setup...
 
 CREATE_TABLES($conn);

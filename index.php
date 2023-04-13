@@ -97,22 +97,15 @@
             <div class="gallery box">
                 <?php
                 while ($row = $result->fetch_assoc()) { ?>
-
-
                     <div class="site">
-
                         <img src="./assets/images/campsites/<?php echo $row['image_url'] ?>" width="100%" />
                     </div>
-
             <?php
                 }
             } ?>
             </div>
-
-    </div>
-
+        </div>
     <div class="cursor"></div>
-
     <script>
         var cursor = document.querySelector(".cursor");
         var cursorinner = document.querySelector(".cursor2");
