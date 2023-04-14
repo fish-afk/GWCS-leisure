@@ -4,8 +4,6 @@
 <?php include_once './includes/db_setup.php' // database setup 
 ?>
 
-
-
 <script src="https://www.google.com/recaptcha/api.js" async defer></script>
 
 <div id='recaptcha' class="g-recaptcha" data-sitekey="6LeUa7QfAAAAAA3yNTLw0b2G5c2NFQHIDjvKbqhM" data-callback="onSubmit" data-size="invisible"></div>
@@ -93,18 +91,60 @@
         $result = $conn->query($query);
 
         if ($result->num_rows > 0) { ?>
-            <h2>Featured camping sites</h2>
+            <h2>Featured sites</h2>
             <div class="gallery box">
                 <?php
                 while ($row = $result->fetch_assoc()) { ?>
                     <div class="site">
-                        <img src="./assets/images/campsites/<?php echo $row['image_url'] ?>" width="100%" />
+
+                        <h3 class="site-name"><?php echo $row['name'] ?></h3>
+                        <img src="./assets/images/campsites/<?php echo $row['image_url'] ?>" width="100%" height="70%" />
+
+                        <div class="location-map">
+
+                            <?php
+                            $location = $row['location'];
+                            list($latitude, $longitude) = explode(",", $location);
+                            $latitude = (float) $latitude;
+                            $longitude = (float) $longitude;
+
+                            $src = "https://maps.google.com/maps?q=$latitude,$longitude&hl=en&z=14&amp;output=embed";
+                            ?>
+
+                            <iframe width="100%" height="100%" frameborder="0" scrolling="yes" src=<?php echo $src; ?>>
+                            </iframe>
+                        </div>
                     </div>
             <?php
                 }
             } ?>
             </div>
-        </div>
+
+
+            <div class="viewcounter">
+                <h2>Number of page views:
+                    <?php
+                    if (!file_exists('viewcount.txt')) {
+                        touch('viewcount.txt');
+                        $count_views = ("viewcount.txt");
+                        $fp = fopen($count_views, "w");
+                        fputs($fp, "1");
+                        echo 1;
+                    } else {
+                        $count_views = ("viewcount.txt");
+                        $views = file($count_views);
+                        $views[0]++;
+
+                        $fp = fopen($count_views, "w");
+                        fputs($fp, "$views[0]");
+                        fclose($fp);
+                        echo $views[0];
+                    }
+                    ?>
+            </div>
+
+            </h2>
+    </div>
     <div class="cursor"></div>
     <script>
         var cursor = document.querySelector(".cursor");

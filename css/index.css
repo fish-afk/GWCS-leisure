@@ -123,21 +123,48 @@ body {
 	font-weight: lighter;
 	color: rgb(170, 252, 117);
 	opacity: 0.8;
+	margin-bottom: 2rem;
 }
 
+.index-final .gallery .site{
+	height: 100%;
+}
+
+.index-final .gallery .site .site-name {
+	color: rgb(255, 255, 255) ;
+	padding: 1rem;
+	font-size: 2rem;
+	font-family: Satoshi-light;
+}
+
+.index-final .gallery .site .location-map{
+	width: 100%;
+	height: 300px;
+}
 
 .index-final .gallery {
 	display: flex;
-
+	margin-top: 5rem;
 	flex-wrap: wrap;
 	justify-content: space-between;
 }
 
+.index-final .gallery .site img, iframe{
+	border-radius:  5px;
+}
+
 .index-final .gallery .site {
 	width: 48%;
-	background-color: #000000;
+	text-align: center;
+	background-color: transparent;
 	/* max 2 images per row */
 	margin-bottom: 20px;
+	border-radius: 10px;
+}
+
+.index-final .viewcounter{
+	padding: 5rem;
+
 }
 
 @media screen and (max-width: 1000px) {
