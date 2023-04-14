@@ -148,7 +148,8 @@ function CREATE_TABLES($conn)
                     `description` TEXT NOT NULL,
                     `image_url` VARCHAR(255) NOT NULL,
                     `Featured` TINYINT DEFAULT 0
-)";
+                )
+                ";
         if ($conn->query($sql) === false) {
             echo "<h3>error initiating database properly</h3>";
             die();
@@ -265,17 +266,6 @@ function CREATE_TABLES($conn)
 }
 
 
-function SETUP_LOCK($conn)
-{
-
-    $sql = "INSERT INTO Done (isdone) VALUES (1)";
-
-    if ($conn->query($sql) === false) {
-        echo "<h3>error initiating database properly</h3>";
-        die();
-    }
-}
-
 function INSERT_INITIAL_DATA($conn)
 {
 
@@ -337,15 +327,23 @@ function INSERT_INITIAL_DATA($conn)
         // reviews
 
 
-        SETUP_LOCK($conn);
-
     }
 }
 
+function SETUP_LOCK($conn)
+{
 
+    $sql = "INSERT INTO Done (isdone) VALUES (1)";
+
+    if ($conn->query($sql) === false) {
+        echo "<h3>error initiating database properly</h3>";
+        die();
+    }
+}
 
 
 // calling the functions for first time setup...
 
 CREATE_TABLES($conn);
 INSERT_INITIAL_DATA($conn);
+SETUP_LOCK($conn);
