@@ -727,6 +727,51 @@ body {
 	color: #fff;
 }
 
+.account-welcome {
+	padding-bottom: 5rem;
+	padding-top: 2rem;
+}
+
+.account-welcome button{
+	margin-left: 2rem;
+	padding-left: 3rem;
+	padding-right: 3rem;
+	border-radius: 10px;
+	border-width: 0;
+	font-family: Satoshi-medium;
+	font-size: 20px
+}
+
+.account-welcome h1{
+	color: rgb(170, 252, 117);
+	font-family: Satoshi-light;
+}
+.account-main .options{
+	padding: 3rem;
+}
+.account-main .options .optbtn{
+	width: 50%;
+		height: 60px;
+		margin: 0px 12px;
+		border-radius: 30px;
+		font-size: 20px;
+		font-weight: 700;
+		outline: none;
+		border: none;
+		cursor: pointer;
+		color: #fff;
+		text-align: center;
+		background: #173D33;
+		box-shadow: 3px 3px 8px #b1b1b1, -3px -3px 8px #ffffff;
+		transition: 0.5s;
+}
+
+.account-main .menus #info-editor{
+	height: 400px;
+	background-color: #000000;
+}
+
+
 
 @media (max-width:400px) {
 	.notauthed h1 {

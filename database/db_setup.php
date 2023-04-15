@@ -47,7 +47,6 @@ if ($conn->query($DB_CREATED) === false) {
 function CREATE_TABLES($conn)
 {
 
-
     $result = mysqli_query($conn, "SELECT COUNT(*) AS num_records FROM Done");
 
     $row = mysqli_fetch_assoc($result);
@@ -105,7 +104,8 @@ function CREATE_TABLES($conn)
                 `description` VARCHAR(255) NOT NULL,
                 `milesFromSite` DOUBLE NOT NULL,
                 `site_id` BIGINT NOT NULL,
-                `image_url` VARCHAR(255) NOT NULL
+                `image_url` VARCHAR(255) NOT NULL,
+                `price` DOUBLE NOT NULL
                 )";
 
         if ($conn->query($sql) === false) {
@@ -141,6 +141,19 @@ function CREATE_TABLES($conn)
         }
 
 
+        $sql = "CREATE TABLE IF NOT EXISTS `LocalAttractionBookings`(
+                    `id` BIGINT NOT NULL PRIMARY KEY AUTO_INCREMENT,
+                    `attraction_id` BIGINT NOT NULL,
+                    `username` VARCHAR(255) NOT NULL,
+                    `bookingDate` DATE NOT NULL
+        )";
+
+        if ($conn->query($sql) === false) {
+            echo "<h3>error initiating database properly</h3>";
+            die();
+        }
+
+
         $sql = "CREATE TABLE IF NOT EXISTS `CampingSites`(
                     `id` BIGINT NOT NULL PRIMARY KEY AUTO_INCREMENT,
                     `name` VARCHAR(255) NOT NULL,
@@ -159,7 +172,8 @@ function CREATE_TABLES($conn)
         `id` BIGINT NOT NULL PRIMARY KEY AUTO_INCREMENT,
         `type_name` VARCHAR(255) NOT NULL,
         `description` TEXT NOT NULL,        
-        `image` TEXT NOT NULL
+        `image` TEXT NOT NULL,
+        `price` DOUBLE NOT NULL
     )";
 
         if ($conn->query($sql) === false) {
@@ -167,13 +181,10 @@ function CREATE_TABLES($conn)
             die();
         }
 
-
-
         $sql = "CREATE TABLE IF NOT EXISTS `Pitches`(
                     `id` BIGINT NOT NULL PRIMARY KEY AUTO_INCREMENT,
                     `site_id` BIGINT NOT NULL,
-                    `Pitch_Type` BIGINT NOT NULL,
-                    `price` DOUBLE NOT NULL
+                    `Pitch_Type` BIGINT NOT NULL
                 )";
 
         if ($conn->query($sql) === false) {
@@ -203,65 +214,93 @@ function CREATE_TABLES($conn)
             die();
         }
 
+        SETUP_FOREIGN_KEYS($conn);
+    }
+}
 
-        $sql = "ALTER TABLE `SwimmingBookings` ADD CONSTRAINT `swimmingbookings_username_foreign` FOREIGN KEY(`username`) REFERENCES `Users`(`username`);";
-        if ($conn->query($sql) === false) {
-            echo "<h3>error initiating database properly</h3>";
-            die();
-        }
-        $sql = "ALTER TABLE `Pitches` ADD CONSTRAINT `pitches_site_id_foreign` FOREIGN KEY(`site_id`) REFERENCES `CampingSites`(`id`);";
-        if ($conn->query($sql) === false) {
-            echo "<h3>error initiating database properly</h3>";
-            die();
-        }
-        $sql = "ALTER TABLE `Reviews` ADD CONSTRAINT `reviews_username_foreign` FOREIGN KEY(`username`) REFERENCES `Users`(`username`);";
-        if ($conn->query($sql) === false) {
-            echo "<h3>error initiating database properly</h3>";
-            die();
-        }
-        $sql = "ALTER TABLE `PitchBookings` ADD CONSTRAINT `pitchbookings_username_foreign` FOREIGN KEY(`username`) REFERENCES `Users`(`username`);";
-        if ($conn->query($sql) === false) {
-            echo "<h3>error initiating database properly</h3>";
-            die();
-        }
-        $sql = "ALTER TABLE `Reviews` ADD CONSTRAINT `reviews_site_id_foreign` FOREIGN KEY(`site_id`) REFERENCES `CampingSites`(`id`);";
-        if ($conn->query($sql) === false) {
-            echo "<h3>error initiating database properly</h3>";
-            die();
-        }
-        $sql = "ALTER TABLE `PitchBookings` ADD CONSTRAINT `pitchbookings_pitch_id_foreign` FOREIGN KEY(`Pitch_id`) REFERENCES `Pitches`(`id`);";
-        if ($conn->query($sql) === false) {
-            echo "<h3>error initiating database properly</h3>";
-            die();
-        }
-        $sql = "ALTER TABLE `SwimmingBookings` ADD CONSTRAINT `swimmingbookings_swimming_session_id_foreign` FOREIGN KEY(`swimming_session_id`) REFERENCES `SwimmingSessions`(`id`);";
-        if ($conn->query($sql) === false) {
-            echo "<h3>error initiating database properly</h3>";
-            die();
-        }
-        $sql = "ALTER TABLE `SwimmingSessions` ADD CONSTRAINT `swimmingsessions_site_id_foreign` FOREIGN KEY(`site_id`) REFERENCES `CampingSites`(`id`);";
-        if ($conn->query($sql) === false) {
-            echo "<h3>error initiating database properly</h3>";
-            die();
-        }
-        $sql = "ALTER TABLE `LocalAttractions` ADD CONSTRAINT `localattractions_site_id_foreign` FOREIGN KEY(`site_id`) REFERENCES `CampingSites`(`id`);";
-        if ($conn->query($sql) === false) {
-            echo "<h3>error initiating database properly</h3>";
-            die();
-        }
-        $sql = "ALTER TABLE `Messages` ADD CONSTRAINT `username_foreign` FOREIGN KEY(`username`) REFERENCES `Users`(`username`);";
-        if ($conn->query($sql) === false) {
-            echo "<h3>error initiating database properly</h3>";
-            die();
-        }
+function SETUP_FOREIGN_KEYS($conn){
 
-        $sql = "ALTER TABLE
+    $sql = "ALTER TABLE `SwimmingBookings` ADD CONSTRAINT `swimmingbookings_username_foreign` FOREIGN KEY(`username`) REFERENCES `Users`(`username`);";
+    
+    if ($conn->query($sql) === false) {
+        echo "<h3>error initiating database properly</h3>";
+        die();
+    }
+    $sql = "ALTER TABLE `Pitches` ADD CONSTRAINT `pitches_site_id_foreign` FOREIGN KEY(`site_id`) REFERENCES `CampingSites`(`id`);";
+    
+    if ($conn->query($sql) === false) {
+        echo "<h3>error initiating database properly</h3>";
+        die();
+    }
+    $sql = "ALTER TABLE `Reviews` ADD CONSTRAINT `reviews_username_foreign` FOREIGN KEY(`username`) REFERENCES `Users`(`username`);";
+    
+    if ($conn->query($sql) === false) {
+        echo "<h3>error initiating database properly</h3>";
+        die();
+    }
+    $sql = "ALTER TABLE `PitchBookings` ADD CONSTRAINT `pitchbookings_username_foreign` FOREIGN KEY(`username`) REFERENCES `Users`(`username`);";
+    
+    if ($conn->query($sql) === false) {
+        echo "<h3>error initiating database properly</h3>";
+        die();
+    }
+    $sql = "ALTER TABLE `Reviews` ADD CONSTRAINT `reviews_site_id_foreign` FOREIGN KEY(`site_id`) REFERENCES `CampingSites`(`id`);";
+    
+    if ($conn->query($sql) === false) {
+        echo "<h3>error initiating database properly</h3>";
+        die();
+    }
+    $sql = "ALTER TABLE `PitchBookings` ADD CONSTRAINT `pitchbookings_pitch_id_foreign` FOREIGN KEY(`Pitch_id`) REFERENCES `Pitches`(`id`);";
+    
+    if ($conn->query($sql) === false) {
+        echo "<h3>error initiating database properly</h3>";
+        die();
+    }
+    $sql = "ALTER TABLE `SwimmingBookings` ADD CONSTRAINT `swimmingbookings_swimming_session_id_foreign` FOREIGN KEY(`swimming_session_id`) REFERENCES `SwimmingSessions`(`id`);";
+    
+    if ($conn->query($sql) === false) {
+        echo "<h3>error initiating database properly</h3>";
+        die();
+    }
+    $sql = "ALTER TABLE `SwimmingSessions` ADD CONSTRAINT `swimmingsessions_site_id_foreign` FOREIGN KEY(`site_id`) REFERENCES `CampingSites`(`id`);";
+    
+    if ($conn->query($sql) === false) {
+        echo "<h3>error initiating database properly</h3>";
+        die();
+    }
+    $sql = "ALTER TABLE `LocalAttractions` ADD CONSTRAINT `localattractions_site_id_foreign` FOREIGN KEY(`site_id`) REFERENCES `CampingSites`(`id`);";
+    
+    if ($conn->query($sql) === false) {
+        echo "<h3>error initiating database properly</h3>";
+        die();
+    }
+    $sql = "ALTER TABLE `Messages` ADD CONSTRAINT `username_foreign` FOREIGN KEY(`username`) REFERENCES `Users`(`username`);";
+    
+    if ($conn->query($sql) === false) {
+        echo "<h3>error initiating database properly</h3>";
+        die();
+    }
+
+    $sql = "ALTER TABLE
         `Pitches` ADD CONSTRAINT `pitch_type_foreign` FOREIGN KEY(`Pitch_Type`) REFERENCES `PitchTypes`(`id`)";
 
-        if ($conn->query($sql) === false) {
-            echo "<h3>error initiating database properly</h3>";
-            die();
-        }
+    if ($conn->query($sql) === false) {
+        echo "<h3>error initiating database properly</h3>";
+        die();
+    }
+
+    $sql = "ALTER TABLE `LocalAttractionBookings` ADD CONSTRAINT `attraction_foreign` FOREIGN KEY(`attraction_id`) REFERENCES `LocalAttractions`(`id`)";
+
+    if ($conn->query($sql) === false) {
+        echo "<h3>error initiating database properly</h3>";
+        die();
+    }
+
+    $sql = "ALTER TABLE `LocalAttractionBookings` ADD CONSTRAINT `username_foreign` FOREIGN KEY(`username`) REFERENCES `Users`(`username`)";
+
+    if ($conn->query($sql) === false) {
+        echo "<h3>error initiating database properly</h3>";
+        die();
     }
 }
 
@@ -279,11 +318,28 @@ function INSERT_INITIAL_DATA($conn)
     if ($num_records == 0) {
 
 
+        // users (note: passwords are hashed...)
+
+        $sql = "INSERT INTO Users (username, password, email, firstname, surname, DOB, usertype) 
+        VALUES 
+        ('johndoe', '8fa14cdd754f91cc6554c9e71929cce7f17d3e2fcb67ea1346327c94bdfa3d3e', 'johndoe@example.com', 'John', 'Doe', '1990-05-15', 'user'),
+        ('janedoe', '2a1dd59c7b8f31dfe707105aaee5a5f97411e25ee4d4d4dc4ad390af4b1c8e88', 'janedoe@example.com', 'Jane', 'Doe', '1992-02-23', 'user'),
+        ('bobsmith', 'b07d5ba5a5cb5f5c5d6fc05a6d4c6b56ad6aa6480d063e62e891c7ab9f9b3451', 'bobsmith@example.com', 'Bob', 'Smith', '1985-09-10', 'user'),
+        ('alicewonder', 'a8827c39dd82181a3d37a3e8e2217d6e0622b81a16f1b8c7d39e92d3d3c052b3', 'alicewonder@example.com', 'Alice', 'Wonder', '1998-11-30', 'user'),
+        ('mikejones', '78f2c676b6fa01b6a28a5a5eb55655c4be83e4b4d4aaad16872f4cc4a4b1a43d', 'mikejones@example.com', 'Mike', 'Jones', '1982-08-07', 'user')
+        ";
+
+
+        if ($conn->query($sql) === false) {
+            echo "Error inserting dummy user accounts";
+        }
+
+
         //pitch types
 
-        $sql = 'INSERT INTO PitchTypes (type_name, description, image) VALUES ("Tent pitch", "A tent pitch is a temporary outdoor shelter that is set up by assembling a tent and securing it to the ground. It typically involves finding a suitable location that is relatively flat and free of debris, and then unpacking and assembling the tent according to its instructions. The tent is usually supported by poles and secured to the ground using stakes and guy lines. A rainfly may be added to protect the tent from the elements. Once the tent is pitched, it provides a cozy and comfortable shelter for camping or other outdoor activities. A well-pitched tent is stable, secure, and able to withstand wind, rain, and other weather conditions.", "tent_pitch.jpg"), 
-        ("Touring Caravan Pitch", "A touring caravan pitch is a designated area in a campsite or caravan park that is specifically designed for parking a touring caravan. It typically involves finding a level and spacious area that is suitable for the size of the caravan and has access to necessary amenities like water, electricity, and sewage disposal. Once the pitch is identified, the caravan is carefully driven into the spot and leveled using jacks or other supports to ensure that it is stable and secure. The caravan is then hooked up to the sites electricity and water supply, and any waste is disposed of through the sites sewage facilities. Once the caravan is set up, it provides a comfortable and convenient base for exploring the surrounding area or enjoying the amenities of the campsite. A well-pitched touring caravan provides a safe and enjoyable experience for travelers, with all the comforts of home while on the road.", "touring_caravan.jpg"),
-        ("Motorhome pitch", "A motorhome pitch is a designated area in a campsite or motorhome park that is specifically designed for parking and staying in a motorhome. It typically involves finding a level and spacious area that is suitable for the size of the motorhome and has access to necessary amenities like water, electricity, and sewage disposal. Once the pitch is identified, the motorhome is carefully driven into the spot and leveled using jacks or other supports to ensure that it is stable and secure. The motorhome is then hooked up to the sites electricity and water supply, and any waste is disposed of through the sites sewage facilities. Some motorhome pitches also offer additional amenities like wifi, laundry facilities, and entertainment options. Once the motorhome is set up, it provides a comfortable and convenient base for exploring the surrounding area or enjoying the amenities of the park. A well-pitched motorhome provides a safe and enjoyable experience for travelers, with all the comforts of home while on the road.", "motorhome.jpg")
+        $sql = 'INSERT INTO PitchTypes (type_name, description, image, price) VALUES ("Tent pitch", "A tent pitch is a temporary outdoor shelter that is set up by assembling a tent and securing it to the ground. It typically involves finding a suitable location that is relatively flat and free of debris, and then unpacking and assembling the tent according to its instructions. The tent is usually supported by poles and secured to the ground using stakes and guy lines. A rainfly may be added to protect the tent from the elements. Once the tent is pitched, it provides a cozy and comfortable shelter for camping or other outdoor activities. A well-pitched tent is stable, secure, and able to withstand wind, rain, and other weather conditions.", "tent_pitch.jpg", 150), 
+        ("Touring Caravan Pitch", "A touring caravan pitch is a designated area in a campsite or caravan park that is specifically designed for parking a touring caravan. It typically involves finding a level and spacious area that is suitable for the size of the caravan and has access to necessary amenities like water, electricity, and sewage disposal. Once the pitch is identified, the caravan is carefully driven into the spot and leveled using jacks or other supports to ensure that it is stable and secure. The caravan is then hooked up to the sites electricity and water supply, and any waste is disposed of through the sites sewage facilities. Once the caravan is set up, it provides a comfortable and convenient base for exploring the surrounding area or enjoying the amenities of the campsite. A well-pitched touring caravan provides a safe and enjoyable experience for travelers, with all the comforts of home while on the road.", "touring_caravan.jpg", 250),
+        ("Motorhome pitch", "A motorhome pitch is a designated area in a campsite or motorhome park that is specifically designed for parking and staying in a motorhome. It typically involves finding a level and spacious area that is suitable for the size of the motorhome and has access to necessary amenities like water, electricity, and sewage disposal. Once the pitch is identified, the motorhome is carefully driven into the spot and leveled using jacks or other supports to ensure that it is stable and secure. The motorhome is then hooked up to the sites electricity and water supply, and any waste is disposed of through the sites sewage facilities. Some motorhome pitches also offer additional amenities like wifi, laundry facilities, and entertainment options. Once the motorhome is set up, it provides a comfortable and convenient base for exploring the surrounding area or enjoying the amenities of the park. A well-pitched motorhome provides a safe and enjoyable experience for travelers, with all the comforts of home while on the road.", "motorhome.jpg", 400)
         ';
 
         if ($conn->query($sql) === false) {
@@ -314,6 +370,39 @@ function INSERT_INITIAL_DATA($conn)
 
         // pitches
 
+        $sql = "INSERT INTO Pitches (site_id, Pitch_Type) 
+                VALUES 
+                (1, 1),
+                (1, 2),
+                (1, 3),
+                (1, 2),
+                (1, 3),
+                (2, 1),
+                (2, 2),
+                (2, 3),
+                (2, 2),
+                (2, 1),
+                (3, 1),
+                (3, 2),
+                (3, 3),
+                (3, 2),
+                (3, 1),
+                (4, 1),
+                (4, 2),
+                (4, 3),
+                (4, 2),
+                (4, 1),
+                (5, 1),
+                (5, 2),
+                (5, 3),
+                (5, 2),
+                (5, 1)
+                ";
+
+
+        if ($conn->query($sql) === false) {
+            echo "Error inserting pitches";
+        }
 
 
         // swimming sessions
