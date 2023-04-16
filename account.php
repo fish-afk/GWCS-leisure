@@ -15,8 +15,27 @@ function Update_Account_Info($username, $email, $firstname, $surname, $dob, $con
     $stmt->close();
     $conn->close();
 
-    echo $success;
-    return $success;
+
+    if ($success == 1) { ?>
+        <script>
+            Swal.fire({
+                title: 'Success',
+                text: 'Details updated successfully',
+                icon: 'success',
+                confirmButtonText: 'Ok'
+            })
+        </script>
+    <?php } else { ?>
+
+        <script>
+            Swal.fire({
+                title: 'Error',
+                text: 'Error updating details.',
+                icon: 'error',
+                confirmButtonText: 'Ok'
+            })
+        </script>
+<?php }
 }
 
 if (
@@ -24,8 +43,8 @@ if (
     isset($_POST['email']) && isset($_POST['dob'])
 ) {
 
-    Update_Account_Info(    
-        $_SESSION['username'],                        
+    Update_Account_Info(
+        $_SESSION['username'],
         htmlspecialchars($_POST['email']), // htmlspecialchars to prevent stored xss attacks. 
         htmlspecialchars($_POST['firstname']),
         htmlspecialchars($_POST['lastname']),
@@ -39,7 +58,7 @@ if (
 <body>
     <div class="account-main">
         <?php
-        
+
         if (!isset($_SESSION['username'])) {
         ?>
             <div class="full-space">
