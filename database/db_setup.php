@@ -1,6 +1,5 @@
 <?php
 
-
 // THIS SCRIPT DOES NOT NEED TO BE RUN MANUALLY | TABLES WILL BE AUTO CREATED ON ACCESSING THE HOME PAGE OF THE WEBSITE.
 
 // this script will initialize database tables //

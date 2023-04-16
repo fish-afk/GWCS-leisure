@@ -1,136 +1,200 @@
-CREATE DATABASE IF NOT EXISTS `GWCS_Shihab_Mirza`;
+-- --------------------------------------------------------
+-- Host:                         127.0.0.1
+-- Server version:               8.0.31 - MySQL Community Server - GPL
+-- Server OS:                    Win64
+-- HeidiSQL Version:             12.0.0.6468
+-- --------------------------------------------------------
 
-USE `GWCS_Shihab_Mirza`;
+/*!40101 SET @OLD_CHARACTER_SET_CLIENT=@@CHARACTER_SET_CLIENT */;
+/*!40101 SET NAMES utf8 */;
+/*!50503 SET NAMES utf8mb4 */;
+/*!40103 SET @OLD_TIME_ZONE=@@TIME_ZONE */;
+/*!40103 SET TIME_ZONE='+00:00' */;
+/*!40014 SET @OLD_FOREIGN_KEY_CHECKS=@@FOREIGN_KEY_CHECKS, FOREIGN_KEY_CHECKS=0 */;
+/*!40101 SET @OLD_SQL_MODE=@@SQL_MODE, SQL_MODE='NO_AUTO_VALUE_ON_ZERO' */;
+/*!40111 SET @OLD_SQL_NOTES=@@SQL_NOTES, SQL_NOTES=0 */;
 
-CREATE TABLE IF NOT EXISTS `SwimmingSessions`(
-    `id` BIGINT NOT NULL PRIMARY KEY AUTO_INCREMENT,
-    `site_id` BIGINT NOT NULL,
-    `Start` TIME NOT NULL,
-    `End` TIME NOT NULL,
-    `price` DOUBLE NOT NULL
-);
+-- Dumping database structure for gwcs_shihab_mirza
+CREATE DATABASE IF NOT EXISTS `gwcs_shihab_mirza` /*!40100 DEFAULT CHARACTER SET utf8mb4 COLLATE utf8mb4_0900_ai_ci */ /*!80016 DEFAULT ENCRYPTION='N' */;
+USE `gwcs_shihab_mirza`;
 
-CREATE TABLE IF NOT EXISTS `Reviews`(
-    `id` BIGINT NOT NULL PRIMARY KEY AUTO_INCREMENT,
-    `site_id` BIGINT NOT NULL,
-    `username` VARCHAR(255) NOT NULL,
-    `reviewText` TEXT NOT NULL,
-    `rating` BIGINT NOT NULL
-);
+-- Dumping structure for table gwcs_shihab_mirza.campingsites
+CREATE TABLE IF NOT EXISTS `campingsites` (
+  `id` bigint NOT NULL AUTO_INCREMENT,
+  `name` varchar(255) NOT NULL,
+  `location` varchar(255) NOT NULL,
+  `description` text NOT NULL,
+  `image_url` varchar(255) NOT NULL,
+  `Featured` tinyint DEFAULT '0',
+  PRIMARY KEY (`id`)
+) ENGINE=InnoDB AUTO_INCREMENT=12 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
 
-CREATE TABLE IF NOT EXISTS `Users`(
-    `username` VARCHAR(255) NOT NULL PRIMARY KEY,
-    `password` VARCHAR(255) NOT NULL,
-    `email` VARCHAR(255) NOT NULL,
-    `firstname` VARCHAR(255) NOT NULL,
-    `surname` VARCHAR(255) NOT NULL,
-    `DOB` DATE NOT NULL,
-    `usertype` VARCHAR(255) NOT NULL DEFAULT "user";
-);
+-- Data exporting was unselected.
 
-CREATE TABLE IF NOT EXISTS `LocalAttractions`(
-    `id` BIGINT NOT NULL PRIMARY KEY AUTO_INCREMENT,
-    `attraction_name` VARCHAR(255) NOT NULL,
-    `description` VARCHAR(255) NOT NULL,
-    `milesFromSite` DOUBLE NOT NULL,
-    `site_id` BIGINT NOT NULL,
-    `image_url` VARCHAR(255) NOT NULL
-);
+-- Dumping structure for table gwcs_shihab_mirza.done
+CREATE TABLE IF NOT EXISTS `done` (
+  `isdone` bigint NOT NULL DEFAULT '0'
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
 
-CREATE TABLE IF NOT EXISTS `PitchBookings`(
-    `id` BIGINT NOT NULL PRIMARY KEY AUTO_INCREMENT,
-    `Pitch_id` BIGINT NOT NULL,
-    `username` VARCHAR(255) NOT NULL,
-    `checkIn` DATETIME NOT NULL,
-    `checkOut` DATETIME NOT NULL,
-    `bookingDate` DATE NOT NULL
-);
+-- Data exporting was unselected.
 
-CREATE TABLE IF NOT EXISTS `SwimmingBookings`(
-    `id` BIGINT NOT NULL PRIMARY KEY AUTO_INCREMENT,
-    `swimming_session_id` BIGINT NOT NULL,
-    `username` VARCHAR(255) NOT NULL,
-    `bookingDate` DATE NOT NULL
-);
+-- Dumping structure for table gwcs_shihab_mirza.localattractionbookings
+CREATE TABLE IF NOT EXISTS `localattractionbookings` (
+  `id` bigint NOT NULL AUTO_INCREMENT,
+  `attraction_id` bigint NOT NULL,
+  `username` varchar(255) NOT NULL,
+  `bookingDate` date NOT NULL,
+  PRIMARY KEY (`id`),
+  KEY `attraction_foreign` (`attraction_id`),
+  KEY `username_foreign_key` (`username`),
+  CONSTRAINT `attraction_foreign` FOREIGN KEY (`attraction_id`) REFERENCES `localattractions` (`id`),
+  CONSTRAINT `username_foreign_key` FOREIGN KEY (`username`) REFERENCES `users` (`username`)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
 
-CREATE TABLE IF NOT EXISTS `CampingSites`(
-                    `id` BIGINT NOT NULL PRIMARY KEY AUTO_INCREMENT,
-                    `name` VARCHAR(255) NOT NULL,
-                    `location` VARCHAR(255) NOT NULL,
-                    `description` TEXT NOT NULL,
-                    `image_url` VARCHAR(255) NOT NULL,
-                    `Featured` TINYINT DEFAULT 0
-);
+-- Data exporting was unselected.
 
-CREATE TABLE IF NOT EXISTS `PitchTypes`(
-    `id` BIGINT NOT NULL PRIMARY KEY AUTO_INCREMENT,
-    `type_name` VARCHAR(255) NOT NULL,
-    `description` TEXT NOT NULL,        
-    `image` TEXT NOT NULL
-)
+-- Dumping structure for table gwcs_shihab_mirza.localattractions
+CREATE TABLE IF NOT EXISTS `localattractions` (
+  `id` bigint NOT NULL AUTO_INCREMENT,
+  `attraction_name` varchar(255) NOT NULL,
+  `description` varchar(255) NOT NULL,
+  `milesFromSite` double NOT NULL,
+  `site_id` bigint NOT NULL,
+  `image_url` varchar(255) NOT NULL,
+  `price` double NOT NULL,
+  PRIMARY KEY (`id`),
+  KEY `localattractions_site_id_foreign` (`site_id`),
+  CONSTRAINT `localattractions_site_id_foreign` FOREIGN KEY (`site_id`) REFERENCES `campingsites` (`id`)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
 
-CREATE TABLE IF NOT EXISTS `Pitches`(
-    `id` BIGINT NOT NULL PRIMARY KEY AUTO_INCREMENT,
-    `site_id` BIGINT NOT NULL,
-    `Pitch_Type` BIGINT NOT NULL,
-    `price` DOUBLE NOT NULL
-);
+-- Data exporting was unselected.
 
-CREATE TABLE IF NOT EXISTS `Messages`(
-    `id` BIGINT NOT NULL PRIMARY KEY AUTO_INCREMENT,
-    `username` VARCHAR(255) NOT NULL,
-    `Message` TEXT NOT NULL,
-    `Topic` TEXT NOT NULL
-);
+-- Dumping structure for table gwcs_shihab_mirza.loginattempts
+CREATE TABLE IF NOT EXISTS `loginattempts` (
+  `id` bigint NOT NULL AUTO_INCREMENT,
+  `ip_address` varchar(255) NOT NULL,
+  `time_count` bigint NOT NULL,
+  PRIMARY KEY (`id`)
+) ENGINE=InnoDB AUTO_INCREMENT=3 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
 
-CREATE TABLE IF NOT EXISTS `LogInAttempts`(
-    `id` BIGINT NOT NULL AUTO_INCREMENT PRIMARY KEY,
-    `ip_address` VARCHAR(255) NOT NULL,
-    `time_count` BIGINT NOT NULL,
-);
+-- Data exporting was unselected.
 
+-- Dumping structure for table gwcs_shihab_mirza.messages
+CREATE TABLE IF NOT EXISTS `messages` (
+  `id` bigint NOT NULL AUTO_INCREMENT,
+  `username` varchar(255) NOT NULL,
+  `Message` text NOT NULL,
+  PRIMARY KEY (`id`),
+  KEY `username_foreign` (`username`),
+  CONSTRAINT `username_foreign` FOREIGN KEY (`username`) REFERENCES `users` (`username`)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
 
-ALTER TABLE
-    `SwimmingBookings` ADD CONSTRAINT `swimmingbookings_username_foreign` FOREIGN KEY(`username`) REFERENCES `Users`(`username`);
-ALTER TABLE
-    `Pitches` ADD CONSTRAINT `pitches_site_id_foreign` FOREIGN KEY(`site_id`) REFERENCES `CampingSites`(`id`);
-ALTER TABLE
-    `Reviews` ADD CONSTRAINT `reviews_username_foreign` FOREIGN KEY(`username`) REFERENCES `Users`(`username`);
-ALTER TABLE
-    `PitchBookings` ADD CONSTRAINT `pitchbookings_username_foreign` FOREIGN KEY(`username`) REFERENCES `Users`(`username`);
-ALTER TABLE
-    `Reviews` ADD CONSTRAINT `reviews_site_id_foreign` FOREIGN KEY(`site_id`) REFERENCES `CampingSites`(`id`);
-ALTER TABLE
-    `PitchBookings` ADD CONSTRAINT `pitchbookings_pitch_id_foreign` FOREIGN KEY(`Pitch_id`) REFERENCES `Pitches`(`id`);
-ALTER TABLE
-    `SwimmingBookings` ADD CONSTRAINT `swimmingbookings_swimming_session_id_foreign` FOREIGN KEY(`swimming_session_id`) REFERENCES `SwimmingSessions`(`id`);
-ALTER TABLE
-    `SwimmingSessions` ADD CONSTRAINT `swimmingsessions_site_id_foreign` FOREIGN KEY(`site_id`) REFERENCES `CampingSites`(`id`);
-ALTER TABLE
-    `LocalAttractions` ADD CONSTRAINT `localattractions_site_id_foreign` FOREIGN KEY(`site_id`) REFERENCES `CampingSites`(`id`);
-ALTER TABLE
-     `Messages` ADD CONSTRAINT `username_foreign` FOREIGN KEY(`username`) REFERENCES `Users`(`username`);
-ALTER TABLE
-     `Pitches` ADD CONSTRAINT `pitch_type_foreign` FOREIGN KEY(`Pitch_Type`) REFERENCES `PitchTypes`(`id`);
+-- Data exporting was unselected.
 
-/* This is a set of SQL statements that create table IF NOT EXISTSs and establish foreign key constraints among them.
+-- Dumping structure for table gwcs_shihab_mirza.pitchbookings
+CREATE TABLE IF NOT EXISTS `pitchbookings` (
+  `id` bigint NOT NULL AUTO_INCREMENT,
+  `Pitch_id` bigint NOT NULL,
+  `username` varchar(255) NOT NULL,
+  `checkIn` datetime NOT NULL,
+  `checkOut` datetime NOT NULL,
+  `bookingDate` date NOT NULL,
+  PRIMARY KEY (`id`),
+  KEY `pitchbookings_username_foreign` (`username`),
+  KEY `pitchbookings_pitch_id_foreign` (`Pitch_id`),
+  CONSTRAINT `pitchbookings_pitch_id_foreign` FOREIGN KEY (`Pitch_id`) REFERENCES `pitches` (`id`),
+  CONSTRAINT `pitchbookings_username_foreign` FOREIGN KEY (`username`) REFERENCES `users` (`username`)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
 
-The first table, SwimmingSessions, has columns for session ID, site ID, start and end times, and price.
+-- Data exporting was unselected.
 
-The second table, Reviews, has columns for review ID, site ID, username, review text, and rating.
+-- Dumping structure for table gwcs_shihab_mirza.pitches
+CREATE TABLE IF NOT EXISTS `pitches` (
+  `id` bigint NOT NULL AUTO_INCREMENT,
+  `site_id` bigint NOT NULL,
+  `Pitch_Type` bigint NOT NULL,
+  PRIMARY KEY (`id`),
+  KEY `pitches_site_id_foreign` (`site_id`),
+  KEY `pitch_type_foreign` (`Pitch_Type`),
+  CONSTRAINT `pitch_type_foreign` FOREIGN KEY (`Pitch_Type`) REFERENCES `pitchtypes` (`id`),
+  CONSTRAINT `pitches_site_id_foreign` FOREIGN KEY (`site_id`) REFERENCES `campingsites` (`id`)
+) ENGINE=InnoDB AUTO_INCREMENT=26 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
 
-The third table, Users, has columns for username, password, email, first name, surname, and date of birth.
+-- Data exporting was unselected.
 
-The fourth table, LocalAttractions, has columns for attraction ID, attraction name, description, distance from site, site ID, and image URL.
+-- Dumping structure for table gwcs_shihab_mirza.pitchtypes
+CREATE TABLE IF NOT EXISTS `pitchtypes` (
+  `id` bigint NOT NULL AUTO_INCREMENT,
+  `type_name` varchar(255) NOT NULL,
+  `description` text NOT NULL,
+  `image` text NOT NULL,
+  `price` double NOT NULL,
+  PRIMARY KEY (`id`)
+) ENGINE=InnoDB AUTO_INCREMENT=4 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
 
-The fifth table, PitchBookings, has columns for booking ID, pitch ID, username, check-in and check-out times, and booking date.
+-- Data exporting was unselected.
 
-The sixth table, SwimmingBookings, has columns for booking ID, swimming session ID, username, and booking date.
+-- Dumping structure for table gwcs_shihab_mirza.reviews
+CREATE TABLE IF NOT EXISTS `reviews` (
+  `id` bigint NOT NULL AUTO_INCREMENT,
+  `site_id` bigint NOT NULL,
+  `username` varchar(255) NOT NULL,
+  `reviewText` text NOT NULL,
+  `rating` bigint NOT NULL,
+  PRIMARY KEY (`id`),
+  KEY `reviews_username_foreign` (`username`),
+  KEY `reviews_site_id_foreign` (`site_id`),
+  CONSTRAINT `reviews_site_id_foreign` FOREIGN KEY (`site_id`) REFERENCES `campingsites` (`id`),
+  CONSTRAINT `reviews_username_foreign` FOREIGN KEY (`username`) REFERENCES `users` (`username`)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
 
-The seventh table, CampingSites, has columns for site ID, name, location, description, and image URL.
+-- Data exporting was unselected.
 
-The eighth table, Pitches, has columns for pitch ID, site ID, pitch type, and price.
+-- Dumping structure for table gwcs_shihab_mirza.swimmingbookings
+CREATE TABLE IF NOT EXISTS `swimmingbookings` (
+  `id` bigint NOT NULL AUTO_INCREMENT,
+  `swimming_session_id` bigint NOT NULL,
+  `username` varchar(255) NOT NULL,
+  `bookingDate` date NOT NULL,
+  PRIMARY KEY (`id`),
+  KEY `swimmingbookings_username_foreign` (`username`),
+  KEY `swimmingbookings_swimming_session_id_foreign` (`swimming_session_id`),
+  CONSTRAINT `swimmingbookings_swimming_session_id_foreign` FOREIGN KEY (`swimming_session_id`) REFERENCES `swimmingsessions` (`id`),
+  CONSTRAINT `swimmingbookings_username_foreign` FOREIGN KEY (`username`) REFERENCES `users` (`username`)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
 
-The last section of SQL statements adds foreign key constraints to these tables, linking the appropriate columns to their corresponding primary key columns in other tables. */
+-- Data exporting was unselected.
 
+-- Dumping structure for table gwcs_shihab_mirza.swimmingsessions
+CREATE TABLE IF NOT EXISTS `swimmingsessions` (
+  `id` bigint NOT NULL AUTO_INCREMENT,
+  `site_id` bigint NOT NULL,
+  `Start` time NOT NULL,
+  `End` time NOT NULL,
+  `price` double NOT NULL,
+  PRIMARY KEY (`id`),
+  KEY `swimmingsessions_site_id_foreign` (`site_id`),
+  CONSTRAINT `swimmingsessions_site_id_foreign` FOREIGN KEY (`site_id`) REFERENCES `campingsites` (`id`)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
 
+-- Data exporting was unselected.
+
+-- Dumping structure for table gwcs_shihab_mirza.users
+CREATE TABLE IF NOT EXISTS `users` (
+  `username` varchar(255) NOT NULL,
+  `password` varchar(255) NOT NULL,
+  `email` varchar(255) NOT NULL,
+  `firstname` varchar(255) NOT NULL,
+  `surname` varchar(255) NOT NULL,
+  `DOB` date NOT NULL,
+  `usertype` varchar(255) NOT NULL DEFAULT 'user',
+  PRIMARY KEY (`username`)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+
+-- Data exporting was unselected.
+
+/*!40103 SET TIME_ZONE=IFNULL(@OLD_TIME_ZONE, 'system') */;
+/*!40101 SET SQL_MODE=IFNULL(@OLD_SQL_MODE, '') */;
+/*!40014 SET FOREIGN_KEY_CHECKS=IFNULL(@OLD_FOREIGN_KEY_CHECKS, 1) */;
+/*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
+/*!40111 SET SQL_NOTES=IFNULL(@OLD_SQL_NOTES, 1) */;
