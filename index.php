@@ -121,6 +121,16 @@
             </div>
 
 
+
+            <div class="rss-feed">
+                <h2>Camping Rss feed</h2>
+                <!-- rss feed -->
+                <iframe src="https://widget.taggbox.com/128544" style="width:100%;height:900px;border:none;"></iframe>
+            </div>
+
+
+
+
             <div class="viewcounter">
                 <h2>Number of page views:
                     <?php

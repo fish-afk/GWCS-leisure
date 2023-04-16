@@ -229,6 +229,13 @@ body {
 	background: #1D212B;
 }
 
+.rss-feed{
+	margin-top: 3rem;
+}
+
+.rss-feed h2{
+	padding: 4rem;
+}
 .img-slider .slide {
 
 	position: absolute;
@@ -1116,4 +1123,33 @@ body {
 		width: 280px;
 		padding: 2rem;
 	}
+}
+
+/* PRIVACY POLICY PAGE --------------------------------------------------------------------------------------- */
+
+.privacypolicy-main{
+	padding: 5rem;
+}
+
+.privacypolicy-main .intro-top{
+	text-align: center;
+}
+
+.privacypolicy-main h1{
+	text-align: center;
+	color: rgb(170, 252, 117);
+}
+.privacypolicy-main h2 {
+  color: rgb(170, 252, 117);
+}
+
+.privacypolicy-main p{
+	color: #fff;
+	padding-top: 1rem;
+	padding-bottom: 4rem;
+	font-size: 1.2rem;
+}
+
+.privacypolicy-main p a{
+	color: #00e1ff;
 }

@@ -33,7 +33,6 @@ $dsn = 'mysql:host=' . $server . ';dbname=' . $dbname;
 
 $pdo = new PDO($dsn, $username, $password);
 
-
 // persistent check table to see if tables are already created.
 $DB_CREATED = "CREATE TABLE IF NOT EXISTS `Done` (
         `isdone` BIGINT NOT NULL DEFAULT 0
@@ -218,64 +217,65 @@ function CREATE_TABLES($conn)
     }
 }
 
-function SETUP_FOREIGN_KEYS($conn){
+function SETUP_FOREIGN_KEYS($conn)
+{
 
     $sql = "ALTER TABLE `SwimmingBookings` ADD CONSTRAINT `swimmingbookings_username_foreign` FOREIGN KEY(`username`) REFERENCES `Users`(`username`);";
-    
+
     if ($conn->query($sql) === false) {
         echo "<h3>error initiating database properly</h3>";
         die();
     }
     $sql = "ALTER TABLE `Pitches` ADD CONSTRAINT `pitches_site_id_foreign` FOREIGN KEY(`site_id`) REFERENCES `CampingSites`(`id`);";
-    
+
     if ($conn->query($sql) === false) {
         echo "<h3>error initiating database properly</h3>";
         die();
     }
     $sql = "ALTER TABLE `Reviews` ADD CONSTRAINT `reviews_username_foreign` FOREIGN KEY(`username`) REFERENCES `Users`(`username`);";
-    
+
     if ($conn->query($sql) === false) {
         echo "<h3>error initiating database properly</h3>";
         die();
     }
     $sql = "ALTER TABLE `PitchBookings` ADD CONSTRAINT `pitchbookings_username_foreign` FOREIGN KEY(`username`) REFERENCES `Users`(`username`);";
-    
+
     if ($conn->query($sql) === false) {
         echo "<h3>error initiating database properly</h3>";
         die();
     }
     $sql = "ALTER TABLE `Reviews` ADD CONSTRAINT `reviews_site_id_foreign` FOREIGN KEY(`site_id`) REFERENCES `CampingSites`(`id`);";
-    
+
     if ($conn->query($sql) === false) {
         echo "<h3>error initiating database properly</h3>";
         die();
     }
     $sql = "ALTER TABLE `PitchBookings` ADD CONSTRAINT `pitchbookings_pitch_id_foreign` FOREIGN KEY(`Pitch_id`) REFERENCES `Pitches`(`id`);";
-    
+
     if ($conn->query($sql) === false) {
         echo "<h3>error initiating database properly</h3>";
         die();
     }
     $sql = "ALTER TABLE `SwimmingBookings` ADD CONSTRAINT `swimmingbookings_swimming_session_id_foreign` FOREIGN KEY(`swimming_session_id`) REFERENCES `SwimmingSessions`(`id`);";
-    
+
     if ($conn->query($sql) === false) {
         echo "<h3>error initiating database properly</h3>";
         die();
     }
     $sql = "ALTER TABLE `SwimmingSessions` ADD CONSTRAINT `swimmingsessions_site_id_foreign` FOREIGN KEY(`site_id`) REFERENCES `CampingSites`(`id`);";
-    
+
     if ($conn->query($sql) === false) {
         echo "<h3>error initiating database properly</h3>";
         die();
     }
     $sql = "ALTER TABLE `LocalAttractions` ADD CONSTRAINT `localattractions_site_id_foreign` FOREIGN KEY(`site_id`) REFERENCES `CampingSites`(`id`);";
-    
+
     if ($conn->query($sql) === false) {
         echo "<h3>error initiating database properly</h3>";
         die();
     }
     $sql = "ALTER TABLE `Messages` ADD CONSTRAINT `username_foreign` FOREIGN KEY(`username`) REFERENCES `Users`(`username`);";
-    
+
     if ($conn->query($sql) === false) {
         echo "<h3>error initiating database properly</h3>";
         die();
@@ -296,7 +296,7 @@ function SETUP_FOREIGN_KEYS($conn){
         die();
     }
 
-    $sql = "ALTER TABLE `LocalAttractionBookings` ADD CONSTRAINT `username_foreign` FOREIGN KEY(`username`) REFERENCES `Users`(`username`)";
+    $sql = "ALTER TABLE `LocalAttractionBookings` ADD CONSTRAINT `username_foreign_key` FOREIGN KEY(`username`) REFERENCES `Users`(`username`)";
 
     if ($conn->query($sql) === false) {
         echo "<h3>error initiating database properly</h3>";
@@ -355,12 +355,12 @@ function INSERT_INITIAL_DATA($conn)
             ('Lake Malawi National Park', '-12.0633,34.2625', 'Lake Malawi National Park is a UNESCO World Heritage Site that encompasses the southern end of Lake Malawi, the third-largest lake in Africa. The park offers camping facilities on the shore of the lake, where visitors can enjoy swimming, snorkeling, and fishing in the crystal-clear waters.', 'lake_malawi.jpg', 0),
             ('Thingvellir National Park', '64.2570,-21.1118', 'Thingvellir National Park is a UNESCO World Heritage Site located in southwestern Iceland, known for its dramatic landscapes of volcanic rock formations, deep fissures, and crystal-clear waters. The park offers camping facilities with stunning views of the surrounding mountains and valleys.', 'thingvellir.jpg', 1),
             ('South Luangwa National Park', '-13.1369,31.8313', 'South Luangwa National Park is a world-renowned wildlife sanctuary in eastern Zambia, known for its abundant wildlife and stunning natural beauty. The park offers camping facilities in a variety of settings, from remote bush camps to more developed sites with amenities like hot showers and flush toilets.', 'south_luawngwa.jpg', 0),
-            ('Skaftafell National Park', '64.0159,-16.9819', 'Skaftafell National Park is a rugged wilderness area in southeastern Iceland, known for its glaciers, waterfalls, and scenic hiking trails. The park offers camping facilities with easy access to the park\'s many attractions.', 'skaftafell.jpg', 1),
+            ('Skaftafell National Park', '64.0159,-16.9819', 'Skaftafell National Park is a rugged wilderness area in southeastern Iceland, known for its glaciers, waterfalls, and scenic hiking trails. The park offers camping facilities with easy access to the park\'s many attractions.', 'skaftafell.jpg', 0),
             ('Tsitsikamma National Park', '-33.9630,23.8550', 'Tsitsikamma National Park is a coastal reserve in South Africa, known for its rugged coastline, indigenous forests, and dramatic landscapes. The park offers camping facilities with stunning views of the ocean and easy access to the park\'s many hiking trails.', 'tsitsikamma.jpg', 0),
             ('Blue Lagoon', '63.8816,-22.4537', 'The Blue Lagoon is a geothermal spa located in southwestern Iceland, famous for its milky-blue waters and therapeutic properties. The lagoon offers camping facilities with easy access to the spa and the surrounding area.', 'blue_lagoon.jpg', 1),
             ('Okavango Delta', '-19.3074,22.9134', 'The Okavango Delta is a vast wetland in northern Botswana, home to a diverse array of wildlife and a popular destination for safari tours. The delta offers camping facilities in remote areas, where visitors can experience the natural beauty of the region up close.', 'okavango-delta.jpg', 0),
             ('Victoria Falls', '-17.9245,25.8569', 'Victoria Falls is a natural wonder of the world located on the border of Zambia and Zimbabwe, known for its breathtaking views and powerful waterfalls. The area offers camping facilities with easy access to the falls and a range of adventure activities like bungee jumping and whitewater rafting.', 'victoria_falls.jpg', 1),
-            ('Landmannalaugar', '63.9833,-19.0667', 'Landmannalaugar is a popular hiking and camping destination in the highlands of Iceland, known for its stunning landscapes of colorful mountains, hot springs, and rugged lava fields. The area offers camping facilities with easy access to the hiking trails and the natural wonders of the region.', 'landmannalaugar.jpg', 1),
+            ('Landmannalaugar', '63.9833,-19.0667', 'Landmannalaugar is a popular hiking and camping destination in the highlands of Iceland, known for its stunning landscapes of colorful mountains, hot springs, and rugged lava fields. The area offers camping facilities with easy access to the hiking trails and the natural wonders of the region.', 'landmannalaugar.jpg', 0),
             ('Table Mountain National Park', '-34.1070,18.3677', 'Table Mountain National Park is a scenic reserve in South Africa, known for its stunning views of Cape Town, its rugged coastline, and its unique flora and fauna. The park offers camping facilities in a range of settings, from coastal campsites to more remote wilderness camps.', 'table_mountain.jpg', 0)
         ";
 
@@ -408,14 +408,38 @@ function INSERT_INITIAL_DATA($conn)
         // swimming sessions
 
 
+        $sql = "INSERT INTO SwimmingSessions (site_id, Start, End, price)
+                VALUES 
+                (2, '09:00:00', '10:00:00', 15.00),
+                (4, '14:00:00', '15:30:00', 20.50),
+                (8, '12:00:00', '13:30:00', 18.00),
+                (10, '08:30:00', '09:30:00', 12.50),
+                (1, '10:00:00', '11:30:00', 22.00),
+                (3, '13:00:00', '14:30:00', 17.50),
+                (6, '11:00:00', '12:00:00', 10.00),
+                (7, '16:00:00', '17:00:00', 12.50),
+                (9, '15:00:00', '16:30:00', 21.50),
+                (5, '07:30:00', '08:30:00', 8.00)
+                ";
 
         // local attractions
 
 
-
-        // reviews
-
-
+        $sql = "INSERT INTO LocalAttractions(attraction_name, description, milesFromSite, site_id, image_url, price) VALUES ('Bourkes Luck Potholes', 'A scenic geological formation on the Blyde River', 20.5, 1, 'https://example.com/bourkes-luck-potholes.jpg', 12.50),
+                ('Gods Window', 'A viewpoint located in Mpumalanga, South Africa', 15.2, 1, 'https://example.com/gods-window.jpg', 10.00),
+                ('Kande Horse Trails', 'Horse riding trails through the beautiful Malawian countryside', 5.0, 2, 'https://example.com/kande-horse-trails.jpg', 25.00),
+                ('Lake Malawi Museum', 'A museum showcasing the history and culture of the Lake Malawi region', 2.3, 2, 'https://example.com/lake-malawi-museum.jpg', 8.00),
+                ('Silfra Fissure', 'A popular diving and snorkeling spot in Iceland', 2.0, 3, 'https://example.com/silfra-fissure.jpg', 50.00),
+                ('Thingvellir Church', 'A historic church located in Thingvellir National Park, Iceland', 1.5, 3, 'https://example.com/thingvellir-church.jpg', 5.00),
+                ('Victoria Falls Bridge', 'A historic bridge offering stunning views of Victoria Falls', 0.3, 9, 'https://example.com/victoria-falls-bridge.jpg', 15.00),
+                ('Bungee Jumping in Victoria Falls', 'An adrenaline-filled experience jumping off a bridge over Victoria Falls', 0.3, 9, 'https://example.com/victoria-falls-bungee.jpg', 75.00),
+                ('Robberg Nature Reserve', 'A scenic coastal nature reserve in South Africa', 2.5, 10, 'https://example.com/robberg-nature-reserve.jpg', 7.00),
+                ('Cango Caves', 'A network of limestone caves in the Western Cape, South Africa', 15.0, 11, 'https://example.com/cango-caves.jpg', 20.00),
+                ('Kirstenbosch National Botanical Garden', 'A beautiful botanical garden located on the slopes of Table Mountain', 5.0, 11, 'https://example.com/kirstenbosch-garden.jpg', 12.00),
+                ('Lions Head Hike', 'A popular hike offering stunning views of Cape Town', 3.0, 11, 'https://example.com/lions-head-hike.jpg', 5.00),
+                ('Aurora Borealis Observatory', 'An observatory offering guided tours and stunning views of the Northern Lights', 5.0, 5, 'https://example.com/aurora-borealis-observatory.jpg', 30.00),
+                ('Skaftafell Glacier Hike', 'A guided hike on a glacier in Skaftafell National Park, Iceland', 1.0, 5, 'https://example.com/skaftafell-glacier.jpg', 75.00),
+                ('Wildlife Photography Tour in South Luangwa National Park', 'A guided photography tour of the wildlife in South Luangwa National Park', 2.5, 4, 'https://example.com/luangwa-wildlife-tour.jpg', 40.00)";
     }
 }
 
