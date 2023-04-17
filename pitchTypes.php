@@ -12,6 +12,13 @@
 
         <div>
             <?php
+            /* This is a PHP code block that retrieves data from a database table called "PitchTypes"
+            and displays it on a webpage. The code uses a SQL query to select all columns and rows
+            from the "PitchTypes" table, and then loops through each row using a while loop. Inside
+            the loop, the code displays the pitch type name, image, and description using HTML and
+            PHP echo statements. The data is displayed in a styled container with a class of
+            "pitchtype". */
+
             $query = "SELECT * FROM PitchTypes";
 
             $result = $conn->query($query);
@@ -40,6 +47,7 @@
 
 </body>
 
-</html>
 
 <?php include_once "./includes/footer.php" ?>
+
+</html>

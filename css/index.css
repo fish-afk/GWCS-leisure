@@ -1251,3 +1251,61 @@ iframe {
 	padding-bottom: 1rem;
 	color: rgb(133, 231, 68);
 }
+
+/* information index page --------------------------------------------------------------------------------*/
+
+.allsites {
+	padding: 3rem;
+}
+
+.allsites h2 {
+	text-align: center;
+	font-family: Satoshi-light;
+	font-size: 4rem;
+	font-weight: lighter;
+	color: rgb(170, 252, 117);
+	opacity: 0.8;
+	margin-bottom: 2rem;
+}
+
+.allsites .gallery .site {
+	height: 100%;
+}
+
+.allsites .gallery .site .site-name {
+	color: rgb(255, 255, 255);
+	padding: 1rem;
+	font-size: 2rem;
+	font-family: Satoshi-light;
+}
+
+.allsites .gallery .site .location-map {
+	width: 100%;
+	height: 300px;
+}
+
+.allsites .gallery {
+	display: flex;
+	margin-top: 5rem;
+	flex-wrap: wrap;
+	justify-content: space-between;
+}
+
+.allsites .gallery .site img {
+	border-radius: 5px;
+}
+
+.allsites .gallery .site {
+	width: 48%;
+	text-align: center;
+	background-color: transparent;
+	/* max 2 images per row */
+	margin-bottom: 20px;
+	border-radius: 10px;
+}
+
+@media screen and (max-width: 1000px) {
+	.allsites .gallery .site {
+		width: 100%;
+	}
+}
