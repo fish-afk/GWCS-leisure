@@ -58,24 +58,43 @@
     </div>
 
 
+
     <div class="index-mid">
         <h2>Pitch Types We Offer</h2>
         <div class="pitch-types box">
 
             <?php
+
+            /* This code is displaying a section on the webpage that shows the different types of pitches that
+        the website offers. It does this by querying the database for the different pitch types and then
+        displaying them in a loop using PHP. Each pitch type is displayed as a div with an image and a
+        link to see more details. The link sets a cookie with the selected pitch type so that it can be
+        used later on other pages. */
+
             $query = "SELECT * FROM PitchTypes";
 
             $result = $conn->query($query);
 
             while ($row = $result->fetch_assoc()) {
             ?>
-                <div class="pitch">
+                <div class="pitch" id="<?php echo $row["type_name"]; ?>">
+
+                    <script>
+                        function setcookie() {
+                            const id = '<?php echo $row["type_name"]; ?>';
+                            document.cookie = "Selectedtype=" + id;
+                        }
+                    </script>
                     <h3>
                         <?php
                         echo $row["type_name"];
                         ?>
                     </h3>
+                    <div class="detailtext">
+                        <a href="/pitchTypes.php" onclick="setcookie()">See details</a>
+                    </div>
                     <img src="./assets/images/pitch_types/<?php echo $row['image'] ?>" width="100%" />
+
                 </div>
             <?php } ?>
 
@@ -84,8 +103,15 @@
     </div>
 
     <div class="index-final">
-
         <?php
+        
+        /* This code is querying the database for camping sites that have been marked as "featured" and
+       displaying them in a section on the webpage. It does this by first checking if there are any
+       featured camping sites in the database, and if so, displaying a heading for the section and
+       creating a container for the camping site information. It then loops through the results of
+       the query and displays each camping site as a div with its name, image, and location
+       displayed. The location is displayed using an embedded Google Maps iframe. */
+
         $query = "SELECT * FROM CampingSites WHERE Featured = 1";
 
         $result = $conn->query($query);
@@ -134,12 +160,13 @@
             <div class="viewcounter">
                 <h2>Number of page views:
                     <?php
+                    $SHOW_VIEWS;
                     if (!file_exists('viewcount.txt')) {
                         touch('viewcount.txt');
                         $count_views = ("viewcount.txt");
                         $fp = fopen($count_views, "w");
                         fputs($fp, "1");
-                        echo 1;
+                        $SHOW_VIEWS = 1;
                     } else {
                         $count_views = ("viewcount.txt");
                         $views = file($count_views);
@@ -148,8 +175,9 @@
                         $fp = fopen($count_views, "w");
                         fputs($fp, "$views[0]");
                         fclose($fp);
-                        echo $views[0];
+                        $SHOW_VIEWS = $views[0];
                     }
+                    echo $SHOW_VIEWS;
                     ?>
             </div>
 
@@ -158,7 +186,6 @@
     <div class="cursor"></div>
     <script>
         var cursor = document.querySelector(".cursor");
-        var cursorinner = document.querySelector(".cursor2");
         var a = document.querySelectorAll("a");
 
         document.addEventListener("mousemove", function(e) {
@@ -170,18 +197,17 @@
         document.addEventListener("mousemove", function(e) {
             var x = e.clientX;
             var y = e.clientY;
-            cursorinner.style.left = x + "px";
-            cursorinner.style.top = y + "px";
+
         });
 
         document.addEventListener("mousedown", function() {
             cursor.classList.add("click");
-            cursorinner.classList.add("cursorinnerhover");
+
         });
 
         document.addEventListener("mouseup", function() {
             cursor.classList.remove("click");
-            cursorinner.classList.remove("cursorinnerhover");
+
         });
 
         a.forEach((item) => {

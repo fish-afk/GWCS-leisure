@@ -240,6 +240,10 @@ opacity: 0.8;
 	font-family: Satoshi-light !important;
 }
 
+.breadcrumb p{
+	font-family: Satoshi-light;
+}
 .breadcrumb p a {
+	font-family: Satoshi-light;
 	color: aqua;
 }

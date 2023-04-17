@@ -92,7 +92,7 @@ header nav ul li a.active {
 		padding: 0 30px;
 	}
 }
-@media only screen and (max-width: 1000px) {
+@media only screen and (max-width: 1134px) {
 
 	#search-bar input{
 		background-color: #173D33;

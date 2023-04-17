@@ -85,11 +85,11 @@ body {
 	transition: all 309ms ease-in-out;
 }
 
-.index-mid{
+.index-mid {
 	padding: 3rem;
 }
 
-.index-mid h2{
+.index-mid h2 {
 	text-align: center;
 	font-family: Satoshi-light;
 	font-size: 4rem;
@@ -98,25 +98,45 @@ body {
 	opacity: 0.8;
 }
 
-.index-mid .pitch-types{
+.index-mid .pitch-types {
 	margin-top: 5rem;
 }
-.index-mid .pitch-types .pitch h3{
+
+.index-mid .pitch-types {
+	transition: all 300ms ease-in-out;
+}
+
+.index-mid .pitch-types .pitch h3 {
 	font-family: Satoshi-dark;
 	color: white;
 	text-align: center;
 }
 
-.index-mid .pitch-types .pitch img{
+.detailtext {
+	display: none;
+	text-align: center;
+	padding: 10px;
+}
+
+.detailtext a {
+	color: #00e1ff;
+	font-family: Satoshi-light;
+	font-size: 1.2rem;
+}
+
+.pitch:hover .detailtext {
+	display: block;
+}
+.index-mid .pitch-types .pitch img {
 	border-radius: 50px;
 	padding: 2rem;
 }
 
-.index-final{
+.index-final {
 	padding: 3rem;
 }
 
-.index-final h2{
+.index-final h2 {
 	text-align: center;
 	font-family: Satoshi-light;
 	font-size: 4rem;
@@ -126,18 +146,18 @@ body {
 	margin-bottom: 2rem;
 }
 
-.index-final .gallery .site{
+.index-final .gallery .site {
 	height: 100%;
 }
 
 .index-final .gallery .site .site-name {
-	color: rgb(255, 255, 255) ;
+	color: rgb(255, 255, 255);
 	padding: 1rem;
 	font-size: 2rem;
 	font-family: Satoshi-light;
 }
 
-.index-final .gallery .site .location-map{
+.index-final .gallery .site .location-map {
 	width: 100%;
 	height: 300px;
 }
@@ -149,8 +169,9 @@ body {
 	justify-content: space-between;
 }
 
-.index-final .gallery .site img, iframe{
-	border-radius:  5px;
+.index-final .gallery .site img,
+iframe {
+	border-radius: 5px;
 }
 
 .index-final .gallery .site {
@@ -162,13 +183,13 @@ body {
 	border-radius: 10px;
 }
 
-.index-final .viewcounter{
+.index-final .viewcounter {
 	padding: 5rem;
 
 }
 
 @media screen and (max-width: 1000px) {
-  .index-final .gallery .site {
+	.index-final .gallery .site {
 		width: 100%;
 	}
 }
@@ -199,7 +220,7 @@ body {
 	font-family: Satoshi-light;
 }
 
-.intro .intro-btn{
+.intro .intro-btn {
 	padding: 1rem;
 	border-width: 1px;
 	border-color: rgb(170, 252, 117);
@@ -214,7 +235,7 @@ body {
 	transition: all 300ms ease-in-out;
 }
 
-.intro .intro-btn:hover{
+.intro .intro-btn:hover {
 	background-color: rgb(170, 252, 117);
 	color: black;
 }
@@ -229,13 +250,14 @@ body {
 	background: #1D212B;
 }
 
-.rss-feed{
+.rss-feed {
 	margin-top: 3rem;
 }
 
-.rss-feed h2{
+.rss-feed h2 {
 	padding: 4rem;
 }
+
 .img-slider .slide {
 
 	position: absolute;
@@ -303,7 +325,7 @@ body {
 		font-size: 4rem;
 	}
 
-	.intro-btn{
+	.intro-btn {
 		font-size: 1rem;
 	}
 
@@ -327,9 +349,9 @@ body {
 		padding-right: 0;
 	}
 
-	.intro .intro-btn{
+	.intro .intro-btn {
 		font-size: 1.5rem;
-		padding:1.5rem;
+		padding: 1.5rem;
 
 	}
 }
@@ -342,11 +364,11 @@ body {
 		margin-bottom: 30rem;
 	}
 
-	.index-mid .pitch-types{
+	.index-mid .pitch-types {
 		display: block;
 	}
 
-	.index-mid h2{
+	.index-mid h2 {
 		font-size: 3rem;
 	}
 
@@ -383,16 +405,17 @@ body {
 }
 
 @media screen and (max-width:800px) {
-	.index-top{
+	.index-top {
 		margin-bottom: 20rem;
 	}
 }
 
 @media only screen and (max-width: 550px) {
 
-	.index-top{
+	.index-top {
 		margin-bottom: 12rem;
 	}
+
 	.intro h1 {
 		font-size: 1.5rem;
 	}
@@ -401,7 +424,7 @@ body {
 		font-size: 1.5rem;
 	}
 
-	.intro .intro-btn{
+	.intro .intro-btn {
 		padding: 1rem;
 		font-size: 1rem;
 		margin: 1rem;
@@ -411,7 +434,7 @@ body {
 		display: none;
 	}
 
-	.img-slider{
+	.img-slider {
 		width: 96%;
 		margin: 4%;
 	}
@@ -429,7 +452,7 @@ body {
 
 	.img-slider .slide .info h2 {
 
-		
+
 		font-size: 10px;
 
 	}
@@ -654,9 +677,10 @@ body {
 
 @media only screen and (max-width: 1000px) {
 
-	#section-wrapper{
+	#section-wrapper {
 		padding: 1rem;
 	}
+
 	.info-title {
 		font-size: 23px;
 	}
@@ -739,7 +763,7 @@ body {
 	padding-top: 2rem;
 }
 
-.account-welcome button{
+.account-welcome button {
 	margin-left: 2rem;
 	padding-left: 3rem;
 	padding-right: 3rem;
@@ -750,35 +774,37 @@ body {
 	transition: all 300ms ease-in-out;
 }
 
-.account-welcome button:hover{
+.account-welcome button:hover {
 	box-shadow: 3px 3px 8px rgb(109, 51, 51),
-			-3px -3px 8px rgb(209, 66, 61);
+		-3px -3px 8px rgb(209, 66, 61);
 }
 
-.account-welcome h1{
+.account-welcome h1 {
 	color: rgb(170, 252, 117);
 	font-family: Satoshi-light;
 }
-.account-main .options{
+
+.account-main .options {
 	padding: 3rem;
 }
-.account-main .options .optbtn{
+
+.account-main .options .optbtn {
 	width: 50%;
-		height: 60px;
-		margin: 0px 12px;
-		border-radius: 30px;
-		font-size: 20px;
-		font-weight: 700;
-		outline: none;
-		border: none;
-		cursor: pointer;
-		color: #fff;
-		text-align: center;
-		background: #173D33;
-		transition: 0.5s;
+	height: 60px;
+	margin: 0px 12px;
+	border-radius: 30px;
+	font-size: 20px;
+	font-weight: 700;
+	outline: none;
+	border: none;
+	cursor: pointer;
+	color: #fff;
+	text-align: center;
+	background: #173D33;
+	transition: 0.5s;
 }
 
-.account-main #info-editor{
+.account-main #info-editor {
 	padding-right: 10rem;
 	padding-left: 10rem;
 }
@@ -787,7 +813,7 @@ body {
 	color: white;
 }
 
-.account-main #info-editor form button{
+.account-main #info-editor form button {
 	padding-right: 4rem;
 	padding-left: 4rem;
 	text-align: center;
@@ -799,22 +825,23 @@ body {
 	border-radius: 10px;
 	transition: all 300ms;
 }
+
 .account-main #info-editor form button:hover {
 	box-shadow: 3px 3px 8px rgb(170, 252, 117),
-			-3px -3px 8px rgb(133, 231, 68);
+		-3px -3px 8px rgb(133, 231, 68);
 }
 
 .account-main #info-editor form input {
-		border: none;
-		outline: none;
-		background: none;
-		margin: 1rem;
-		border-radius: 10px;
-		font-size: 18px;
-		color: #555;
-		background-color: rgb(255, 255, 255);
-		padding: 20px 10px 20px 5px;
-		width: 100%;
+	border: none;
+	outline: none;
+	background: none;
+	margin: 1rem;
+	border-radius: 10px;
+	font-size: 18px;
+	color: #555;
+	background-color: rgb(255, 255, 255);
+	padding: 20px 10px 20px 5px;
+	width: 100%;
 }
 
 
@@ -1165,29 +1192,62 @@ body {
 
 /* PRIVACY POLICY PAGE --------------------------------------------------------------------------------------- */
 
-.privacypolicy-main{
+.privacypolicy-main {
 	padding: 5rem;
 }
 
-.privacypolicy-main .intro-top{
+.privacypolicy-main .intro-top {
 	text-align: center;
 }
 
-.privacypolicy-main h1{
+.privacypolicy-main h1 {
 	text-align: center;
 	color: rgb(170, 252, 117);
 }
+
 .privacypolicy-main h2 {
-  color: rgb(170, 252, 117);
+	color: rgb(170, 252, 117);
 }
 
-.privacypolicy-main p{
+.privacypolicy-main p {
 	color: #fff;
 	padding-top: 1rem;
 	padding-bottom: 4rem;
 	font-size: 1.2rem;
 }
 
-.privacypolicy-main p a{
+.privacypolicy-main p a {
 	color: #00e1ff;
+}
+
+
+/* PITCH TYPES PAGE ------------------------------------------------------------------------------------ */
+
+.pitchtypes-main {
+	padding: 5rem;
+}
+
+.pitchtypes-main h1 {
+	padding-bottom: 4rem;
+	color: rgb(133, 231, 68);
+}
+
+.pitchtypes-main .pitchtype {
+	width: 100%;
+	margin: 2rem;
+	display: flex;
+}
+
+.pitchtypes-main .pitchtype .box {
+	padding: 3rem;
+	color: white;
+}
+
+.pitchtypes-main .pitchtype .img {
+	width: 100%;
+}
+
+.pitchtypes-main .pitchtype h2 {
+	padding-bottom: 1rem;
+	color: rgb(133, 231, 68);
 }

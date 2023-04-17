@@ -15,7 +15,10 @@
                 <a class="links" href="/contact.php">Contact</a>
             </li>
             <li>
-                <a class="links" href="/information.php">information</a>
+                <a class="links" href="/information/index.php">information</a>
+            </li>
+            <li>
+                <a class="links" href="/pitchTypes.php">Pitch-Types</a>
             </li>
             <li>
                 <a class="links" href="/reviews.php">Reviews</a>
