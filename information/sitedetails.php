@@ -2,9 +2,9 @@
 <?php include_once "../includes/navbar.php" ?>
 <?php include_once "../includes/db_connect.php" ?>
 
-<?php
+<?php 
 
-if (isset($_GET['siteid'])) {
+if(isset($_GET['siteid'])){
     echo $_GET['siteid'];
 }
 
@@ -13,6 +13,7 @@ if (isset($_GET['siteid'])) {
 <body>
 
 
+    
 </body>
 
 <?php include_once "../includes/footer.php" ?>

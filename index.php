@@ -185,6 +185,11 @@
     </div>
     <div class="cursor"></div>
     <script>
+
+        const booknowbtn = document.querySelector('.intro-btn').addEventListener('click', () => {
+            window.location.href = '/information/index.php';
+        })
+
         var cursor = document.querySelector(".cursor");
         var a = document.querySelectorAll("a");
 

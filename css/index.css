@@ -1254,6 +1254,48 @@ iframe {
 
 /* information index page --------------------------------------------------------------------------------*/
 
+@import url(https://fonts.googleapis.com/css?family=Open+Sans);
+
+
+.search {
+	width: 50%;
+	position: relative;
+	display: flex;
+}
+
+.searchTerm {
+	width: 100%;
+	border: 3px solid rgb(133, 231, 68);
+	border-right: none;
+	padding: 5px;
+	height: 40px;
+	border-radius: 5px 0 0 5px;
+	outline: none;
+	font-family: Satoshi-medium;
+	font-size: 1.1rem;
+	color: #000000;
+}
+.searchTerm::placeholder{
+	color: #555555;
+	font-size: 1.1rem;
+	font-family: Satoshi-medium;
+}
+.searchTerm:focus {
+	color: #00B4CC;
+}
+
+.searchButton {
+	width: 40px;
+	height: 40px;
+	border: 1px solid rgb(133, 231, 68);
+	background: rgb(133, 231, 68);
+	text-align: center;
+	color: #000000;
+	border-radius: 0 5px 5px 0;
+	cursor: pointer;
+	font-size: 20px;
+}
+
 .allsites {
 	padding: 3rem;
 }
@@ -1272,6 +1314,18 @@ iframe {
 	height: 100%;
 }
 
+.allsites .gallery .site .main-stuff{
+	display: flex;
+	background-color: #0b201b;
+	border-radius: 10px;
+	padding: 5px;
+	transition: all 300ms ease-in-out;
+}
+
+.allsites .gallery .site .main-stuff:hover{
+	background-color: #20443c;
+}
+
 .allsites .gallery .site .site-name {
 	color: rgb(255, 255, 255);
 	padding: 1rem;
@@ -1279,9 +1333,30 @@ iframe {
 	font-family: Satoshi-light;
 }
 
-.allsites .gallery .site .location-map {
-	width: 100%;
-	height: 300px;
+.allsites .gallery .site .menu {
+	width: 30%;
+	height: 100%;
+	
+}
+
+.allsites .gallery .site .menu .btn button{
+	width: 80%;
+	margin: 0.3rem;
+	border-radius: 10px;
+	padding: 5px;
+	border-width: 1px;
+	background-color: #0a1d18;
+	color: white;
+	font-family: Satoshi-light;
+	font-size: 1rem;
+	border-color: white;
+	transition: all 300ms ease-in-out;
+}
+
+.allsites .gallery .site .menu .btn button:hover{
+	background-color: rgb(133, 231, 68);
+	color: #000000;
+	font-weight: bold;
 }
 
 .allsites .gallery {
@@ -1304,8 +1379,13 @@ iframe {
 	border-radius: 10px;
 }
 
+
 @media screen and (max-width: 1000px) {
 	.allsites .gallery .site {
 		width: 100%;
 	}
 }
+
+
+/* site details page -------------------------------------------------------------------------------------*/
+

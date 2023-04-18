@@ -4,6 +4,7 @@
 
 <body>
 
+
     <div class="allsites">
         <?php
 
@@ -19,29 +20,38 @@
         $result = $conn->query($query);
 
         if ($result->num_rows > 0) { ?>
-            <h2>Our camping sites</h2>
+            <h2>Choose from our wide variety of sites</h2>
+
+            <div class="box">
+                <div class="search">
+                    <input type="text" class="searchTerm" placeholder="What are you looking for?">
+                    <button type="submit" class="searchButton">
+                        <i class="fa fa-search"></i>
+                    </button>
+                </div>
+            </div>
+
             <div class="gallery box">
                 <?php
                 while ($row = $result->fetch_assoc()) { ?>
                     <div class="site">
 
                         <h3 class="site-name"><?php echo $row['name'] ?></h3>
-                        <img src="./assets/images/campsites/<?php echo $row['image_url'] ?>" width="100%" height="70%" />
 
-                        <div class="location-map">
+                        <div class="main-stuff">
+                            <img src="../assets/images/campsites/<?php echo $row['image_url'] ?>" width="70%" height="70%" />
 
-                            <?php
-                            $location = $row['location'];
-                            list($latitude, $longitude) = explode(",", $location);
-                            $latitude = (float) $latitude;
-                            $longitude = (float) $longitude;
+                            <div class="menu">
 
-                            $src = "https://maps.google.com/maps?q=$latitude,$longitude&hl=en&z=14&amp;output=embed";
-                            ?>
+                                <div class="btn"><a href="/information/sitedetails.php?siteid=<?php echo $row['id'] ?>"><button>SEE DETAILS</button></a></div>
+                                <div class="btn"><a href="/information/reviews.php?siteid=<?php echo $row['id'] ?>"><button>REVIEWS</button></a></div>
+                                <div class="btn"><a href="/information/features.php?siteid=<?php echo $row['id'] ?>"><button>FEATURES</button></a></div>
+                                <div class="btn"><a href="/information/availability?siteid=<?php echo $row['id'] ?>"><button>SEE AVAILABILITY SLOTS</button></a></div>
+                                <div class="btn"><a href="/information/booking.php?siteid=<?php echo $row['id'] ?>"><button>BOOK NOW</button></a></div>
 
-                            <iframe width="100%" height="100%" frameborder="0" scrolling="yes" src=<?php echo $src; ?>>
-                            </iframe>
+                            </div>
                         </div>
+
                     </div>
             <?php
                 }
@@ -51,6 +61,5 @@
 
 </body>
 
-<?php include_once "../includes/footer.php" ?>
 
-</html>
+</html><?php include_once "../includes/footer.php" ?>
