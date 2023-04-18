@@ -6,13 +6,12 @@
 $siteid;
 if (isset($_GET['siteid'])) {
     $siteid = addslashes($_GET['siteid']);
-}else{
+} else {
     die("<h1>site id needed</h1>");
 }
 ?>
 
 <body>
-
 
     <div class="sitedetails">
 
@@ -24,22 +23,25 @@ if (isset($_GET['siteid'])) {
             $result = $conn->query($query);
 
             if ($result->num_rows > 0) {
-
-                
-             } else { ?>
+                $row = $result->fetch_assoc();
+            ?>
+                <h1><?php echo $row['name'] ?></h1>
+                <img src="/assets/images/campsites/<?php echo $row['image_url'] ?>" width="100%" />
+            <?php
+            } else { ?>
 
                 <h1>Campsite with this id not found</h1>
 
-           <?php }
-            
+            <?php }
+
             ?>
         </div>
 
         <div class="right">
-
+                <p><?php echo $row['description']?></p>
         </div>
 
-        </div>
+    </div>
 
 
 </body>

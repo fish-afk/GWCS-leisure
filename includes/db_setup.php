@@ -83,46 +83,6 @@ function CREATE_TABLES($conn)
             die();
         }
 
-        $sql = "CREATE TABLE IF NOT EXISTS `PitchBookings`(
-                    `id` BIGINT NOT NULL PRIMARY KEY AUTO_INCREMENT,
-                    `Pitch_id` BIGINT NOT NULL,
-                    `username` VARCHAR(255) NOT NULL,
-                    `checkIn` DATETIME NOT NULL,
-                    `checkOut` DATETIME NOT NULL,
-                    `bookingDate` DATE NOT NULL
-                )";
-
-        if ($conn->query($sql) === false) {
-            echo "<h3>error initiating database properly</h3>";
-            die();
-        }
-
-
-        $sql = "CREATE TABLE IF NOT EXISTS `SwimmingBookings`(
-                    `id` BIGINT NOT NULL PRIMARY KEY AUTO_INCREMENT,
-                    `swimming_session_id` BIGINT NOT NULL,
-                    `username` VARCHAR(255) NOT NULL,
-                    `bookingDate` DATE NOT NULL
-                )";
-
-        if ($conn->query($sql) === false) {
-            echo "<h3>error initiating database properly</h3>";
-            die();
-        }
-
-
-        $sql = "CREATE TABLE IF NOT EXISTS `LocalAttractionBookings`(
-                    `id` BIGINT NOT NULL PRIMARY KEY AUTO_INCREMENT,
-                    `attraction_id` BIGINT NOT NULL,
-                    `username` VARCHAR(255) NOT NULL,
-                    `bookingDate` DATE NOT NULL
-        )";
-
-        if ($conn->query($sql) === false) {
-            echo "<h3>error initiating database properly</h3>";
-            die();
-        }
-
 
         $sql = "CREATE TABLE IF NOT EXISTS `CampingSites`(
                     `id` BIGINT NOT NULL PRIMARY KEY AUTO_INCREMENT,
@@ -191,12 +151,6 @@ function CREATE_TABLES($conn)
 function SETUP_FOREIGN_KEYS($conn)
 {
 
-    $sql = "ALTER TABLE `SwimmingBookings` ADD CONSTRAINT `swimmingbookings_username_foreign` FOREIGN KEY(`username`) REFERENCES `Users`(`username`);";
-
-    if ($conn->query($sql) === false) {
-        echo "<h3>error initiating database properly</h3>";
-        die();
-    }
     $sql = "ALTER TABLE `Pitches` ADD CONSTRAINT `pitches_site_id_foreign` FOREIGN KEY(`site_id`) REFERENCES `CampingSites`(`id`);";
 
     if ($conn->query($sql) === false) {
@@ -209,30 +163,15 @@ function SETUP_FOREIGN_KEYS($conn)
         echo "<h3>error initiating database properly</h3>";
         die();
     }
-    $sql = "ALTER TABLE `PitchBookings` ADD CONSTRAINT `pitchbookings_username_foreign` FOREIGN KEY(`username`) REFERENCES `Users`(`username`);";
-
-    if ($conn->query($sql) === false) {
-        echo "<h3>error initiating database properly</h3>";
-        die();
-    }
+    
     $sql = "ALTER TABLE `Reviews` ADD CONSTRAINT `reviews_site_id_foreign` FOREIGN KEY(`site_id`) REFERENCES `CampingSites`(`id`);";
 
     if ($conn->query($sql) === false) {
         echo "<h3>error initiating database properly</h3>";
         die();
     }
-    $sql = "ALTER TABLE `PitchBookings` ADD CONSTRAINT `pitchbookings_pitch_id_foreign` FOREIGN KEY(`Pitch_id`) REFERENCES `Pitches`(`id`);";
-
-    if ($conn->query($sql) === false) {
-        echo "<h3>error initiating database properly</h3>";
-        die();
-    }
-    $sql = "ALTER TABLE `SwimmingBookings` ADD CONSTRAINT `swimmingbookings_swimming_session_id_foreign` FOREIGN KEY(`swimming_session_id`) REFERENCES `SwimmingSessions`(`id`);";
-
-    if ($conn->query($sql) === false) {
-        echo "<h3>error initiating database properly</h3>";
-        die();
-    }
+    
+    
     $sql = "ALTER TABLE `SwimmingSessions` ADD CONSTRAINT `swimmingsessions_site_id_foreign` FOREIGN KEY(`site_id`) REFERENCES `CampingSites`(`id`);";
 
     if ($conn->query($sql) === false) {
@@ -260,19 +199,7 @@ function SETUP_FOREIGN_KEYS($conn)
         die();
     }
 
-    $sql = "ALTER TABLE `LocalAttractionBookings` ADD CONSTRAINT `attraction_foreign` FOREIGN KEY(`attraction_id`) REFERENCES `LocalAttractions`(`id`)";
-
-    if ($conn->query($sql) === false) {
-        echo "<h3>error initiating database properly</h3>";
-        die();
-    }
-
-    $sql = "ALTER TABLE `LocalAttractionBookings` ADD CONSTRAINT `username_foreign_key` FOREIGN KEY(`username`) REFERENCES `Users`(`username`)";
-
-    if ($conn->query($sql) === false) {
-        echo "<h3>error initiating database properly</h3>";
-        die();
-    }
+    
 }
 
 

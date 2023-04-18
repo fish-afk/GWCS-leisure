@@ -82,8 +82,8 @@ if (
                     Edit personal information
                 </button>
 
-                <button id='see-booking' class="optbtn">
-                    See my bookings.
+                <button id='change-password' class="optbtn">
+                    Change Password
                 </button>
             </div>
 
@@ -105,7 +105,7 @@ if (
                     </form>
                 </div>
 
-                <div id="booking-viewer">
+                <div id="change-pass">
 
                 </div>
 
@@ -122,7 +122,7 @@ if (
         // mode toggler
 
         const btn1 = document.getElementById("edit-personal");
-        const btn2 = document.getElementById("see-booking");
+        const btn2 = document.getElementById("change-password");
 
         btn1.style.backgroundColor = "#000";
         btn1.style.boxShadow = "3px 3px 8px #b1b1b1, -3px -3px 8px #ffffff";
@@ -131,7 +131,7 @@ if (
 
         btn1.addEventListener('click', () => {
             document.getElementById('info-editor').style.display = "block";
-            document.getElementById('booking-viewer').style.display = "none";
+            document.getElementById('change-pass').style.display = "none";
 
             btn1.style.backgroundColor = "#000";
             btn1.style.boxShadow = "3px 3px 8px #b1b1b1, -3px -3px 8px #ffffff";
@@ -141,7 +141,7 @@ if (
 
         btn2.addEventListener('click', () => {
             document.getElementById('info-editor').style.display = "none";
-            document.getElementById('booking-viewer').style.display = "block";
+            document.getElementById('change-pass').style.display = "block";
 
             btn2.style.backgroundColor = "#000";
             btn2.style.boxShadow = "3px 3px 8px #b1b1b1, -3px -3px 8px #ffffff";

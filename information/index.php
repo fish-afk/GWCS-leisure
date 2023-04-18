@@ -20,7 +20,7 @@
         $result = $conn->query($query);
 
         if ($result->num_rows > 0) { ?>
-            <h2>Choose from our wide variety of sites</h2>
+            <h2>Discover the world</h2>
 
             <div class="box">
                 <div class="search">
@@ -43,11 +43,11 @@
 
                             <div class="menu">
 
-                                <div class="btn"><a href="/information/sitedetails.php?siteid=<?php echo $row['id'] ?>"><button>SEE DETAILS</button></a></div>
+                                <div class="btn"><a href="/information/sitedetails.php?siteid=<?php echo $row['id'] ?>"><button>DETAILS</button></a></div>
                                 <div class="btn"><a href="/information/reviews.php?siteid=<?php echo $row['id'] ?>"><button>REVIEWS</button></a></div>
                                 <div class="btn"><a href="/information/features.php?siteid=<?php echo $row['id'] ?>"><button>FEATURES</button></a></div>
-                                <div class="btn"><a href="/information/availability?siteid=<?php echo $row['id'] ?>"><button>SEE AVAILABILITY SLOTS</button></a></div>
-                                <div class="btn"><a href="/information/booking.php?siteid=<?php echo $row['id'] ?>"><button>BOOK NOW</button></a></div>
+                                <div class="btn"><a href="/information/availability?siteid=<?php echo $row['id'] ?>"><button>AVAILABILITY SLOTS</button></a></div>
+                                <div class="btn"><a href="/information/localattractions.php?siteid=<?php echo $row['id'] ?>"><button>LOCAL ATTRACTIONS</button></a></div>
 
                             </div>
                         </div>

@@ -32,6 +32,7 @@ $dsn = 'mysql:host=' . $server . ';dbname=' . $dbname;
 
 $pdo = new PDO($dsn, $username, $password);
 
+
 // persistent check table to see if tables are already created.
 $DB_CREATED = "CREATE TABLE IF NOT EXISTS `Done` (
         `isdone` BIGINT NOT NULL DEFAULT 0
@@ -111,46 +112,6 @@ function CREATE_TABLES($conn)
             die();
         }
 
-        $sql = "CREATE TABLE IF NOT EXISTS `PitchBookings`(
-                    `id` BIGINT NOT NULL PRIMARY KEY AUTO_INCREMENT,
-                    `Pitch_id` BIGINT NOT NULL,
-                    `username` VARCHAR(255) NOT NULL,
-                    `checkIn` DATETIME NOT NULL,
-                    `checkOut` DATETIME NOT NULL,
-                    `bookingDate` DATE NOT NULL
-                )";
-
-        if ($conn->query($sql) === false) {
-            echo "<h3>error initiating database properly</h3>";
-            die();
-        }
-
-
-        $sql = "CREATE TABLE IF NOT EXISTS `SwimmingBookings`(
-                    `id` BIGINT NOT NULL PRIMARY KEY AUTO_INCREMENT,
-                    `swimming_session_id` BIGINT NOT NULL,
-                    `username` VARCHAR(255) NOT NULL,
-                    `bookingDate` DATE NOT NULL
-                )";
-
-        if ($conn->query($sql) === false) {
-            echo "<h3>error initiating database properly</h3>";
-            die();
-        }
-
-
-        $sql = "CREATE TABLE IF NOT EXISTS `LocalAttractionBookings`(
-                    `id` BIGINT NOT NULL PRIMARY KEY AUTO_INCREMENT,
-                    `attraction_id` BIGINT NOT NULL,
-                    `username` VARCHAR(255) NOT NULL,
-                    `bookingDate` DATE NOT NULL
-        )";
-
-        if ($conn->query($sql) === false) {
-            echo "<h3>error initiating database properly</h3>";
-            die();
-        }
-
 
         $sql = "CREATE TABLE IF NOT EXISTS `CampingSites`(
                     `id` BIGINT NOT NULL PRIMARY KEY AUTO_INCREMENT,
@@ -219,12 +180,6 @@ function CREATE_TABLES($conn)
 function SETUP_FOREIGN_KEYS($conn)
 {
 
-    $sql = "ALTER TABLE `SwimmingBookings` ADD CONSTRAINT `swimmingbookings_username_foreign` FOREIGN KEY(`username`) REFERENCES `Users`(`username`);";
-
-    if ($conn->query($sql) === false) {
-        echo "<h3>error initiating database properly</h3>";
-        die();
-    }
     $sql = "ALTER TABLE `Pitches` ADD CONSTRAINT `pitches_site_id_foreign` FOREIGN KEY(`site_id`) REFERENCES `CampingSites`(`id`);";
 
     if ($conn->query($sql) === false) {
@@ -237,30 +192,15 @@ function SETUP_FOREIGN_KEYS($conn)
         echo "<h3>error initiating database properly</h3>";
         die();
     }
-    $sql = "ALTER TABLE `PitchBookings` ADD CONSTRAINT `pitchbookings_username_foreign` FOREIGN KEY(`username`) REFERENCES `Users`(`username`);";
 
-    if ($conn->query($sql) === false) {
-        echo "<h3>error initiating database properly</h3>";
-        die();
-    }
     $sql = "ALTER TABLE `Reviews` ADD CONSTRAINT `reviews_site_id_foreign` FOREIGN KEY(`site_id`) REFERENCES `CampingSites`(`id`);";
 
     if ($conn->query($sql) === false) {
         echo "<h3>error initiating database properly</h3>";
         die();
     }
-    $sql = "ALTER TABLE `PitchBookings` ADD CONSTRAINT `pitchbookings_pitch_id_foreign` FOREIGN KEY(`Pitch_id`) REFERENCES `Pitches`(`id`);";
 
-    if ($conn->query($sql) === false) {
-        echo "<h3>error initiating database properly</h3>";
-        die();
-    }
-    $sql = "ALTER TABLE `SwimmingBookings` ADD CONSTRAINT `swimmingbookings_swimming_session_id_foreign` FOREIGN KEY(`swimming_session_id`) REFERENCES `SwimmingSessions`(`id`);";
 
-    if ($conn->query($sql) === false) {
-        echo "<h3>error initiating database properly</h3>";
-        die();
-    }
     $sql = "ALTER TABLE `SwimmingSessions` ADD CONSTRAINT `swimmingsessions_site_id_foreign` FOREIGN KEY(`site_id`) REFERENCES `CampingSites`(`id`);";
 
     if ($conn->query($sql) === false) {
@@ -282,20 +222,6 @@ function SETUP_FOREIGN_KEYS($conn)
 
     $sql = "ALTER TABLE
         `Pitches` ADD CONSTRAINT `pitch_type_foreign` FOREIGN KEY(`Pitch_Type`) REFERENCES `PitchTypes`(`id`)";
-
-    if ($conn->query($sql) === false) {
-        echo "<h3>error initiating database properly</h3>";
-        die();
-    }
-
-    $sql = "ALTER TABLE `LocalAttractionBookings` ADD CONSTRAINT `attraction_foreign` FOREIGN KEY(`attraction_id`) REFERENCES `LocalAttractions`(`id`)";
-
-    if ($conn->query($sql) === false) {
-        echo "<h3>error initiating database properly</h3>";
-        die();
-    }
-
-    $sql = "ALTER TABLE `LocalAttractionBookings` ADD CONSTRAINT `username_foreign_key` FOREIGN KEY(`username`) REFERENCES `Users`(`username`)";
 
     if ($conn->query($sql) === false) {
         echo "<h3>error initiating database properly</h3>";
@@ -353,11 +279,11 @@ function INSERT_INITIAL_DATA($conn)
             ('Kruger National Park', '-24.9413,31.2275', 'Kruger National Park is one of the largest game reserves in Africa, home to the Big Five (lion, leopard, rhinoceros, elephant, and Cape buffalo) as well as many other species of wildlife. The park offers a range of camping options, from basic campsites to luxury tents and lodges.', 'kruger.jpg', 1),
             ('Lake Malawi National Park', '-12.0633,34.2625', 'Lake Malawi National Park is a UNESCO World Heritage Site that encompasses the southern end of Lake Malawi, the third-largest lake in Africa. The park offers camping facilities on the shore of the lake, where visitors can enjoy swimming, snorkeling, and fishing in the crystal-clear waters.', 'lake_malawi.jpg', 0),
             ('Thingvellir National Park', '64.2570,-21.1118', 'Thingvellir National Park is a UNESCO World Heritage Site located in southwestern Iceland, known for its dramatic landscapes of volcanic rock formations, deep fissures, and crystal-clear waters. The park offers camping facilities with stunning views of the surrounding mountains and valleys.', 'thingvellir.jpg', 1),
-            ('South Luangwa National Park', '-13.1369,31.8313', 'South Luangwa National Park is a world-renowned wildlife sanctuary in eastern Zambia, known for its abundant wildlife and stunning natural beauty. The park offers camping facilities in a variety of settings, from remote bush camps to more developed sites with amenities like hot showers and flush toilets.', 'south_luawngwa.jpg', 0),
+            ('South Luangwa National Park', '-13.1369,31.8313', 'South Luangwa National Park is a world-renowned wildlife sanctuary in eastern Zambia, known for its abundant wildlife and stunning natural beauty. The park offers camping facilities in a variety of settings, from remote bush camps to more developed sites with amenities like hot showers and flush toilets.', 'south_luangwa.jpg', 0),
             ('Skaftafell National Park', '64.0159,-16.9819', 'Skaftafell National Park is a rugged wilderness area in southeastern Iceland, known for its glaciers, waterfalls, and scenic hiking trails. The park offers camping facilities with easy access to the park\'s many attractions.', 'skaftafell.jpg', 0),
-            ('Tsitsikamma National Park', '-33.9630,23.8550', 'Tsitsikamma National Park is a coastal reserve in South Africa, known for its rugged coastline, indigenous forests, and dramatic landscapes. The park offers camping facilities with stunning views of the ocean and easy access to the park\'s many hiking trails.', 'tsitsikamma.jpg', 0),
+            ('Tsitsikamma National Park', '-33.9630,23.8550', 'Tsitsikamma National Park is a coastal reserve in South Africa, known for its rugged coastline, indigenous forests, and dramatic landscapes. The park offers camping facilities with stunning views of the ocean and easy access to the park\'s many hiking trails.', 'tsitsikama.jpg', 0),
             ('Blue Lagoon', '63.8816,-22.4537', 'The Blue Lagoon is a geothermal spa located in southwestern Iceland, famous for its milky-blue waters and therapeutic properties. The lagoon offers camping facilities with easy access to the spa and the surrounding area.', 'blue_lagoon.jpg', 1),
-            ('Okavango Delta', '-19.3074,22.9134', 'The Okavango Delta is a vast wetland in northern Botswana, home to a diverse array of wildlife and a popular destination for safari tours. The delta offers camping facilities in remote areas, where visitors can experience the natural beauty of the region up close.', 'okavango-delta.jpg', 0),
+            ('Okavango Delta', '-19.3074,22.9134', 'The Okavango Delta is a vast wetland in northern Botswana, home to a diverse array of wildlife and a popular destination for safari tours. The delta offers camping facilities in remote areas, where visitors can experience the natural beauty of the region up close.', 'okavango_delta.jpg', 0),
             ('Victoria Falls', '-17.9245,25.8569', 'Victoria Falls is a natural wonder of the world located on the border of Zambia and Zimbabwe, known for its breathtaking views and powerful waterfalls. The area offers camping facilities with easy access to the falls and a range of adventure activities like bungee jumping and whitewater rafting.', 'victoria_falls.jpg', 1),
             ('Landmannalaugar', '63.9833,-19.0667', 'Landmannalaugar is a popular hiking and camping destination in the highlands of Iceland, known for its stunning landscapes of colorful mountains, hot springs, and rugged lava fields. The area offers camping facilities with easy access to the hiking trails and the natural wonders of the region.', 'landmannalaugar.jpg', 0),
             ('Table Mountain National Park', '-34.1070,18.3677', 'Table Mountain National Park is a scenic reserve in South Africa, known for its stunning views of Cape Town, its rugged coastline, and its unique flora and fauna. The park offers camping facilities in a range of settings, from coastal campsites to more remote wilderness camps.', 'table_mountain.jpg', 0)

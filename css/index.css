@@ -1282,7 +1282,7 @@ iframe {
 	font-family: Satoshi-medium;
 }
 .searchTerm:focus {
-	color: #00B4CC;
+	color: #000000;
 }
 
 .searchButton {
@@ -1389,3 +1389,24 @@ iframe {
 
 
 /* site details page -------------------------------------------------------------------------------------*/
+
+
+.sitedetails{
+	display: flex;
+	width: 100%;
+}
+
+.sitedetails .left, .right{
+	width: 50%;
+	padding: 1rem;
+}
+
+.sitedetails .left h1{
+	padding: 1rem;
+	color: rgb(133, 231, 68);
+}
+
+.sitedetails .right p{
+	padding-top: 4rem;
+	color: white;
+}

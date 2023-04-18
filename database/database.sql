@@ -36,20 +36,6 @@ CREATE TABLE IF NOT EXISTS `done` (
   `isdone` bigint NOT NULL DEFAULT '0'
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
 
--- Data exporting was unselected.
-
--- Dumping structure for table gwcs_shihab_mirza.localattractionbookings
-CREATE TABLE IF NOT EXISTS `localattractionbookings` (
-  `id` bigint NOT NULL AUTO_INCREMENT,
-  `attraction_id` bigint NOT NULL,
-  `username` varchar(255) NOT NULL,
-  `bookingDate` date NOT NULL,
-  PRIMARY KEY (`id`),
-  KEY `attraction_foreign` (`attraction_id`),
-  KEY `username_foreign_key` (`username`),
-  CONSTRAINT `attraction_foreign` FOREIGN KEY (`attraction_id`) REFERENCES `localattractions` (`id`),
-  CONSTRAINT `username_foreign_key` FOREIGN KEY (`username`) REFERENCES `users` (`username`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
 
 -- Data exporting was unselected.
 
@@ -91,21 +77,6 @@ CREATE TABLE IF NOT EXISTS `messages` (
 
 -- Data exporting was unselected.
 
--- Dumping structure for table gwcs_shihab_mirza.pitchbookings
-CREATE TABLE IF NOT EXISTS `pitchbookings` (
-  `id` bigint NOT NULL AUTO_INCREMENT,
-  `Pitch_id` bigint NOT NULL,
-  `username` varchar(255) NOT NULL,
-  `checkIn` datetime NOT NULL,
-  `checkOut` datetime NOT NULL,
-  `bookingDate` date NOT NULL,
-  PRIMARY KEY (`id`),
-  KEY `pitchbookings_username_foreign` (`username`),
-  KEY `pitchbookings_pitch_id_foreign` (`Pitch_id`),
-  CONSTRAINT `pitchbookings_pitch_id_foreign` FOREIGN KEY (`Pitch_id`) REFERENCES `pitches` (`id`),
-  CONSTRAINT `pitchbookings_username_foreign` FOREIGN KEY (`username`) REFERENCES `users` (`username`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
-
 -- Data exporting was unselected.
 
 -- Dumping structure for table gwcs_shihab_mirza.pitches
@@ -146,21 +117,6 @@ CREATE TABLE IF NOT EXISTS `reviews` (
   KEY `reviews_site_id_foreign` (`site_id`),
   CONSTRAINT `reviews_site_id_foreign` FOREIGN KEY (`site_id`) REFERENCES `campingsites` (`id`),
   CONSTRAINT `reviews_username_foreign` FOREIGN KEY (`username`) REFERENCES `users` (`username`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
-
--- Data exporting was unselected.
-
--- Dumping structure for table gwcs_shihab_mirza.swimmingbookings
-CREATE TABLE IF NOT EXISTS `swimmingbookings` (
-  `id` bigint NOT NULL AUTO_INCREMENT,
-  `swimming_session_id` bigint NOT NULL,
-  `username` varchar(255) NOT NULL,
-  `bookingDate` date NOT NULL,
-  PRIMARY KEY (`id`),
-  KEY `swimmingbookings_username_foreign` (`username`),
-  KEY `swimmingbookings_swimming_session_id_foreign` (`swimming_session_id`),
-  CONSTRAINT `swimmingbookings_swimming_session_id_foreign` FOREIGN KEY (`swimming_session_id`) REFERENCES `swimmingsessions` (`id`),
-  CONSTRAINT `swimmingbookings_username_foreign` FOREIGN KEY (`username`) REFERENCES `users` (`username`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
 
 -- Data exporting was unselected.
