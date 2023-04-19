@@ -9,7 +9,7 @@ if (isset($_GET['siteid']) && isset($_GET['sitename'])) {
     $siteid = addslashes($_GET['siteid']);
     $sitename = addslashes($_GET['sitename']);
 } else {
-    die("<h1>site id needed</h1>");
+    die("<h1>site id and name needed</h1>");
 }
 ?>
 

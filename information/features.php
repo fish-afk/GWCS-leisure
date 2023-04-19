@@ -71,9 +71,9 @@ if (isset($_GET['siteid'])) {
             </ul>
 
             <div class="btngroup">
-                <a href="/information/sitereviews.php?siteid=<?php echo $row['id'] ?>"> <button class="guide-btn">See reviews </button></a>
-                <a href="/information/localattractions.php?siteid=<?php echo $row['id'] ?>"> <button class="guide-btn">See local attractions</button></a>
-                <a href="/information/availability.php?siteid=<?php echo $row['id'] ?>"> <button class="guide-btn">Check availability </button></a>
+                <a href="/information/sitereviews.php?siteid=<?php echo $row['id'] ?>&sitename=<?php echo $row['name']?>"> <button class="guide-btn">See reviews </button></a>
+                <a href="/information/localattractions.php?siteid=<?php echo $row['id'] ?>&sitename=<?php echo $row['name']?>"> <button class="guide-btn">See local attractions</button></a>
+                <a href="/information/availability.php?siteid=<?php echo $row['id'] ?>&sitename=<?php echo $row['name']?>"> <button class="guide-btn">Check availability </button></a>
             </div>
         </div>
 
