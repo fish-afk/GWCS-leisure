@@ -81,7 +81,8 @@
 
                     <script>
                         function setcookie() {
-                            const id = '<?php echo $row["type_name"]; ?>';
+                            const id = '<?php echo $row["id"]; ?>';
+                            
                             document.cookie = "Selectedtype=" + id;
                         }
                     </script>
@@ -186,7 +187,7 @@
     <div class="cursor"></div>
     <script>
 
-        const booknowbtn = document.querySelector('.intro-btn').addEventListener('click', () => {
+        const showbtn = document.querySelector('.intro-btn').addEventListener('click', () => {
             window.location.href = '/information/index.php';
         })
 

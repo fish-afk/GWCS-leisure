@@ -44,7 +44,7 @@
                             <div class="menu">
 
                                 <div class="btn"><a href="/information/features.php?siteid=<?php echo $row['id'] ?>"><button>DETAILS & FEATURES</button></a></div>
-                                <div class="btn"><a href="/information/reviews.php?siteid=<?php echo $row['id'] ?>"> <button>REVIEWS</button></a></div>
+                                <div class="btn"><a href="/information/sitereviews.php?siteid=<?php echo $row['id'] ?>"> <button>REVIEWS</button></a></div>
                                 <div class="btn"><a href="/information/availability?siteid=<?php echo $row['id'] ?>"><button>AVAILABILITY</button></a></div>
                                 <div class="btn"><a href="/information/localattractions.php?siteid=<?php echo $row['id'] ?>"><button>LOCAL ATTRACTIONS</button></a></div>
 

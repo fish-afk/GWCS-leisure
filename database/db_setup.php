@@ -32,7 +32,6 @@ $dsn = 'mysql:host=' . $server . ';dbname=' . $dbname;
 
 $pdo = new PDO($dsn, $username, $password);
 
-
 // persistent check table to see if tables are already created.
 $DB_CREATED = "CREATE TABLE IF NOT EXISTS `Done` (
         `isdone` BIGINT NOT NULL DEFAULT 0
@@ -100,10 +99,9 @@ function CREATE_TABLES($conn)
         $sql = "CREATE TABLE IF NOT EXISTS `LocalAttractions`(
                 `id` BIGINT NOT NULL PRIMARY KEY AUTO_INCREMENT,
                 `attraction_name` VARCHAR(255) NOT NULL,
-                `description` VARCHAR(255) NOT NULL,
+                `description` TEXT NOT NULL,
                 `milesFromSite` DOUBLE NOT NULL,
                 `site_id` BIGINT NOT NULL,
-                `image_url` VARCHAR(255) NOT NULL,
                 `price` DOUBLE NOT NULL
                 )";
 
@@ -345,24 +343,34 @@ function INSERT_INITIAL_DATA($conn)
                 (5, '07:30:00', '08:30:00', 8.00)
                 ";
 
+        if ($conn->query($sql) === false) {
+            echo "Error inserting pitches";
+        }
+
         // local attractions
 
 
-        $sql = "INSERT INTO LocalAttractions(attraction_name, description, milesFromSite, site_id, image_url, price) VALUES ('Bourkes Luck Potholes', 'A scenic geological formation on the Blyde River', 20.5, 1, 'https://example.com/bourkes-luck-potholes.jpg', 12.50),
-                ('Gods Window', 'A viewpoint located in Mpumalanga, South Africa', 15.2, 1, 'https://example.com/gods-window.jpg', 10.00),
-                ('Kande Horse Trails', 'Horse riding trails through the beautiful Malawian countryside', 5.0, 2, 'https://example.com/kande-horse-trails.jpg', 25.00),
-                ('Lake Malawi Museum', 'A museum showcasing the history and culture of the Lake Malawi region', 2.3, 2, 'https://example.com/lake-malawi-museum.jpg', 8.00),
-                ('Silfra Fissure', 'A popular diving and snorkeling spot in Iceland', 2.0, 3, 'https://example.com/silfra-fissure.jpg', 50.00),
-                ('Thingvellir Church', 'A historic church located in Thingvellir National Park, Iceland', 1.5, 3, 'https://example.com/thingvellir-church.jpg', 5.00),
-                ('Victoria Falls Bridge', 'A historic bridge offering stunning views of Victoria Falls', 0.3, 9, 'https://example.com/victoria-falls-bridge.jpg', 15.00),
-                ('Bungee Jumping in Victoria Falls', 'An adrenaline-filled experience jumping off a bridge over Victoria Falls', 0.3, 9, 'https://example.com/victoria-falls-bungee.jpg', 75.00),
-                ('Robberg Nature Reserve', 'A scenic coastal nature reserve in South Africa', 2.5, 10, 'https://example.com/robberg-nature-reserve.jpg', 7.00),
-                ('Cango Caves', 'A network of limestone caves in the Western Cape, South Africa', 15.0, 11, 'https://example.com/cango-caves.jpg', 20.00),
-                ('Kirstenbosch National Botanical Garden', 'A beautiful botanical garden located on the slopes of Table Mountain', 5.0, 11, 'https://example.com/kirstenbosch-garden.jpg', 12.00),
-                ('Lions Head Hike', 'A popular hike offering stunning views of Cape Town', 3.0, 11, 'https://example.com/lions-head-hike.jpg', 5.00),
-                ('Aurora Borealis Observatory', 'An observatory offering guided tours and stunning views of the Northern Lights', 5.0, 5, 'https://example.com/aurora-borealis-observatory.jpg', 30.00),
-                ('Skaftafell Glacier Hike', 'A guided hike on a glacier in Skaftafell National Park, Iceland', 1.0, 5, 'https://example.com/skaftafell-glacier.jpg', 75.00),
-                ('Wildlife Photography Tour in South Luangwa National Park', 'A guided photography tour of the wildlife in South Luangwa National Park', 2.5, 4, 'https://example.com/luangwa-wildlife-tour.jpg', 40.00)";
+        $sql = "INSERT INTO LocalAttractions(attraction_name, description, milesFromSite, site_id, price) VALUES
+                ('Bourkes Luck Potholes', 'Bourkes Luck Potholes is a stunning geological formation situated on the Blyde River Canyon in South Africa. The potholes were formed over millions of years by the action of swirling water, creating a unique and beautiful landscape. Visitors can take a walk through the potholes and enjoy the beautiful scenery, with plenty of photo opportunities along the way. Admission to Bourkes Luck Potholes is affordable, making it a great attraction for families and travelers on a budget.', 20.5, 1, 12.50),
+                ('Gods Window', 'Gods Window is a beautiful viewpoint located in Mpumalanga, South Africa. From the top of the viewpoint, visitors can enjoy stunning views of the surrounding landscape, including the Blyde River Canyon and the Lowveld. The site is located at an altitude of over 2,000 meters, making it a great spot for birdwatching and enjoying the fresh mountain air. Visitors can also take guided tours to learn more about the history and culture of the area. Admission to Gods Window is affordable, making it an accessible attraction for all travelers.', 15.2, 1, 10.00),
+                ('Kande Horse Trails', 'Explore the beautiful Malawian countryside with Kande Horse Trails. This guided horseback riding tour takes visitors on a journey through the stunning landscapes and villages of Malawi. Along the way, visitors can enjoy beautiful views of Lake Malawi, lush forests, and rolling hills. The tour is suitable for riders of all skill levels, making it a great activity for families and groups. Admission to Kande Horse Trails is affordable, making it an accessible attraction for all visitors.', 5.0, 2, 25.00),
+                ('Lake Malawi Museum', 'Learn about the rich history and culture of the Lake Malawi region with a visit to the Lake Malawi Museum. The museum features exhibits on the geology, ecology, and human history of the region, with a particular focus on the diverse fish species found in the lake. Visitors can explore the exhibits at their own pace and learn about the importance of Lake Malawi to the local communities. Admission to the Lake Malawi Museum is affordable, making it an accessible attraction for all visitors.', 2.3, 2, 8.00),
+                ('Silfra Fissure', 'Experience the beauty and excitement of diving and snorkeling in Silfra Fissure, a stunning underwater fissure in Iceland. Silfra is known for its crystal-clear waters and unique underwater landscape, which includes dramatic rock formations and colorful marine life. Visitors can take guided tours to explore the fissure and learn about the geology and ecology of the area. The tours are suitable for divers and snorkelers of all skill levels, making it a great activity for families and groups. Admission to Silfra Fissure is affordable, making it an accessible attraction for all visitors.', 2.0, 3, 50.00),
+                ('Thingvellir Church', 'Experience the rich history and culture of Iceland with a visit to Thingvellir Church. Located in Thingvellir National Park, the church is one of the oldest and most significant buildings in the country. It was originally built in the 11th century and has been restored several times over the years. The church is a popular destination for tourists and locals alike, and offers a peaceful and serene atmosphere for visitors to enjoy.', 1.5, 3, 5.00),
+                ('Victoria Falls Bridge', 'The Victoria Falls Bridge is an iconic landmark located in Zimbabwe, offering stunning views of the majestic Victoria Falls. Built in 1905, the bridge was designed by renowned engineer Sir Ralph Freeman, and is considered a masterpiece of engineering. Visitors can take a walk along the bridge and enjoy breathtaking views of the Falls and the Zambezi River below. With its rich history and breathtaking scenery, the Victoria Falls Bridge is a must-see attraction for anyone visiting the region.', 0.3, 9, 15.00),
+                ('Bungee Jumping in Victoria Falls', 'For the ultimate adrenaline rush, try bungee jumping off the Victoria Falls Bridge in Zimbabwe. With a height of 111 meters, the jump offers a thrilling and unforgettable experience, as you plummet towards the Zambezi River below. The jump is considered one of the most spectacular in the world, and is a popular activity for thrill-seekers from around the globe. Whether youre an experienced bungee jumper or a first-timer, this is an experience you wont forget.', 0.3, 9, 75.00),
+                ('Robberg Nature Reserve', 'Explore the natural beauty of the South African coastline with a visit to Robberg Nature Reserve. Located near Plettenberg Bay, the reserve offers scenic hiking trails with stunning views of the ocean and surrounding landscape. Visitors can spot a variety of wildlife, including seals, dolphins, and birds, and can even take a dip in the ocean at one of the reserves many beaches. With its rugged beauty and diverse ecosystem, Robberg Nature Reserve is a must-visit destination for nature lovers.', 2.5, 10, 7.00),
+                ('Cango Caves', 'Discover the otherworldly beauty of the Cango Caves, a network of limestone caves located in the Western Cape of South Africa. The caves were formed millions of years ago and offer a unique and fascinating glimpse into the regions geological history. Visitors can take guided tours of the caves and marvel at their stunning stalactites and stalagmites. With its otherworldly beauty and fascinating history, the Cango Caves are a must-see attraction for anyone visiting the region.', 15.0, 11,  20.00),
+                ('Kirstenbosch National Botanical Garden', 'Located on the eastern slopes of Table Mountain, Kirstenbosch National Botanical Garden is a stunning collection of indigenous South African flora. Visitors can explore the diverse gardens and landscapes, take in the views of the city and surrounding mountains, and enjoy events and concerts held in the garden.', 5.0, 11, 12.00),
+                ('Lions Head Hike', 'One of the most popular hiking trails in Cape Town, the Lions Head Hike offers breathtaking views of the city, the Atlantic Ocean, and Table Mountain. The trail is moderate in difficulty and takes about two hours to complete, including time to enjoy the views from the summit.', 3.0, 11, 5.00),
+                ('Aurora Borealis Observatory', 'Located in the heart of Iceland, the Aurora Borealis Observatory is a unique and breathtaking destination for stargazing enthusiasts. Visitors can take guided tours and learn about the Northern Lights and other astronomical phenomena, while enjoying stunning views of the night sky.', 5.0, 5, 30.00),
+                ('Skaftafell Glacier Hike', 'Explore the stunning beauty of Iceland with a guided hike on the Skaftafell Glacier, located in Skaftafell National Park. The hike takes visitors through an otherworldly landscape of ice formations and volcanic terrain, while providing unparalleled views of the surrounding mountains and valleys.', 1.0, 5, 75.00),
+                ('Wildlife Photography Tour in South Luangwa National Park', 'Embark on a guided photography tour of the diverse and abundant wildlife of South Luangwa National Park. Visitors will have the opportunity to capture stunning images of elephants, lions, leopards, giraffes, and other wildlife, while learning about the ecology and conservation efforts of the park.', 2.5, 4, 40.00)";
+
+
+        if ($conn->query($sql) === false) {
+            echo "Error inserting pitches";
+        }
     }
 }
 

@@ -25,7 +25,7 @@
 
             while ($row = $result->fetch_assoc()) {
             ?>
-                <div class="pitchtype">
+                <div class="pitchtype" id="<?php echo $row['id'] ?>">
 
                     <div class="img">
                         <h2><?php echo $row['type_name'] ?></h2>
@@ -40,6 +40,29 @@
         </div>
 
     </div>
+
+    <script>
+        let thecookie;
+
+        var cookies = document.cookie.split(';');
+        for (var i = 0; i < cookies.length; i++) {
+            var cookie = cookies[i].trim();
+            if (cookie.startsWith("Selectedtype=")) {
+                var value = cookie.substring("Selectedtype=".length, cookie.length);
+                thecookie = value;
+                break;
+            }
+        }
+
+        $(window).on('load', function() {
+            // Handler for .load() called.
+            if (thecookie) {
+                $('html, body').animate({
+                    scrollTop: $('#' + thecookie).offset().top
+                }, 'slow');
+            }
+        });
+    </script>
 
 
 
