@@ -1444,3 +1444,25 @@ iframe {
 		color: #000000;
 		font-weight: bold;
 }
+
+
+/* local attractions ------------------------------------------------------------------------------------- */
+
+.localattractions-main{
+	color: white;
+	padding: 4rem;
+} 
+
+.localattractions-main h1{
+	color: rgb(133, 231, 68);
+}
+
+.localattractions-main .attraction{
+	margin-top: 2rem;
+}
+
+.localattractions-main .attraction .special-info{
+	padding-top: 2rem;
+	font-size: 1.2rem;
+	color: #00e1ff;
+}

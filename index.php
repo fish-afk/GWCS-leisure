@@ -78,21 +78,13 @@
             while ($row = $result->fetch_assoc()) {
             ?>
                 <div class="pitch" id="<?php echo $row["type_name"]; ?>">
-
-                    <script>
-                        function setcookie() {
-                            const id = '<?php echo $row["id"]; ?>';
-                            
-                            document.cookie = "Selectedtype=" + id;
-                        }
-                    </script>
                     <h3>
                         <?php
                         echo $row["type_name"];
                         ?>
                     </h3>
                     <div class="detailtext">
-                        <a href="/pitchTypes.php" onclick="setcookie()">See details</a>
+                        <a href="/pitchTypes.php" onclick="setcookie('<?php echo $row['id']; ?>')">See details</a>
                     </div>
                     <img src="./assets/images/pitch_types/<?php echo $row['image'] ?>" width="100%" />
 
@@ -103,9 +95,15 @@
 
     </div>
 
+    <script>
+        function setcookie(id) {
+            document.cookie = "Selectedtype=" + id;
+        }
+    </script>
+
     <div class="index-final">
         <?php
-        
+
         /* This code is querying the database for camping sites that have been marked as "featured" and
        displaying them in a section on the webpage. It does this by first checking if there are any
        featured camping sites in the database, and if so, displaying a heading for the section and
@@ -186,24 +184,22 @@
     </div>
     <div class="cursor"></div>
     <script>
-
         const showbtn = document.querySelector('.intro-btn').addEventListener('click', () => {
             window.location.href = '/information/index.php';
         })
 
-        var cursor = document.querySelector(".cursor");
-        var a = document.querySelectorAll("a");
+        let cursor = document.querySelector(".cursor");
+        let a = document.querySelectorAll("a");
 
         document.addEventListener("mousemove", function(e) {
-            var x = e.clientX;
-            var y = e.clientY;
+            let x = e.clientX;
+            let y = e.clientY;
             cursor.style.transform = `translate3d(calc(${e.clientX}px - 50%), calc(${e.clientY}px - 50%), 0)`;
         });
 
         document.addEventListener("mousemove", function(e) {
-            var x = e.clientX;
-            var y = e.clientY;
-
+            let x = e.clientX;
+            let y = e.clientY;
         });
 
         document.addEventListener("mousedown", function() {
@@ -227,7 +223,7 @@
 
 
         function record() {
-            var recognition = new webkitSpeechRecognition();
+            let recognition = new webkitSpeechRecognition();
             recognition.lang = "en-GB";
 
             recognition.onresult = function(event) {
@@ -239,12 +235,12 @@
         }
 
 
-        var slides = document.querySelectorAll('.slide');
-        var btns = document.querySelectorAll('.btn');
+        let slides = document.querySelectorAll('.slide');
+        let btns = document.querySelectorAll('.btn');
         let currentSlide = 1;
 
         // Javascript for image slider manual navigation
-        var manualNav = function(manual) {
+        let manualNav = function(manual) {
             slides.forEach((slide) => {
                 slide.classList.remove('active');
 
@@ -265,11 +261,11 @@
         });
 
         // Javascript for image slider autoplay navigation
-        var repeat = function(activeClass) {
+        let repeat = function(activeClass) {
             let active = document.getElementsByClassName('active');
             let i = 1;
 
-            var repeater = () => {
+            let repeater = () => {
                 setTimeout(function() {
                     [...active].forEach((activeSlide) => {
                         activeSlide.classList.remove('active');

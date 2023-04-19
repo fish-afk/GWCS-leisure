@@ -4,6 +4,9 @@
 
 <body>
 
+    <script src="https://www.google.com/recaptcha/api.js" async defer></script>
+
+    <div id='recaptcha' class="g-recaptcha" data-sitekey="6LeUa7QfAAAAAA3yNTLw0b2G5c2NFQHIDjvKbqhM" data-callback="onSubmit" data-size="invisible"></div>
 
     <div class="allsites">
         <?php
@@ -43,10 +46,12 @@
 
                             <div class="menu">
 
-                                <div class="btn"><a href="/information/features.php?siteid=<?php echo $row['id'] ?>"><button>DETAILS & FEATURES</button></a></div>
-                                <div class="btn"><a href="/information/sitereviews.php?siteid=<?php echo $row['id'] ?>"> <button>REVIEWS</button></a></div>
-                                <div class="btn"><a href="/information/availability?siteid=<?php echo $row['id'] ?>"><button>AVAILABILITY</button></a></div>
-                                <div class="btn"><a href="/information/localattractions.php?siteid=<?php echo $row['id'] ?>"><button>LOCAL ATTRACTIONS</button></a></div>
+                                <div class="btn"><a href="/information/features.php?siteid=<?php echo $row['id'] ?>&sitename=<?php echo $row['name'] ?>"><button>DETAILS & FEATURES</button></a></div>
+                                <div class="btn"><a href="/information/sitereviews.php?siteid=<?php echo $row['id'] ?>&sitename=<?php echo $row['name'] ?>"> <button>REVIEWS</button></a></div>
+                                <div class="btn"><a href="/information/availability?siteid=<?php echo $row['id'] ?>&sitename=<?php echo $row['name'] ?>"><button>AVAILABILITY</button></a></div>
+                                <div class="btn"><a href="/information/localattractions.php?siteid=<?php echo $row['id'] ?>&sitename=<?php echo $row['name'] ?>"><button>LOCAL ATTRACTIONS</button></a></div>
+
+
 
                             </div>
                         </div>
@@ -56,6 +61,10 @@
                 }
             } ?>
             </div>
+
+
+
+
 
 
 </body>
