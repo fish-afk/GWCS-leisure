@@ -25,6 +25,7 @@ CREATE TABLE IF NOT EXISTS `campingsites` (
   `location` varchar(255) NOT NULL,
   `description` text NOT NULL,
   `image_url` varchar(255) NOT NULL,
+  `Features` text NOT NULL,
   `Featured` tinyint DEFAULT '0',
   PRIMARY KEY (`id`)
 ) ENGINE=InnoDB AUTO_INCREMENT=12 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
