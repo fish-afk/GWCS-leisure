@@ -1480,7 +1480,6 @@ iframe {
 
 /* AVAILABILITY PAGE ---------------------------------------------------------------------------------- */
 
-
 .availability-main{
 	justify-content: center;
 	align-items: center;
@@ -1502,6 +1501,12 @@ iframe {
 	color:#00e1ff;
 }
 
+.availability-main .swimming-sessions{
+	justify-content: center;
+		align-items: center;
+		text-align: center;
+		color: white;
+}
 .availability-main .swimming-sessions h1 {
 	color: rgb(133, 231, 68);
 	padding: 2rem;
@@ -1511,3 +1516,6 @@ iframe {
 	padding: 3rem;
 }
 
+.availability-main .warns{
+	padding: 3rem;
+}

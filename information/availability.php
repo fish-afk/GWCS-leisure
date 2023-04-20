@@ -19,17 +19,17 @@ if (isset($_GET['siteid']) && isset($_GET['sitename'])) {
 
         <?php
         $query = "SELECT * FROM pitches WHERE site_id = $siteid";
-
         $query2 = "SELECT * FROM swimmingsessions WHERE site_id = $siteid";
+        $result2 = $conn->query($query2);
+
         $tent_pitch_count = 0;
         $motorhome_pitch_count = 0;
         $touring_caravan_pitch_count = 0;
 
         $result = $conn->query($query);
-        $result2 = $conn->query($query2);
 
         if ($result->num_rows < 1) { ?>
-            <h1>No pitches available at the moment for the campsite. Check back later.</h1>
+            <h1 class="warns">No pitches available at the moment for the campsite. Check back later.</h1>
         <?php
         } else {
             while ($row = $result->fetch_assoc()) {
@@ -55,30 +55,26 @@ if (isset($_GET['siteid']) && isset($_GET['sitename'])) {
                     <h2>number of <a href="/pitchTypes.php">Motorhome pitches: </a> available: <?php echo $motorhome_pitch_count ?> </h2>
                 <?php } ?>
 
+                <?php
+
+
+                if ($result2->num_rows < 1) { ?>
+                    <h1 class="warns">No swimming sessions available at the moment for the campsite. Check back later.</h1>
+                <?php
+                } else { ?>
+                    <div class="swimming-sessions">
+                        <h1>The following are the swimming sessions that run at <?php echo $sitename; ?>
+                            <?php while ($row2 = $result2->fetch_assoc()) {
+
+                            ?> <h2><?php echo $row2['Start'] ?>hrs to <?php echo $row2['End'] ?>hrs</h2>
+                                <h3>Price: $<?php echo $row2['price'] ?></h3>
+
+                            <?php }  ?>
+                        <?php } ?>
+                    </div>
             </div>
 
-            <?php
-
-            $query2 = "SELECT * FROM swimmingsessions WHERE site_id = $siteid";
-            $result2 = $conn->query($query2);
-
-            if ($result2->num_rows < 1) { ?>
-                <h1>No swimming sessions available at the moment for the campsite. Check back later.</h1>
-            <?php
-            } else { ?>
-                <div class="swimming-sessions">
-
-                    
-                    <h1>The following are the swimming sessions that run at <?php echo $sitename; ?>
-                        <?php while ($row2 = $result2->fetch_assoc()) {
-
-                        ?> <h2><?php echo $row2['Start'] ?>hrs to <?php echo $row2['End'] ?>hrs</h2> 
-                        <h3>Price: $<?php echo $row2['price'] ?></h3>
-                        
-                        <?php }  ?>
-            <?php } ?>
-                </div>
-
+    </div>
 
 </body>
 
