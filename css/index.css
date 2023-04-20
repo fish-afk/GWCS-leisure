@@ -1231,6 +1231,7 @@ iframe {
 .pitchtypes-main h1 {
 	padding-bottom: 4rem;
 	color: rgb(133, 231, 68);
+	font-family: Satoshi-light;
 }
 
 .pitchtypes-main .pitchtype {
@@ -1239,18 +1240,28 @@ iframe {
 	display: flex;
 }
 
-.pitchtypes-main .pitchtype .box {
+.pitchtypes-main .pitchtype .desc {
+	width: 50%;
 	padding: 3rem;
 	color: white;
 }
-
 .pitchtypes-main .pitchtype .img {
-	width: 100%;
+	width: 50%;
 }
 
+.pitchtypes-main .pitchtype .img img{
+	border-radius: 10px;
+}
 .pitchtypes-main .pitchtype h2 {
-	padding-bottom: 1rem;
 	color: rgb(133, 231, 68);
+	font-family: Satoshi-light;
+	padding-bottom: 1rem;
+}
+
+.pitchtypes-main .pitchtype h3{
+	color: rgb(133, 231, 68);
+	font-family: Satoshi-light;
+	padding-top: 1rem;
 }
 
 /* information index page --------------------------------------------------------------------------------*/
@@ -1466,3 +1477,37 @@ iframe {
 	font-size: 1.2rem;
 	color: #00e1ff;
 }
+
+/* AVAILABILITY PAGE ---------------------------------------------------------------------------------- */
+
+
+.availability-main{
+	justify-content: center;
+	align-items: center;
+	text-align: center;
+	color: white;
+}
+.availability-main .pitches {
+	padding: 1rem;
+	color: white;
+	font-family: Satoshi-light;
+}
+
+.availability-main .pitches h1{
+	color: rgb(133, 231, 68);
+	padding: 2rem;
+}
+
+.availability-main .pitches h2 a{
+	color:#00e1ff;
+}
+
+.availability-main .swimming-sessions h1 {
+	color: rgb(133, 231, 68);
+	padding: 2rem;
+}
+
+.availability-main .swimming-sessions {
+	padding: 3rem;
+}
+

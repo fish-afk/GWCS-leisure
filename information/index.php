@@ -48,9 +48,8 @@
 
                                 <div class="btn"><a href="/information/features.php?siteid=<?php echo $row['id'] ?>&sitename=<?php echo $row['name'] ?>"><button>DETAILS & FEATURES</button></a></div>
                                 <div class="btn"><a href="/information/sitereviews.php?siteid=<?php echo $row['id'] ?>&sitename=<?php echo $row['name'] ?>"> <button>REVIEWS</button></a></div>
-                                <div class="btn"><a href="/information/availability?siteid=<?php echo $row['id'] ?>&sitename=<?php echo $row['name'] ?>"><button>AVAILABILITY</button></a></div>
+                                <div class="btn"><a href="/information/availability.php?siteid=<?php echo $row['id'] ?>&sitename=<?php echo $row['name'] ?>"><button>AVAILABILITY</button></a></div>
                                 <div class="btn"><a href="/information/localattractions.php?siteid=<?php echo $row['id'] ?>&sitename=<?php echo $row['name'] ?>"><button>LOCAL ATTRACTIONS</button></a></div>
-
 
 
                             </div>

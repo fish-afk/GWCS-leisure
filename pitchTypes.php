@@ -29,12 +29,16 @@
 
                     <div class="img">
                         <h2><?php echo $row['type_name'] ?></h2>
+
                         <img src="./assets/images/pitch_types/<?php echo $row['image'] ?>" width="100%" />
                     </div>
 
-                    <div class="box">
+                    <div class="desc">
                         <?php echo $row['description'] ?>
+                        <h3>Price: $<?php echo $row['price'] ?></h3>
                     </div>
+
+
                 </div>
             <?php } ?>
         </div>
