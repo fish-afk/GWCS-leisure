@@ -1326,6 +1326,10 @@ iframe {
 	height: 100%;
 }
 
+.gallery .warn{
+	color: rgb(204, 88, 84);
+}
+
 .allsites .gallery .site .main-stuff{
 	display: flex;
 	background-color: #0b201b;
@@ -1470,6 +1474,14 @@ iframe {
 
 .localattractions-main .attraction{
 	margin-top: 2rem;
+	background-color: #0b201b;
+	border-radius: 10px;
+	padding: 2rem;
+	transition: all 300ms ease-in-out;
+}
+
+.localattractions-main .attraction:hover{
+	box-shadow: rgba(133, 231, 68, 0.4) 5px 5px 5px 5px; 
 }
 
 .localattractions-main .attraction .special-info{

@@ -1,6 +1,18 @@
-<?php include_once "../includes/header.php" ?>
-<?php include_once "../includes/navbar.php" ?>
-<?php include_once "../includes/db_connect.php" ?>
+<?php
+include_once "../includes/header.php";
+include_once "../includes/navbar.php";
+include_once "../includes/db_connect.php";
+
+if (isset($_GET['search'])) {
+    $search = $_GET['search'];
+} else {
+    $search = "";
+}
+
+$query = "SELECT * FROM CampingSites WHERE name LIKE '%" . $search . "%'";
+
+$result = $conn->query($query);
+?>
 
 <body>
 
@@ -9,33 +21,23 @@
     <div id='recaptcha' class="g-recaptcha" data-sitekey="6LeUa7QfAAAAAA3yNTLw0b2G5c2NFQHIDjvKbqhM" data-callback="onSubmit" data-size="invisible"></div>
 
     <div class="allsites">
-        <?php
 
-        /* This code is querying the database for camping sites that have been marked as "featured" and
-       displaying them in a section on the webpage. It does this by first checking if there are any
-       featured camping sites in the database, and if so, displaying a heading for the section and
-       creating a container for the camping site information. It then loops through the results of
-       the query and displays each camping site as a div with its name, image, and location
-       displayed. The location is displayed using an embedded Google Maps iframe. */
+        <h2>Discover the world</h2>
 
-        $query = "SELECT * FROM CampingSites";
-
-        $result = $conn->query($query);
-
-        if ($result->num_rows > 0) { ?>
-            <h2>Discover the world</h2>
-
-            <div class="box">
+        <div class="box">
+            <form action="/information/index.php" class="box" method="get">
                 <div class="search">
-                    <input type="text" class="searchTerm" placeholder="What are you looking for?">
+                    <input type="text" class="searchTerm" name="search" placeholder="What are you looking for?" value="<?php echo $search; ?>">
                     <button type="submit" class="searchButton">
                         <i class="fa fa-search"></i>
                     </button>
                 </div>
-            </div>
+            </form>
+        </div>
 
-            <div class="gallery box">
-                <?php
+        <div class="gallery box">
+            <?php
+            if ($result->num_rows > 0) {
                 while ($row = $result->fetch_assoc()) { ?>
                     <div class="site">
 
@@ -58,15 +60,12 @@
                     </div>
             <?php
                 }
-            } ?>
-            </div>
-
-
-
-
-
+            } else { ?>
+               <div class="box"><h1 class="warn">No search results found</h1></div>
+            <?php } ?>
+        </div>
+    </div>
 
 </body>
 
-
-</html><?php include_once "../includes/footer.php" ?>
+<?php include_once "../includes/footer.php" ?>
