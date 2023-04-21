@@ -17,9 +17,7 @@ if (isset($_GET['siteid']) && isset($_GET['sitename'])) {
 
     <div class="localattractions-main">
 
-        <div class="box">
-            <h1>The following are the localattractions near <?php echo $sitename; ?></h1>
-        </div>
+
 
         <?php
         $query = "SELECT * FROM LocalAttractions WHERE site_id = $siteid";
@@ -28,10 +26,13 @@ if (isset($_GET['siteid']) && isset($_GET['sitename'])) {
 
         if ($result->num_rows < 1) { ?>
             <h1>This site has no local attractions</h1>
-            <?php } else {
-            while ($row = $result->fetch_assoc()) {
+        <?php } else {
+        ?> <div class="box">
+                <h1>The following are the localattractions near <?php echo $sitename; ?></h1>
+            </div><?php
+                    while ($row = $result->fetch_assoc()) {
 
-            ?>
+                    ?>
                 <div class="attraction">
                     <h1><?php echo $row['attraction_name'] ?></h1>
                     <p><?php echo $row['description'] ?></p>
@@ -41,8 +42,8 @@ if (isset($_GET['siteid']) && isset($_GET['sitename'])) {
 
         <?php
 
-            }
-        }
+                    }
+                }
         ?>
         <h1>
 

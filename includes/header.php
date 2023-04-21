@@ -1,6 +1,15 @@
 <!DOCTYPE html>
 <html lang="en">
 
+<?php
+$connected = @fsockopen("www.google.com", 80);
+if ($connected) {
+    fclose($connected);
+} else {
+    die("<h2>Please connect to wifi or internet for this site to function properly</h2>\n 
+    <h2>If you dont have internet, remove this check in the header.php file found in the includes folder.</h2>");
+}
+?>
 
 <head>
     <meta charset="UTF-8">

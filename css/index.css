@@ -845,6 +845,45 @@ iframe {
 	width: 100%;
 }
 
+.account-main #change-pass {
+	padding-right: 10rem;
+	padding-left: 10rem;
+}
+
+.account-main #change-pass form label {
+	color: white;
+}
+
+.account-main #change-pass form button {
+	padding-right: 4rem;
+	padding-left: 4rem;
+	text-align: center;
+	padding-top: 1rem;
+	padding-bottom: 1rem;
+	margin: 1rem;
+	font-size: 1.3rem;
+	border-width: 0;
+	border-radius: 10px;
+	transition: all 300ms;
+}
+
+.account-main #change-pass form button:hover {
+	box-shadow: 3px 3px 8px rgb(170, 252, 117),
+		-3px -3px 8px rgb(133, 231, 68);
+}
+
+.account-main #change-pass form input {
+	border: none;
+	outline: none;
+	background: none;
+	margin: 1rem;
+	border-radius: 10px;
+	font-size: 18px;
+	color: #555;
+	background-color: rgb(255, 255, 255);
+	padding: 20px 10px 20px 5px;
+	width: 100%;
+}
 
 @media (max-width:400px) {
 	.notauthed h1 {
@@ -1481,7 +1520,7 @@ iframe {
 }
 
 .localattractions-main .attraction:hover{
-	box-shadow: rgba(133, 231, 68, 0.4) 5px 5px 5px 5px; 
+	box-shadow: 5px 10px rgb(133, 231, 68);; 
 }
 
 .localattractions-main .attraction .special-info{
@@ -1530,4 +1569,34 @@ iframe {
 
 .availability-main .warns{
 	padding: 3rem;
+}
+
+
+/* reviews page --------------------------------------------------------------------------------------- */
+
+
+.reviews-main h1{
+	color: rgb(133, 231, 68);
+	text-align: center;
+	font-family: Satoshi-light;
+	padding: 2rem;
+}
+
+
+.reviews-main .review{
+	margin: 5rem;
+	background-color: #0b201b;
+	border-radius: 10px;
+	padding: 1rem;
+	color: white;
+	transition: all 300ms ease-in-out;
+	
+}
+
+.reviews-main .review:hover{
+	box-shadow: 5px 10px rgb(133, 231, 68);
+}
+
+.reviews-main .review .rating span{
+	color: rgb(133, 231, 68)
 }

@@ -28,6 +28,8 @@ curl_close($ch);
 // Store the JSON response in a variable
 $results = json_decode($response, true);
 
+echo $results;
+
 ?>
 
 <body>

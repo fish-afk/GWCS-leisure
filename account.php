@@ -35,23 +35,83 @@ function Update_Account_Info($username, $email, $firstname, $surname, $dob, $con
                 confirmButtonText: 'Ok'
             })
         </script>
-<?php }
+        <?php }
 }
 
-if (
-    isset($_POST['firstname']) && isset($_POST['lastname']) &&
-    isset($_POST['email']) && isset($_POST['dob'])
-) {
+function change_password($current_pass, $new_pass, $username, $conn)
+{
+    // Hash the new password using sha256
+    $new_pass_hash = hash('sha256', $new_pass);
 
-    Update_Account_Info(
-        $_SESSION['username'],
-        htmlspecialchars($_POST['email']), // htmlspecialchars to prevent stored xss attacks. 
-        htmlspecialchars($_POST['firstname']),
-        htmlspecialchars($_POST['lastname']),
-        htmlspecialchars($_POST['dob']),
-        $conn
-    );
-}
+    // Retrieve the user's hashed password from the database
+    $stmt = $conn->prepare("SELECT `password` FROM `users` WHERE `username` = ?");
+    $stmt->bind_param('s', $username);
+    $stmt->execute();
+    $result = $stmt->get_result()->fetch_assoc();
+
+    if (password_verify($current_pass, $result['password'])) {
+        // Update the user's password with the new one
+        $new_pass_hash = password_hash($new_pass, PASSWORD_DEFAULT);
+        $stmt = $conn->prepare("UPDATE `users` SET `password` = ? WHERE `username` = ?");
+        $stmt->bind_param('ss', $new_pass_hash, $username);
+        $stmt->execute();
+
+        if ($stmt->affected_rows == 1) {
+        ?><script>
+                Swal.fire({
+                    title: 'Success',
+                    text: 'Password updated successfully.',
+                    icon: 'success',
+                    confirmButtonText: 'Ok'
+                }).then((result) => {
+                    if (result.isConfirmed) {
+                        window.location.href = "/login.php"
+                    }
+                })
+            </script> <?
+                    } else {
+                        ?> <script>
+                Swal.fire({
+                    title: 'Error!',
+                    text: 'Error updating password',
+                    icon: 'error',
+                    confirmButtonText: 'Ok'
+                })
+            </script><?php
+                    }
+                } else {
+                        ?> <script>
+            Swal.fire({
+                title: 'Error!',
+                text: 'Incorrect current password',
+                icon: 'error',
+                confirmButtonText: 'Ok'
+            })
+        </script>
+<?php
+                }
+            }
+
+            if (
+                isset($_POST['firstname']) && isset($_POST['lastname']) &&
+                isset($_POST['email']) && isset($_POST['dob'])
+            ) {
+
+                Update_Account_Info(
+                    $_SESSION['username'],
+                    htmlspecialchars($_POST['email']), // htmlspecialchars to prevent stored xss attacks. 
+                    htmlspecialchars($_POST['firstname']),
+                    htmlspecialchars($_POST['lastname']),
+                    htmlspecialchars($_POST['dob']),
+                    $conn
+                );
+            }
+
+            if (
+                isset($_POST['currentpass']) && isset($_POST['newpass'])
+            ) {
+                change_password($_POST['currentpass'], $_POST['newpass'], $_SESSION['username'], $conn);
+            }
 
 ?>
 
@@ -74,7 +134,7 @@ if (
 
                 <h1>Welcome <?php echo $_SESSION['username']; ?> </h1>
                 <button id="logout-btn">log out</button>
-
+                <button id="delete-btn">Delete account</button>
             </div>
 
             <div class="options box">
@@ -106,7 +166,13 @@ if (
                 </div>
 
                 <div id="change-pass">
-
+                    <form method="POST" action="/account.php">
+                        <label for="firstname">Current password: </label>
+                        <input type="text" name="currentpass" required placeholder="Current password" />
+                        <label for="lastname">New password: </label>
+                        <input type="text" name="newpass" required placeholder="New password" />
+                        <div class="box"><button type="submit">Change</button></div>
+                    </form>
                 </div>
 
             </div>
@@ -157,6 +223,26 @@ if (
         logoutbtn.addEventListener("click", () => {
             window.location.href = "/logout.php";
             alert("Logged out successfully.");
+        })
+
+        const deletebtn = document.getElementById('delete-btn');
+
+        deletebtn.addEventListener('click', () => {
+            Swal.fire({
+                title: 'Are you sure?',
+                text: "You won't be able to revert this!",
+                icon: 'warning',
+                showCancelButton: true,
+                confirmButtonColor: '#3085d6',
+                cancelButtonColor: '#d33',
+                confirmButtonText: 'Yes, delete it!'
+            }).then((result) => {
+                if (result.isConfirmed) {
+                    
+
+                    window.location.href = "/deleteAccount.php";
+                }
+            })
         })
     </script>
 

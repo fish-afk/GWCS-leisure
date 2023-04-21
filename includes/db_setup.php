@@ -41,7 +41,7 @@ function CREATE_TABLES($conn)
         $sql = "CREATE TABLE IF NOT EXISTS `Reviews`(
                 `id` BIGINT NOT NULL PRIMARY KEY AUTO_INCREMENT,
                 `site_id` BIGINT NOT NULL,
-                `username` VARCHAR(255) NOT NULL,
+                `username` VARCHAR(255),
                 `reviewText` TEXT NOT NULL,
                 `rating` BIGINT NOT NULL
                 )";
@@ -124,7 +124,7 @@ function CREATE_TABLES($conn)
 
         $sql = "CREATE TABLE IF NOT EXISTS `Messages`(
                     `id` BIGINT NOT NULL PRIMARY KEY AUTO_INCREMENT,
-                    `username` VARCHAR(255) NOT NULL,
+                    `username` VARCHAR(255),
                     `Message` TEXT NOT NULL
                 )";
 
@@ -157,7 +157,7 @@ function SETUP_FOREIGN_KEYS($conn)
         echo "<h3>error initiating database properly</h3>";
         die();
     }
-    $sql = "ALTER TABLE `Reviews` ADD CONSTRAINT `reviews_username_foreign` FOREIGN KEY(`username`) REFERENCES `Users`(`username`);";
+    $sql = "ALTER TABLE `Reviews` ADD CONSTRAINT `reviews_username_foreign` FOREIGN KEY(`username`) REFERENCES `Users`(`username`) ON UPDATE CASCADE ON DELETE SET NULL;";
 
     if ($conn->query($sql) === false) {
         echo "<h3>error initiating database properly</h3>";
@@ -184,7 +184,7 @@ function SETUP_FOREIGN_KEYS($conn)
         echo "<h3>error initiating database properly</h3>";
         die();
     }
-    $sql = "ALTER TABLE `Messages` ADD CONSTRAINT `username_foreign` FOREIGN KEY(`username`) REFERENCES `Users`(`username`);";
+    $sql = "ALTER TABLE `Messages` ADD CONSTRAINT `username_foreign` FOREIGN KEY(`username`) REFERENCES `Users`(`username`) ON UPDATE CASCADE ON DELETE SET NULL;";
 
     if ($conn->query($sql) === false) {
         echo "<h3>error initiating database properly</h3>";
@@ -337,12 +337,45 @@ function INSERT_INITIAL_DATA($conn)
                 ('Lions Head Hike', 'One of the most popular hiking trails in Cape Town, the Lions Head Hike offers breathtaking views of the city, the Atlantic Ocean, and Table Mountain. The trail is moderate in difficulty and takes about two hours to complete, including time to enjoy the views from the summit.', 3.0, 11, 5.00),
                 ('Aurora Borealis Observatory', 'Located in the heart of Iceland, the Aurora Borealis Observatory is a unique and breathtaking destination for stargazing enthusiasts. Visitors can take guided tours and learn about the Northern Lights and other astronomical phenomena, while enjoying stunning views of the night sky.', 5.0, 5, 30.00),
                 ('Skaftafell Glacier Hike', 'Explore the stunning beauty of Iceland with a guided hike on the Skaftafell Glacier, located in Skaftafell National Park. The hike takes visitors through an otherworldly landscape of ice formations and volcanic terrain, while providing unparalleled views of the surrounding mountains and valleys.', 1.0, 5, 75.00),
-                ('Wildlife Photography Tour in South Luangwa National Park', 'Embark on a guided photography tour of the diverse and abundant wildlife of South Luangwa National Park. Visitors will have the opportunity to capture stunning images of elephants, lions, leopards, giraffes, and other wildlife, while learning about the ecology and conservation efforts of the park.', 2.5, 4, 40.00)";
+                ('Wildlife Photography Tour in South Luangwa National Park', 'Embark on a guided photography tour of the diverse and abundant wildlife of South Luangwa National Park. Visitors will have the opportunity to capture stunning images of elephants, lions, leopards, giraffes, and other wildlife, while learning about the ecology and conservation efforts of the park.', 2.5, 4, 40.00)
+                ";
 
 
         if ($conn->query($sql) === false) {
             echo "Error inserting pitches";
         }
+
+
+        // reviews 
+
+        $sql = "INSERT INTO `Reviews` (`site_id`, `username`, `reviewText`, `rating`) VALUES
+        (2, 'johndoe', 'I had a great time camping at Lake Malawi. The scenery was beautiful and the staff were very friendly.', 4),
+        (3, 'janedoe', 'Thingvellir National Park was amazing. The views were breathtaking and there was so much to explore.', 5),
+        (4, 'bobsmith', 'South Luangwa National Park is a must-visit for any wildlife enthusiast. We saw so many animals!', 4),
+        (5, 'alicewonder', 'Skaftafell National Park was like nothing I had ever seen before. The glaciers were incredible.', 5),
+        (6, 'mikejones', 'Tsitsikamma National Park is a hidden gem. The hiking trails were challenging but the views were worth it.', 4),
+        (7, 'johndoe', 'The Blue Lagoon was very relaxing. The water was warm and the scenery was beautiful.', 3),
+        (8, 'janedoe', 'The Okavango Delta was a once-in-a-lifetime experience. We saw so many different animals and the scenery was stunning.', 5),
+        (9, 'bobsmith', 'Victoria Falls was absolutely breathtaking. The sheer power of the waterfalls was incredible.', 3),
+        (10, 'alicewonder', 'Landmannalaugar was beautiful. The hiking trails were challenging but the views were worth it.', 4),
+        (11, 'mikejones', 'Table Mountain National Park had some of the most beautiful views I have ever seen. It was definitely worth the hike up.', 5),
+        (2, 'johndoe', 'I loved my stay at Lake Malawi. The campsites were clean and the staff were very helpful.', 4),
+        (3, 'janedoe', 'Thingvellir National Park was the highlight of my trip to Iceland. The landscapes were incredible.', 5),
+        (4, 'bobsmith', 'South Luangwa National Park was an unforgettable experience. We saw so many different animals and the guides were very knowledgeable.', 5),
+        (5, 'alicewonder', 'Skaftafell National Park was one of the most beautiful places I have ever visited. The glaciers were incredible.', 5),
+        (6, 'mikejones', 'Tsitsikamma National Park was a great place for hiking and exploring. The views were breathtaking.', 4),
+        (7, 'johndoe', 'The Blue Lagoon was a great place to relax and unwind after a long day of hiking.', 4),
+        (8, 'janedoe', 'The Okavango Delta was an amazing place to see wildlife up close. We saw so many different animals.', 3),
+        (9, 'bobsmith', 'Victoria Falls was definitely a highlight of my trip to Africa. The views were stunning.', 5),
+        (10, 'alicewonder', 'Landmannalaugar was a challenging but rewarding place to hike. The scenery was incredible.', 4),
+        (11, 'mikejones', 'Table Mountain National Park had some of the most beautiful views I have ever seen. It was definitely worth the climb.', 5),
+        (1, 'johndoe', 'Kruger National Park is an incredible place to see wildlife. We saw lions, elephants, and so much more!', 3),
+        (1, 'janedoe', 'Kruger National Park was an unforgettable experience. The landscape was beautiful and the guides were very knowledgeable.', 5)";
+
+        if ($conn->query($sql) === false) {
+            echo "Error inserting pitches";
+        }
+
 
     }
 }
