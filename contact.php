@@ -8,11 +8,14 @@ session_start();
 
 function saveMessage($message, $topic, $username, $pdo)
 {
+
+    $prepared_message = $topic . "\n" . $message;
     // Use prepared statements to prevent SQL injection attacks
-    $stmt = $pdo->prepare("INSERT INTO Messages (username, Message, Topic) VALUES (:username, :message, :topic)");
+    $stmt = $pdo->prepare("INSERT INTO Messages (username, Message) VALUES (:username, :message)");
     $stmt->bindParam(":username", $username);
-    $stmt->bindParam(":message", $message);
-    $stmt->bindParam(":topic", $topic);
+    $stmt->bindParam(":message", $prepared_message);
+
+    $email = $_SESSION['email'];
 
     try {
         $stmt->execute();
@@ -23,23 +26,42 @@ function saveMessage($message, $topic, $username, $pdo)
         <script>
             Swal.fire({
                 title: 'Error!',
-                text: 'Error saving message, Try sending later.',
+                text: 'Error saving message, Make sure your network is strong',
                 icon: 'error',
                 confirmButtonText: 'Ok'
             })
         </script>
     <?php
     }
-
-    // Return true on success
     ?>
     <script>
-        Swal.fire({
-            title: 'Success!',
-            text: 'Message recieved. We will get back as soon as possible',
-            icon: 'success',
-            confirmButtonText: 'Ok'
-        })
+        (function() {
+            emailjs.init("user_uBwPjYzKVYr2jLKE17pNV");
+        })();
+
+        var templateParams = {
+            topic: '<?php echo $topic ?>',
+            message: '<?php echo $message ?>',
+            from_name: '<?php echo $username ?>',
+            reply_back_email: '<?php echo $email ?>'
+        };
+
+        emailjs.send('service_57pavgu', 'template_x926d15', templateParams)
+            .then(function(response) {
+                Swal.fire({
+                    title: 'Success!',
+                    text: 'Message recieved. We will get back as soon as possible',
+                    icon: 'success',
+                    confirmButtonText: 'Ok'
+                })
+            }, function(error) {
+                Swal.fire({
+                    title: 'Error!',
+                    text: 'Error saving message, Make sure your network is strong',
+                    icon: 'error',
+                    confirmButtonText: 'Ok'
+                })
+            });
     </script>
 <?php
 }

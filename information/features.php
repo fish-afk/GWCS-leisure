@@ -9,6 +9,25 @@ if (isset($_GET['siteid'])) {
 } else {
     die("<h1>site id needed</h1>");
 }
+
+$url = "https://api.unsplash.com/search/photos?query=kruger%20national%20park&client_id=HlsapAQSZM-HEy-ojfTeD_JDQK_gh4YZPoWMcf4ng5w&width=1920&height=1080";
+
+// Initialize a cURL session
+$ch = curl_init();
+
+// Set the cURL options
+curl_setopt($ch, CURLOPT_URL, $url);
+curl_setopt($ch, CURLOPT_RETURNTRANSFER, true);
+
+// Execute the cURL request
+$response = curl_exec($ch);
+
+// Close the cURL session
+curl_close($ch);
+
+// Store the JSON response in a variable
+$results = json_decode($response, true);
+
 ?>
 
 <body>
