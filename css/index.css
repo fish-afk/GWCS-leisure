@@ -1442,7 +1442,7 @@ iframe {
 }
 
 
-/* site details page -------------------------------------------------------------------------------------*/
+/* site details and featurespage -------------------------------------------------------------------------------------*/
 
 
 .sitedetails{
@@ -1499,7 +1499,25 @@ iframe {
 		font-weight: bold;
 }
 
+.gallery-main h1{
+	text-align: center;
+	color: rgb(133, 231, 68);
+	padding: 3rem;
+}
+.gallery-main{
+	padding-left: 5rem;
+	padding-right: 5rem;
+	padding-top: 1rem;
+}
 
+.gallery-main .img img{
+	padding: 2rem;
+	border-radius: 50px;
+	transition: all 300ms ease-in-out;
+}
+.gallery-main .img img:hover{
+	box-shadow: 5px 10px rgb(133, 231, 68);
+}
 /* local attractions ------------------------------------------------------------------------------------- */
 
 .localattractions-main{
@@ -1521,6 +1539,12 @@ iframe {
 
 .localattractions-main .attraction:hover{
 	box-shadow: 5px 10px rgb(133, 231, 68);; 
+}
+
+.localattractions-main .attraction img{
+	width: 600px;
+	border-radius: 10px;
+	padding-top: 2rem;
 }
 
 .localattractions-main .attraction .special-info{

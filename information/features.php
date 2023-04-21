@@ -4,13 +4,19 @@
 
 <?php
 $siteid;
-if (isset($_GET['siteid'])) {
+$sitename;
+if (isset($_GET['siteid']) && isset($_GET['sitename'])) {
     $siteid = addslashes($_GET['siteid']);
+    $sitename = addslashes($_GET['sitename']);
 } else {
-    die("<h1>site id needed</h1>");
+    die("<h1>site id and name needed</h1>");
 }
 
-$url = "https://api.unsplash.com/search/photos?query=kruger%20national%20park&client_id=HlsapAQSZM-HEy-ojfTeD_JDQK_gh4YZPoWMcf4ng5w&width=1920&height=1080";
+// Define the query parameter with a variable;
+$query_param = "query=" . urlencode($sitename);
+
+// Define the API endpoint URL with the query parameter and limit results to 5
+$url = "https://api.unsplash.com/search/photos?" . $query_param . "&client_id=HlsapAQSZM-HEy-ojfTeD_JDQK_gh4YZPoWMcf4ng5w&width=1920&height=1080";
 
 // Initialize a cURL session
 $ch = curl_init();
@@ -18,6 +24,8 @@ $ch = curl_init();
 // Set the cURL options
 curl_setopt($ch, CURLOPT_URL, $url);
 curl_setopt($ch, CURLOPT_RETURNTRANSFER, true);
+curl_setopt($ch, CURLOPT_SSL_VERIFYPEER, false);
+
 
 // Execute the cURL request
 $response = curl_exec($ch);
@@ -28,7 +36,14 @@ curl_close($ch);
 // Store the JSON response in a variable
 $results = json_decode($response, true);
 
-echo $results;
+// Get the array of photos from the results
+$photos = $results["results"];
+
+// Randomly select 5 photos from the array
+$random_photos = array_rand($photos, 5);
+
+
+
 
 ?>
 
@@ -92,12 +107,23 @@ echo $results;
             </ul>
 
             <div class="btngroup">
-                <a href="/information/sitereviews.php?siteid=<?php echo $row['id'] ?>&sitename=<?php echo $row['name']?>"> <button class="guide-btn">See reviews </button></a>
-                <a href="/information/localattractions.php?siteid=<?php echo $row['id'] ?>&sitename=<?php echo $row['name']?>"> <button class="guide-btn">See local attractions</button></a>
-                <a href="/information/availability.php?siteid=<?php echo $row['id'] ?>&sitename=<?php echo $row['name']?>"> <button class="guide-btn">Check availability </button></a>
+                <a href="/information/sitereviews.php?siteid=<?php echo $row['id'] ?>&sitename=<?php echo $row['name'] ?>"> <button class="guide-btn">See reviews </button></a>
+                <a href="/information/localattractions.php?siteid=<?php echo $row['id'] ?>&sitename=<?php echo $row['name'] ?>"> <button class="guide-btn">See local attractions</button></a>
+                <a href="/information/availability.php?siteid=<?php echo $row['id'] ?>&sitename=<?php echo $row['name'] ?>"> <button class="guide-btn">Check availability </button></a>
             </div>
         </div>
 
+    </div>
+
+    <div class="gallery-main">
+        <h1><?php echo $sitename; ?> image gallery</h1>
+        <?php // Loop through the selected photos and create img tags with their URLs
+        foreach ($random_photos as $index) {
+            $photo = $photos[$index];
+            $photo_url = $photo["urls"]["regular"];
+        ?> <div class="img"><img width="100%" src='<?php echo $photo_url; ?>'></div> <?php
+                                                                                                }
+                                                                                                    ?>
     </div>
 
 
