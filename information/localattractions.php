@@ -38,7 +38,7 @@ if (isset($_GET['siteid']) && isset($_GET['sitename'])) {
                         $query_param = "query=" . urlencode($row['attraction_name']);
 
                         // Define the API endpoint URL with the query parameter and limit results to 5
-                        $url = "https://api.unsplash.com/search/photos?" . $query_param . "&client_id=HlsapAQSZM-HEy-ojfTeD_JDQK_gh4YZPoWMcf4ng5w&width=1920&height=1080";
+                        $url = "https://api.unsplash.com/search/photos?" . $query_param . "&client_id=HlsapAQSZM-HEy-ojfTeD_JDQK_gh4YZPoWMcf4ng5w&width=1920&height=1080&content_filter=high";
 
                         // Initialize a cURL session
                         $ch = curl_init();
@@ -75,7 +75,7 @@ if (isset($_GET['siteid']) && isset($_GET['sitename'])) {
                     <h1><?php echo $row['attraction_name'] ?></h1>
                     <p><?php echo $row['description'] ?></p>
                     <p class="special-info">Miles from site: <?php echo $row['milesFromSite'] ?></p>
-                    <p class="special-info">Price per person: $<?php echo $row['milesFromSite'] ?></p>
+                    <p class="special-info">Price per person: $<?php echo $row['price'] ?></p>
                     <img src='<?php echo $photo_url ?>' width="100%" />
                 </div>
 

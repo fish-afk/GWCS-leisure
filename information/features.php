@@ -16,7 +16,7 @@ if (isset($_GET['siteid']) && isset($_GET['sitename'])) {
 $query_param = "query=" . urlencode($sitename);
 
 // Define the API endpoint URL with the query parameter and limit results to 5
-$url = "https://api.unsplash.com/search/photos?" . $query_param . "&client_id=HlsapAQSZM-HEy-ojfTeD_JDQK_gh4YZPoWMcf4ng5w&width=1920&height=1080";
+$url = "https://api.unsplash.com/search/photos?" . $query_param . "&client_id=HlsapAQSZM-HEy-ojfTeD_JDQK_gh4YZPoWMcf4ng5w&width=1920&height=1080&content_filter=high";
 
 // Initialize a cURL session
 $ch = curl_init();
@@ -41,8 +41,6 @@ $photos = $results["results"];
 
 // Randomly select 5 photos from the array
 $random_photos = array_rand($photos, 5);
-
-
 
 
 ?>

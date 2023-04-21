@@ -22,7 +22,7 @@ $result = $conn->query($query);
 
     <div class="allsites">
 
-        <h2>Discover the world</h2>
+        <h2>Discover nature</h2>
 
         <div class="box">
             <form action="/information/index.php" class="box" method="get">
