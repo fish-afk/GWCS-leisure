@@ -1,6 +1,8 @@
 <?php include_once "./includes/db_connect.php" ?>
+<?php include_once "./includes/header.php" ?>
 
 <?php
+
 session_start();
 
 function delete_account($username, $conn)
@@ -9,22 +11,20 @@ function delete_account($username, $conn)
     $stmt->bind_param('s', $username);
     $stmt->execute();
 
-    if ($stmt->affected_rows == 1) {
-                        session_destroy();
-                        unset($_SESSION['username']);
+    try {
+        $stmt->execute();
+        // The statement executed successfully
+        session_destroy();
+        unset($_SESSION['username']);
 ?> <script>
-            Swal.fire(
-                'Deleted!',
-                'Your account has been deleted.',
-                'success'
-            )
+            alert("Deleted account successfully")
 
             window.location.href = '/login.php';
         </script><?php
-                    
-                } else {
-                    ?>
-        <script>
+                } catch (PDOException $e) {
+                    // There was an error executing the statement
+
+                    ?> <script>
             Swal.fire({
                 title: 'Error!',
                 text: 'Error deleting account.',
@@ -33,8 +33,7 @@ function delete_account($username, $conn)
             })
 
             window.location.href = '/account.php';
-        </script>
-<?php
+        </script><?php
                 }
             }
 
@@ -42,7 +41,7 @@ function delete_account($username, $conn)
             if (isset($_SESSION['username'])) {
                 delete_account($_SESSION['username'], $conn);
             } else {
-                die("Not logged in. please log in first");
+                die("<h1>Not logged in. please <a href='/login.php'>log in</a> first</h1>");
             }
 
-?>
+                    ?>

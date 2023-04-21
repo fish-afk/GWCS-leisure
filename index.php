@@ -122,7 +122,7 @@
                 while ($row = $result->fetch_assoc()) { ?>
                     <div class="site">
 
-                        <h3 class="site-name"><?php echo $row['name'] ?></h3>
+                        <h3 class="site-name"><a href="/information/features.php?siteid=<?php echo $row['id']?>&sitename=<?php echo $row['name']?>"><?php echo $row['name'] ?></a></h3>
                         <img src="./assets/images/campsites/<?php echo $row['image_url'] ?>" width="100%" height="70%" />
 
                         <div class="location-map">

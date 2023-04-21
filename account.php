@@ -54,10 +54,12 @@ function change_password($current_pass, $new_pass, $username, $conn)
         $new_pass_hash = password_hash($new_pass, PASSWORD_DEFAULT);
         $stmt = $conn->prepare("UPDATE `users` SET `password` = ? WHERE `username` = ?");
         $stmt->bind_param('ss', $new_pass_hash, $username);
-        $stmt->execute();
 
-        if ($stmt->affected_rows == 1) {
-        ?><script>
+        try {
+            $stmt->execute();
+            // The statement executed successfully
+
+        ?> <script>
                 Swal.fire({
                     title: 'Success',
                     text: 'Password updated successfully.',
@@ -68,19 +70,20 @@ function change_password($current_pass, $new_pass, $username, $conn)
                         window.location.href = "/login.php"
                     }
                 })
-            </script> <?
-                    } else {
-                        ?> <script>
+            </script><?php
+                    } catch (PDOException $e) {
+
+                        ?><script>
                 Swal.fire({
                     title: 'Error!',
                     text: 'Error updating password',
                     icon: 'error',
                     confirmButtonText: 'Ok'
                 })
-            </script><?php
+            </script> <?php
+                        // There was an error executing the statement
                     }
-                } else {
-                        ?> <script>
+                } else { ?> <script>
             Swal.fire({
                 title: 'Error!',
                 text: 'Incorrect current password',
@@ -238,7 +241,7 @@ function change_password($current_pass, $new_pass, $username, $conn)
                 confirmButtonText: 'Yes, delete it!'
             }).then((result) => {
                 if (result.isConfirmed) {
-                    
+
 
                     window.location.href = "/deleteAccount.php";
                 }
