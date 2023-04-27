@@ -6,7 +6,7 @@
 
 <script src="https://www.google.com/recaptcha/api.js" async defer></script>
 
-<div id='recaptcha' class="g-recaptcha" data-sitekey="6LeUa7QfAAAAAA3yNTLw0b2G5c2NFQHIDjvKbqhM" data-callback="onSubmit" data-size="invisible"></div>
+<div id='recaptcha' class="g-recaptcha" data-sitekey="6LdjmMElAAAAABfEmkPagcUOBmCcuYlUkVYVyVHO" data-callback="onSubmit" data-size="invisible"></div>
 
 <body>
 
@@ -122,7 +122,7 @@
                 while ($row = $result->fetch_assoc()) { ?>
                     <div class="site">
 
-                        <h3 class="site-name"><a href="/information/features.php?siteid=<?php echo $row['id']?>&sitename=<?php echo $row['name']?>"><?php echo $row['name'] ?></a></h3>
+                        <h3 class="site-name"><a href="/information/features.php?siteid=<?php echo $row['id'] ?>&sitename=<?php echo $row['name'] ?>"><?php echo $row['name'] ?></a></h3>
                         <img src="./assets/images/campsites/<?php echo $row['image_url'] ?>" width="100%" height="70%" />
 
                         <div class="location-map">

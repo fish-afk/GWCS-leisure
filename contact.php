@@ -82,7 +82,7 @@ if (isset($_POST['message']) && isset($_POST['topic']) && isset($_SESSION['usern
 
     <script src="https://www.google.com/recaptcha/api.js" async defer></script>
 
-    <div id='recaptcha' class="g-recaptcha" data-sitekey="6LeUa7QfAAAAAA3yNTLw0b2G5c2NFQHIDjvKbqhM" data-callback="onSubmit" data-size="invisible"></div>
+    <div id='recaptcha' class="g-recaptcha" data-sitekey="6LdjmMElAAAAABfEmkPagcUOBmCcuYlUkVYVyVHO" data-callback="onSubmit" data-size="invisible"></div>
 
     <?php
 
