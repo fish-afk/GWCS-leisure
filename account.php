@@ -193,6 +193,9 @@ function change_password($current_pass, $new_pass, $username, $conn)
         const btn1 = document.getElementById("edit-personal");
         const btn2 = document.getElementById("change-password");
 
+        document.getElementById('info-editor').style.display = "block";
+        document.getElementById('change-pass').style.display = "none";
+        
         btn1.style.backgroundColor = "#000";
         btn1.style.boxShadow = "3px 3px 8px #b1b1b1, -3px -3px 8px #ffffff";
         btn2.style.background = "#173D33";

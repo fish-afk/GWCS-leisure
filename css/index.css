@@ -1523,6 +1523,39 @@ iframe {
 	.img-slider .slide .info h2 {
 		font-size: 13px;
 	}
+	.allsites .gallery .site .menu .btn button{
+		font-size: 0.9rem;
+	}
+
+	.pitchtypes-main{
+		padding: 4rem;
+	}
+
+	.pitchtypes-main .pitchtype {
+		width: 100%;
+		justify-content: center;
+		align-items: center;
+		text-align: center;
+		display: block;
+		margin-left: 0;
+		padding-left: 0;
+		margin-bottom: 3rem;
+	}
+
+	.pitchtypes-main .pitchtype .img{
+		width: 100%;
+	}
+	.pitchtypes-main .pitchtype .desc {
+		width: 100%;
+		padding: 1rem;
+	}
+	.pitchtypes-main h1 { text-align: center;
+		font-size: 1.5rem;
+	}
+	.reviews-main .review {
+		padding: 0.8rem;
+		margin: 3rem;
+	}
 }
 
 @media screen and (max-width:1000px) {
@@ -1585,6 +1618,47 @@ iframe {
 	.index-top {
 		margin-bottom: 20rem;
 	}
+
+		.gallery-main h1 {
+			font-size: 1.4rem;
+			padding-right: 0;
+			padding-left: 0;
+		}
+
+		.gallery-main {
+			padding: 2rem;
+		}
+				.gallery-main .img img {
+					padding: 1rem;
+				}
+
+
+	.localattractions-main{
+		padding: 2rem;
+	
+	}
+	
+	.localattractions-main .attraction img {
+		width: 100%;
+	}
+
+	.localattractions-main h1 {
+		color: rgb(133, 231, 68);
+		font-size: 1.6rem;
+		text-align: center;
+	}
+
+	.localattractions-main .attraction {
+		padding: 1rem;
+	}
+
+	.search {
+		width: 100%;
+	}
+	
+	.searchTerm {
+		font-size: 0.7rem;
+	}
 }
 
 @media screen and (max-width:768px) {
@@ -1592,17 +1666,104 @@ iframe {
 		width: 280px;
 		padding: 2rem;
 	}
+	.sitedetails .right {
+		color: white;
+		padding: 1rem;
+	}
+		.sitedetails .right .btngroup button{
+			width: 100%;
+		}
+
+	.sitedetails .left h1{
+		font-size: 1.3rem;
+	}
+	.allsites .gallery .site .site-name{
+		font-size: 1.5rem;
+	}
+
+	.allsites .gallery .site .main-stuff {
+		display: block;
+		width: 100%;
+	}
+
+	.allsites .gallery .site .main-stuff img {
+		width: 100%;
+	}
+
+	.allsites .gallery .site .menu{
+		width: 100%;
+	}
+	.allsites .gallery .site .menu .btn button {
+		width: 100%;
+	}
 
 	.login-card {
 		width: 280px;
 		padding: 2rem;
 	}
+
+	.account-main .options .optbtn {
+		width: 70%;
+	}
+
+	.account-main .options{
+		padding: 1rem;
+	}
+
+	.account-welcome {
+		display: block;
+		width: 100%;
+		justify-content: center;
+		text-align: center;
+	}
+	.account-main .options .optbtn{
+		font-size: 0.7rem;
+	}
+
+	.account-main #info-editor {
+		padding-right: 2rem;
+		padding-left: 2rem;
+	}
+
+	.account-main #change-pass{
+		padding-right: 2rem;
+		padding-left: 2rem;
+	}
+
+	.account-welcome button {
+		margin-top: 1rem;
+		padding-left: 1rem;
+		padding-right: 1rem;}
 }
 
 @media screen and (max-width:550px) {
 	.index-top {
 		margin-bottom: 12rem;
 	}
+
+		.gallery-main {
+			padding: 1rem;
+		}
+	
+		.gallery-main .img img {
+			padding: 0.5rem;
+		}
+
+		.viewcounter h2 {
+			font-size: 2rem;
+		}
+	
+		.rss-feed h2 {
+			font-size: 2rem;
+		}
+	
+		.index-final h2 {
+			font-size: 2rem;
+		}
+	
+		.allsites h2 {
+			font-size: 2rem;
+		}
 
 	.intro h1 {
 		font-size: 1.5rem;
@@ -1647,9 +1808,7 @@ iframe {
 }
 
 @media screen and (max-width:400px) {
-	.intro h1 {
-		font-size: 3rem;
-	}
+	
 
 	.intro h2 {
 		margin-top: 1rem;
@@ -1659,8 +1818,7 @@ iframe {
 
 	.intro .intro-btn {
 		font-size: 1.5rem;
-		padding: 1.5rem;
-
+		
 	}
 
 	.notauthed h1 {
