@@ -1,4 +1,4 @@
-# SwimmingAndCampingWebsite
+# Swimming And Camping Website
 
 A small website in PHP for an imaginary business called Global Wild Camping and Swimming (GWCS).
 
